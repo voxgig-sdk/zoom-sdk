@@ -1,0 +1,112 @@
+# BasicMeetingFlow
+
+main: kit: flow: BasicMeetingFlow:
+{
+  entity: "meeting",
+  kind: "basic",
+  name: "BasicMeetingFlow",
+  step: [
+    {
+      input: {
+        ref: "meeting_ref01"
+      }
+
+      match: {
+        user_id: "user01"
+      }
+
+      op: "create"
+    }
+
+    {
+      match: {
+        user_id: "user01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "meeting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "meeting_ref01",
+        srcdatavar: "meeting_ref01_data",
+        suffix: "_up0",
+        textfield: "agenda"
+      }
+
+      op: "update",
+      spec: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-meeting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "meeting_ref01",
+        srcdatavar: "meeting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "meeting01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-meeting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "meeting_ref01",
+        suffix: "_rm0"
+      }
+
+      match: {
+        id: "meeting01"
+      }
+
+      op: "remove"
+    }
+
+    {
+      input: {
+        suffix: "_rt0"
+      }
+
+      match: {
+        user_id: "user01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "meeting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMeetingFlow"
+}

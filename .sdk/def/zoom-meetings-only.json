@@ -1,0 +1,182 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Zoom Meetings API",
+    "version": "2.0.0",
+    "description": "Create, read, update, and delete Zoom meetings."
+  },
+  "servers": [
+    { "url": "https://api.zoom.us/v2" }
+  ],
+  "security": [
+    { "bearerAuth": [] }
+  ],
+  "paths": {
+    "/users/{userId}/meetings": {
+      "get": {
+        "operationId": "listMeetings",
+        "summary": "List meetings",
+        "parameters": [
+          { "name": "userId", "in": "path", "required": true, "schema": { "type": "string" } },
+          { "name": "type", "in": "query", "required": false, "schema": { "type": "string" } },
+          { "name": "page_size", "in": "query", "required": false, "schema": { "type": "integer" } },
+          { "name": "next_page_token", "in": "query", "required": false, "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "A page of meetings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "page_count": { "type": "integer" },
+                    "page_size": { "type": "integer" },
+                    "total_records": { "type": "integer" },
+                    "next_page_token": { "type": "string" },
+                    "meetings": {
+                      "type": "array",
+                      "items": { "$ref": "#/components/schemas/Meeting" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createMeeting",
+        "summary": "Create a meeting",
+        "parameters": [
+          { "name": "userId", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MeetingInput" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "The created meeting",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Meeting" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/meetings/{meetingId}": {
+      "get": {
+        "operationId": "getMeeting",
+        "summary": "Retrieve a meeting",
+        "parameters": [
+          { "name": "meetingId", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested meeting",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Meeting" }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateMeeting",
+        "summary": "Update a meeting",
+        "parameters": [
+          { "name": "meetingId", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/MeetingInput" }
+            }
+          }
+        },
+        "responses": {
+          "204": { "description": "Updated" }
+        }
+      },
+      "delete": {
+        "operationId": "deleteMeeting",
+        "summary": "Delete a meeting",
+        "parameters": [
+          { "name": "meetingId", "in": "path", "required": true, "schema": { "type": "integer" } }
+        ],
+        "responses": {
+          "204": { "description": "Deleted" }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "MeetingInput": {
+        "type": "object",
+        "required": ["topic"],
+        "properties": {
+          "topic": { "type": "string" },
+          "type": { "type": "integer" },
+          "start_time": { "type": "string" },
+          "duration": { "type": "integer" },
+          "timezone": { "type": "string" },
+          "password": { "type": "string" },
+          "agenda": { "type": "string" },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "host_video": { "type": "boolean" },
+              "participant_video": { "type": "boolean" },
+              "join_before_host": { "type": "boolean" },
+              "mute_upon_entry": { "type": "boolean" },
+              "waiting_room": { "type": "boolean" }
+            }
+          }
+        }
+      },
+      "Meeting": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "uuid": { "type": "string" },
+          "host_id": { "type": "string" },
+          "topic": { "type": "string" },
+          "type": { "type": "integer" },
+          "status": { "type": "string" },
+          "start_time": { "type": "string" },
+          "duration": { "type": "integer" },
+          "timezone": { "type": "string" },
+          "agenda": { "type": "string" },
+          "created_at": { "type": "string" },
+          "join_url": { "type": "string" },
+          "settings": {
+            "type": "object",
+            "properties": {
+              "host_video": { "type": "boolean" },
+              "participant_video": { "type": "boolean" },
+              "join_before_host": { "type": "boolean" },
+              "mute_upon_entry": { "type": "boolean" },
+              "waiting_room": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

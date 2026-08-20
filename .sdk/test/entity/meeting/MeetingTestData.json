@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "meeting": {
+      "MEETING00": {
+        "agenda": "sbe",
+        "created_at": "sbf",
+        "duration": "sc0",
+        "host_id": "HOST01",
+        "host_video": true,
+        "id": "MEETING00",
+        "join_before_host": true,
+        "join_url": "sc5",
+        "mute_upon_entry": true,
+        "participant_video": false,
+        "password": "sc8",
+        "settings": {},
+        "start_time": "sca",
+        "status": "scb",
+        "timezone": "scc",
+        "topic": "scd",
+        "type": "sce",
+        "uuid": "scf",
+        "waiting_room": true,
+        "user_id": "USER01"
+      },
+      "MEETING01": {
+        "agenda": "s17c",
+        "created_at": "s17d",
+        "duration": "s17e",
+        "host_id": "HOST01",
+        "host_video": true,
+        "id": "MEETING01",
+        "join_before_host": true,
+        "join_url": "s183",
+        "mute_upon_entry": true,
+        "participant_video": false,
+        "password": "s186",
+        "settings": {},
+        "start_time": "s188",
+        "status": "s189",
+        "timezone": "s18a",
+        "topic": "s18b",
+        "type": "s18c",
+        "uuid": "s18d",
+        "waiting_room": true,
+        "user_id": "USER01"
+      },
+      "MEETING02": {
+        "agenda": "s23a",
+        "created_at": "s23b",
+        "duration": "s23c",
+        "host_id": "HOST01",
+        "host_video": true,
+        "id": "MEETING02",
+        "join_before_host": true,
+        "join_url": "s241",
+        "mute_upon_entry": true,
+        "participant_video": false,
+        "password": "s244",
+        "settings": {},
+        "start_time": "s246",
+        "status": "s247",
+        "timezone": "s248",
+        "topic": "s249",
+        "type": "s24a",
+        "uuid": "s24b",
+        "waiting_room": true,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "meeting": {
+      "meeting_ref01": {
+        "agenda": "s2f8",
+        "created_at": "s2f9",
+        "duration": "s2fa",
+        "host_id": "HOST01",
+        "host_video": true,
+        "join_before_host": true,
+        "join_url": "s2ff",
+        "mute_upon_entry": true,
+        "participant_video": false,
+        "password": "s302",
+        "settings": {},
+        "start_time": "s304",
+        "status": "s305",
+        "timezone": "s306",
+        "topic": "s307",
+        "type": "s308",
+        "uuid": "s309",
+        "waiting_room": true
+      }
+    }
+  }
+}

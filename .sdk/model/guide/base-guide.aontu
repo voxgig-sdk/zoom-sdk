@@ -1,0 +1,25 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 1
+  metrics: count: path: 2
+  metrics: count: method: 5
+
+  entity: meeting: {
+    path: "/meetings/{meetingId}": {
+      rename: param: "meetingId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.settings`")|top
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/meetings": {
+      rename: param: "userId": *"user_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.settings`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.meetings`")|top
+    }
+  }
+
+}

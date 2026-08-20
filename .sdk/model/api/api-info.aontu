@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Create, read, update, and delete Zoom meetings."
+      security: {
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearerAuth"
+        type: "http"
+      }
+      servers: [
+        {
+          url: "https://api.zoom.us/v2"
+        }
+      ]
+      summary: "Create, read, update, and delete Zoom meetings."
+      title: "Zoom Meetings API"
+      version: "2.0.0"
+      website: "https://zoom.us"
+    }
+  }
+}
+

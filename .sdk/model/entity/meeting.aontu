@@ -1,0 +1,348 @@
+# Entity: meeting
+
+main: kit: entity: meeting: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "agenda"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "created_at"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "duration"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "host_id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "host_video"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "join_before_host"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "join_url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "mute_upon_entry"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "participant_video"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "password"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "settings"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "start_time"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "status"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "timezone"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "topic"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "uuid"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "waiting_room"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "meeting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "user_id"
+                orig: "user_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "POST"
+          orig: "/users/{userId}/meetings"
+          parts: [
+            "users"
+            "{user_id}"
+            "meetings"
+          ]
+          rename: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          select: {
+            exist: [
+              "user_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.settings`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "user_id"
+                orig: "user_id"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                kind: "query"
+                name: "next_page_token"
+                orig: "next_page_token"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "page_size"
+                orig: "page_size"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "type"
+                orig: "type"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/users/{userId}/meetings"
+          parts: [
+            "users"
+            "{user_id}"
+            "meetings"
+          ]
+          rename: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          select: {
+            exist: [
+              "next_page_token"
+              "page_size"
+              "type"
+              "user_id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.meetings`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "meeting_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/meetings/{meetingId}"
+          parts: [
+            "meetings"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body.settings`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "meeting_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "DELETE"
+          orig: "/meetings/{meetingId}"
+          parts: [
+            "meetings"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "meeting_id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "PATCH"
+          orig: "/meetings/{meetingId}"
+          parts: [
+            "meetings"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "user"
+      ]
+    ]
+  }
+
+
+
+}
