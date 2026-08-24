@@ -1,0 +1,70 @@
+<?php
+declare(strict_types=1);
+
+// Zoom SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+ZoomUtility::setRegistrar(function (ZoomUtility $u): void {
+    $u->clean = [ZoomClean::class, 'call'];
+    $u->done = [ZoomDone::class, 'call'];
+    $u->make_error = [ZoomMakeError::class, 'call'];
+    $u->feature_add = [ZoomFeatureAdd::class, 'call'];
+    $u->feature_hook = [ZoomFeatureHook::class, 'call'];
+    $u->feature_init = [ZoomFeatureInit::class, 'call'];
+    $u->fetcher = [ZoomFetcher::class, 'call'];
+    $u->make_fetch_def = [ZoomMakeFetchDef::class, 'call'];
+    $u->make_context = [ZoomMakeContext::class, 'call'];
+    $u->make_options = [ZoomMakeOptions::class, 'call'];
+    $u->make_request = [ZoomMakeRequest::class, 'call'];
+    $u->make_response = [ZoomMakeResponse::class, 'call'];
+    $u->make_result = [ZoomMakeResult::class, 'call'];
+    $u->make_point = [ZoomMakePoint::class, 'call'];
+    $u->make_spec = [ZoomMakeSpec::class, 'call'];
+    $u->make_url = [ZoomMakeUrl::class, 'call'];
+    $u->param = [ZoomParam::class, 'call'];
+    $u->prepare_auth = [ZoomPrepareAuth::class, 'call'];
+    $u->prepare_body = [ZoomPrepareBody::class, 'call'];
+    $u->prepare_headers = [ZoomPrepareHeaders::class, 'call'];
+    $u->prepare_method = [ZoomPrepareMethod::class, 'call'];
+    $u->prepare_params = [ZoomPrepareParams::class, 'call'];
+    $u->prepare_path = [ZoomPreparePath::class, 'call'];
+    $u->prepare_query = [ZoomPrepareQuery::class, 'call'];
+    $u->graphql_body = [ZoomGraphql::class, 'body'];
+    $u->graphql_errors = [ZoomGraphql::class, 'errors'];
+    $u->result_basic = [ZoomResultBasic::class, 'call'];
+    $u->result_body = [ZoomResultBody::class, 'call'];
+    $u->result_headers = [ZoomResultHeaders::class, 'call'];
+    $u->transform_request = [ZoomTransformRequest::class, 'call'];
+    $u->transform_response = [ZoomTransformResponse::class, 'call'];
+});
