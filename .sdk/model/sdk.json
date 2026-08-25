@@ -1,15 +1,6 @@
 {
-  "NAME": "ZOOM",
-  "Name": "Zoom",
   "def": "zoom-meetings-only.json",
   "main": {
-    "api": {
-      "entity": {},
-      "guide": {}
-    },
-    "custom": {
-      "plurals": {}
-    },
     "def": {
       "desc": ""
     },
@@ -1210,8 +1201,5 @@
     }
   },
   "name": "zoom",
-  "name-": "zoom",
-  "name_": "zoom",
-  "name__orig": "zoom",
   "origin": "voxgig-sdk"
 }
