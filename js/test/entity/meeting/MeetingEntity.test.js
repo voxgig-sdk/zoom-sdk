@@ -5,7 +5,7 @@ require('dotenv').config({ quiet: true, path: [envlocal] })
 const Path = require('node:path')
 const Fs = require('node:fs')
 
-const { test, describe } = require('node:test')
+const { test, describe, afterEach } = require('node:test')
 const assert = require('node:assert')
 
 
@@ -13,6 +13,8 @@ const { ZoomSDK, BaseFeature, stdutil, config } = require('../../..')
 
 const {
   envOverride,
+  liveClientOptions,
+  liveDelay,
   makeCtrl,
   makeMatch,
   makeReqdata,
@@ -22,6 +24,10 @@ const {
 
 
 describe('MeetingEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when ZOOM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ZOOM_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ZoomSDK.test()
@@ -133,17 +139,24 @@ function basicSetup(extra) {
     'ZOOM_TEST_MEETING_ENTID': idmap,
     'ZOOM_TEST_LIVE': 'FALSE',
     'ZOOM_TEST_EXPLAIN': 'FALSE',
-    'ZOOM_APIKEY': 'NONE',
+    'ZOOM_APIKEY': '',
   })
 
   idmap = env['ZOOM_TEST_MEETING_ENTID']
 
   if ('TRUE' === env.ZOOM_TEST_LIVE) {
     client = new ZoomSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
       {
         apikey: env.ZOOM_APIKEY,
       },
-      extra
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when
+      // the last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey and
+      // server values above and handed the SDK undefined.
+      extra || {}
     ]))
   }
 

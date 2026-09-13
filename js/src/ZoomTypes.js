@@ -37,6 +37,9 @@
 /**
  * @typedef {Object} MeetingListMatch
  * @property {string} user_id
+ * @property {string} [next_page_token]
+ * @property {number} [page_size]
+ * @property {string} [type]
  */
 
 /**

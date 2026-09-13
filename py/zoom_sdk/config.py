@@ -1,6 +1,14 @@
 # Zoom SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -138,6 +146,10 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "meeting",
         "op": {
           "create": {
@@ -159,16 +171,22 @@ def make_config():
                 "kind": "http",
                 "method": "POST",
                 "orig": "/users/{userId}/meetings",
-                "parts": [
-                  "users",
-                  "{user_id}",
-                  "meetings",
-                ],
                 "rename": {
                   "param": {
                     "userId": "user_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "users",
+                  },
+                  {
+                    "var": "user_id",
+                  },
+                  {
+                    "lit": "meetings",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "user_id",
@@ -178,6 +196,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.settings`",
                 },
+                "parts": [
+                  "users",
+                  "{user_id}",
+                  "meetings",
+                ],
               },
             ],
           },
@@ -220,16 +243,22 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/users/{userId}/meetings",
-                "parts": [
-                  "users",
-                  "{user_id}",
-                  "meetings",
-                ],
                 "rename": {
                   "param": {
                     "userId": "user_id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "users",
+                  },
+                  {
+                    "var": "user_id",
+                  },
+                  {
+                    "lit": "meetings",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "next_page_token",
@@ -242,6 +271,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.meetings`",
                 },
+                "parts": [
+                  "users",
+                  "{user_id}",
+                  "meetings",
+                ],
               },
             ],
           },
@@ -264,15 +298,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/meetings/{meetingId}",
-                "parts": [
-                  "meetings",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "meetingId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "meetings",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -282,6 +320,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.settings`",
                 },
+                "parts": [
+                  "meetings",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -304,15 +346,19 @@ def make_config():
                 "kind": "http",
                 "method": "DELETE",
                 "orig": "/meetings/{meetingId}",
-                "parts": [
-                  "meetings",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "meetingId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "meetings",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -322,6 +368,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "meetings",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -344,15 +394,19 @@ def make_config():
                 "kind": "http",
                 "method": "PATCH",
                 "orig": "/meetings/{meetingId}",
-                "parts": [
-                  "meetings",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "meetingId": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "meetings",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -362,6 +416,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "meetings",
+                  "{id}",
+                ],
               },
             ],
           },

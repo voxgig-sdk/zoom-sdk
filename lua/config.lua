@@ -117,6 +117,10 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "meeting",
         ["op"] = {
           ["create"] = {
@@ -138,14 +142,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "POST",
                 ["orig"] = "/users/{userId}/meetings",
-                ["parts"] = {
-                  "users",
-                  "{user_id}",
-                  "meetings",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["userId"] = "user_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "user_id",
+                  },
+                  {
+                    ["lit"] = "meetings",
                   },
                 },
                 ["select"] = {
@@ -156,6 +166,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.settings`",
+                },
+                ["parts"] = {
+                  "users",
+                  "{user_id}",
+                  "meetings",
                 },
               },
             },
@@ -199,14 +214,20 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/users/{userId}/meetings",
-                ["parts"] = {
-                  "users",
-                  "{user_id}",
-                  "meetings",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["userId"] = "user_id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "users",
+                  },
+                  {
+                    ["var"] = "user_id",
+                  },
+                  {
+                    ["lit"] = "meetings",
                   },
                 },
                 ["select"] = {
@@ -220,6 +241,11 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.meetings`",
+                },
+                ["parts"] = {
+                  "users",
+                  "{user_id}",
+                  "meetings",
                 },
               },
             },
@@ -243,13 +269,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/meetings/{meetingId}",
-                ["parts"] = {
-                  "meetings",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["meetingId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "meetings",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -260,6 +290,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.settings`",
+                },
+                ["parts"] = {
+                  "meetings",
+                  "{id}",
                 },
               },
             },
@@ -283,13 +317,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "DELETE",
                 ["orig"] = "/meetings/{meetingId}",
-                ["parts"] = {
-                  "meetings",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["meetingId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "meetings",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -300,6 +338,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "meetings",
+                  "{id}",
                 },
               },
             },
@@ -323,13 +365,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "PATCH",
                 ["orig"] = "/meetings/{meetingId}",
-                ["parts"] = {
-                  "meetings",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["meetingId"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "meetings",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -340,6 +386,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "meetings",
+                  "{id}",
                 },
               },
             },

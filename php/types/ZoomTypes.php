@@ -46,6 +46,9 @@ class MeetingLoadMatch
 class MeetingListMatch
 {
     public string $user_id;
+    public ?string $next_page_token = null;
+    public ?int $page_size = null;
+    public ?string $type = null;
 }
 
 /** Request payload for Meeting#create. */

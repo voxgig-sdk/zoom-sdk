@@ -230,14 +230,22 @@ func meetingDirectSetup(mockres any) *meetingDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ZOOM_TEST_MEETING_ENTID": map[string]any{},
 		"ZOOM_TEST_LIVE":    "FALSE",
-		"ZOOM_APIKEY":       "NONE",
+		"ZOOM_APIKEY":       "",
 	})
 
 	live := env["ZOOM_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
 			"apikey": env["ZOOM_APIKEY"],
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewZoomSDK(mergedOpts)
 

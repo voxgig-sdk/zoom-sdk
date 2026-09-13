@@ -13,6 +13,7 @@ const { ZoomEntityBase } = require('./ZoomEntityBase')
 const { BaseFeature } = require('./feature/base/BaseFeature')
 
 
+
 const stdutil = new Utility()
 
 
@@ -22,6 +23,7 @@ class ZoomSDK {
   _utility = new Utility()
   _features
   _rootctx
+  
 
   constructor(options) {
 
@@ -94,6 +96,8 @@ class ZoomSDK {
     return this._utility.struct.clone(this._utility)
   }
 
+  
+
 
   async prepare(fetchargs) {
     const utility = this._utility
@@ -139,6 +143,8 @@ class ZoomSDK {
         spec.headers[key] = uheaders[key]
       }
     }
+
+    
 
     // Apply SDK auth (apikey, auth prefix, etc.)
     const authResult = prepareAuth(ctx)
@@ -345,6 +351,7 @@ const SDK = ZoomSDK
 module.exports = {
   stdutil,
   config,
+  
 
   BaseFeature,
   ZoomEntityBase,

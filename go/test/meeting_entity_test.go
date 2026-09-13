@@ -101,7 +101,7 @@ func TestMeetingEntity(t *testing.T) {
 		// CREATE
 		meetingRef01Ent := client.Meeting(nil)
 		meetingRef01Data := core.ToMapAny(vs.GetProp(
-			vs.GetPath([]any{"new", "meeting"}, setup.data), "meeting_ref01"))
+			vs.GetPath(setup.data, []any{"new", "meeting"}), "meeting_ref01"))
 		meetingRef01Data["user_id"] = setup.idmap["user01"]
 
 		meetingRef01DataResult, err := meetingRef01Ent.Create(meetingRef01Data, nil)
@@ -230,7 +230,7 @@ func meetingBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"meeting01", "meeting02", "meeting03", "user01", "user02", "user03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -250,7 +250,7 @@ func meetingBasicSetup(extra map[string]any) *entityTestSetup {
 		"ZOOM_TEST_MEETING_ENTID": idmap,
 		"ZOOM_TEST_LIVE":      "FALSE",
 		"ZOOM_TEST_EXPLAIN":   "FALSE",
-		"ZOOM_APIKEY":         "NONE",
+		"ZOOM_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["ZOOM_TEST_MEETING_ENTID"])
@@ -259,11 +259,23 @@ func meetingBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["ZOOM_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["ZOOM_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewZoomSDK(core.ToMapAny(mergedOpts))
 	}

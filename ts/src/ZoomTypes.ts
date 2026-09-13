@@ -33,6 +33,9 @@ export interface MeetingLoadMatch {
 
 export interface MeetingListMatch {
   user_id: string
+  next_page_token?: string
+  page_size?: number
+  type?: string
 }
 
 export interface MeetingCreateData {

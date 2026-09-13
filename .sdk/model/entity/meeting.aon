@@ -132,16 +132,22 @@ main: kit: entity: meeting: {
           }
           method: "POST"
           orig: "/users/{userId}/meetings"
-          parts: [
-            "users"
-            "{user_id}"
-            "meetings"
-          ]
           rename: {
             param: {
               userId: "user_id"
             }
           }
+          segments: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
           select: {
             exist: [
               "user_id"
@@ -194,16 +200,22 @@ main: kit: entity: meeting: {
           }
           method: "GET"
           orig: "/users/{userId}/meetings"
-          parts: [
-            "users"
-            "{user_id}"
-            "meetings"
-          ]
           rename: {
             param: {
               userId: "user_id"
             }
           }
+          segments: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
           select: {
             exist: [
               "next_page_token"
@@ -236,15 +248,19 @@ main: kit: entity: meeting: {
           }
           method: "GET"
           orig: "/meetings/{meetingId}"
-          parts: [
-            "meetings"
-            "{id}"
-          ]
           rename: {
             param: {
               meetingId: "id"
             }
           }
+          segments: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -274,15 +290,19 @@ main: kit: entity: meeting: {
           }
           method: "DELETE"
           orig: "/meetings/{meetingId}"
-          parts: [
-            "meetings"
-            "{id}"
-          ]
           rename: {
             param: {
               meetingId: "id"
             }
           }
+          segments: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"
@@ -312,15 +332,19 @@ main: kit: entity: meeting: {
           }
           method: "PATCH"
           orig: "/meetings/{meetingId}"
-          parts: [
-            "meetings"
-            "{id}"
-          ]
           rename: {
             param: {
               meetingId: "id"
             }
           }
+          segments: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

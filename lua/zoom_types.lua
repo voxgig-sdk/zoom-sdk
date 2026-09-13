@@ -32,6 +32,9 @@
 
 ---@class MeetingListMatch
 ---@field user_id string
+---@field next_page_token? string
+---@field page_size? number
+---@field type? string
 
 ---@class MeetingCreateData
 ---@field user_id string

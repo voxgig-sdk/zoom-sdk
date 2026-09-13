@@ -45,8 +45,14 @@ class MeetingLoadMatch(TypedDict):
     id: int
 
 
-class MeetingListMatch(TypedDict):
+class MeetingListMatchRequired(TypedDict):
     user_id: str
+
+
+class MeetingListMatch(MeetingListMatchRequired, total=False):
+    next_page_token: str
+    page_size: int
+    type: str
 
 
 class MeetingCreateDataRequired(TypedDict):

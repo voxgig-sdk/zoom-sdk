@@ -119,15 +119,18 @@ def _meeting_direct_setup(mockres):
     env = runner.env_override({
         "ZOOM_TEST_MEETING_ENTID": {},
         "ZOOM_TEST_LIVE": "FALSE",
-        "ZOOM_APIKEY": "NONE",
+        "ZOOM_APIKEY": "",
     })
 
     live = env.get("ZOOM_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("ZOOM_APIKEY"),
-        }
+        })
         client = ZoomSDK(merged_opts)
         return {
             "client": client,

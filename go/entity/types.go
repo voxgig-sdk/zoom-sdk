@@ -43,6 +43,9 @@ type MeetingLoadMatch struct {
 // MeetingListMatch is the typed request payload for Meeting.ListTyped.
 type MeetingListMatch struct {
 	UserId string `json:"user_id"`
+	NextPageToken *string `json:"next_page_token,omitempty"`
+	PageSize *int `json:"page_size,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
 
 // MeetingCreateData is the typed request payload for Meeting.CreateTyped.

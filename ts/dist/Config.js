@@ -1,10 +1,18 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.config = void 0;
+exports.FEATURE_PLUGINS = exports.config = void 0;
 const TestFeature_1 = require("./feature/test/TestFeature");
 const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
 };
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS = {};
+exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
@@ -130,6 +138,10 @@ class Config {
                     "type": "`$BOOLEAN`"
                 }
             ],
+            "id": {
+                "field": "id",
+                "name": "id"
+            },
             "name": "meeting",
             "op": {
                 "create": {
@@ -151,16 +163,22 @@ class Config {
                             "kind": "http",
                             "method": "POST",
                             "orig": "/users/{userId}/meetings",
-                            "parts": [
-                                "users",
-                                "{user_id}",
-                                "meetings"
-                            ],
                             "rename": {
                                 "param": {
                                     "userId": "user_id"
                                 }
                             },
+                            "segments": [
+                                {
+                                    "lit": "users"
+                                },
+                                {
+                                    "var": "user_id"
+                                },
+                                {
+                                    "lit": "meetings"
+                                }
+                            ],
                             "select": {
                                 "exist": [
                                     "user_id"
@@ -169,7 +187,12 @@ class Config {
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.settings`"
-                            }
+                            },
+                            "parts": [
+                                "users",
+                                "{user_id}",
+                                "meetings"
+                            ]
                         }
                     ]
                 },
@@ -212,16 +235,22 @@ class Config {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/users/{userId}/meetings",
-                            "parts": [
-                                "users",
-                                "{user_id}",
-                                "meetings"
-                            ],
                             "rename": {
                                 "param": {
                                     "userId": "user_id"
                                 }
                             },
+                            "segments": [
+                                {
+                                    "lit": "users"
+                                },
+                                {
+                                    "var": "user_id"
+                                },
+                                {
+                                    "lit": "meetings"
+                                }
+                            ],
                             "select": {
                                 "exist": [
                                     "next_page_token",
@@ -233,7 +262,12 @@ class Config {
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.meetings`"
-                            }
+                            },
+                            "parts": [
+                                "users",
+                                "{user_id}",
+                                "meetings"
+                            ]
                         }
                     ]
                 },
@@ -256,15 +290,19 @@ class Config {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/meetings/{meetingId}",
-                            "parts": [
-                                "meetings",
-                                "{id}"
-                            ],
                             "rename": {
                                 "param": {
                                     "meetingId": "id"
                                 }
                             },
+                            "segments": [
+                                {
+                                    "lit": "meetings"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
                             "select": {
                                 "exist": [
                                     "id"
@@ -273,7 +311,11 @@ class Config {
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.settings`"
-                            }
+                            },
+                            "parts": [
+                                "meetings",
+                                "{id}"
+                            ]
                         }
                     ]
                 },
@@ -296,15 +338,19 @@ class Config {
                             "kind": "http",
                             "method": "DELETE",
                             "orig": "/meetings/{meetingId}",
-                            "parts": [
-                                "meetings",
-                                "{id}"
-                            ],
                             "rename": {
                                 "param": {
                                     "meetingId": "id"
                                 }
                             },
+                            "segments": [
+                                {
+                                    "lit": "meetings"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
                             "select": {
                                 "exist": [
                                     "id"
@@ -313,7 +359,11 @@ class Config {
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
-                            }
+                            },
+                            "parts": [
+                                "meetings",
+                                "{id}"
+                            ]
                         }
                     ]
                 },
@@ -336,15 +386,19 @@ class Config {
                             "kind": "http",
                             "method": "PATCH",
                             "orig": "/meetings/{meetingId}",
-                            "parts": [
-                                "meetings",
-                                "{id}"
-                            ],
                             "rename": {
                                 "param": {
                                     "meetingId": "id"
                                 }
                             },
+                            "segments": [
+                                {
+                                    "lit": "meetings"
+                                },
+                                {
+                                    "var": "id"
+                                }
+                            ],
                             "select": {
                                 "exist": [
                                     "id"
@@ -353,7 +407,11 @@ class Config {
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
-                            }
+                            },
+                            "parts": [
+                                "meetings",
+                                "{id}"
+                            ]
                         }
                     ]
                 }

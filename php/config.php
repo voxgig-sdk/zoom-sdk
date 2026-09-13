@@ -143,6 +143,10 @@ class ZoomConfig
               'type' => '`$BOOLEAN`',
             ],
           ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
+          ],
           'name' => 'meeting',
           'op' => [
             'create' => [
@@ -164,14 +168,20 @@ class ZoomConfig
                   'kind' => 'http',
                   'method' => 'POST',
                   'orig' => '/users/{userId}/meetings',
-                  'parts' => [
-                    'users',
-                    '{user_id}',
-                    'meetings',
-                  ],
                   'rename' => [
                     'param' => [
                       'userId' => 'user_id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'var' => 'user_id',
+                    ],
+                    [
+                      'lit' => 'meetings',
                     ],
                   ],
                   'select' => [
@@ -182,6 +192,11 @@ class ZoomConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.settings`',
+                  ],
+                  'parts' => [
+                    'users',
+                    '{user_id}',
+                    'meetings',
                   ],
                 ],
               ],
@@ -225,14 +240,20 @@ class ZoomConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/users/{userId}/meetings',
-                  'parts' => [
-                    'users',
-                    '{user_id}',
-                    'meetings',
-                  ],
                   'rename' => [
                     'param' => [
                       'userId' => 'user_id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'users',
+                    ],
+                    [
+                      'var' => 'user_id',
+                    ],
+                    [
+                      'lit' => 'meetings',
                     ],
                   ],
                   'select' => [
@@ -246,6 +267,11 @@ class ZoomConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.meetings`',
+                  ],
+                  'parts' => [
+                    'users',
+                    '{user_id}',
+                    'meetings',
                   ],
                 ],
               ],
@@ -269,13 +295,17 @@ class ZoomConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/meetings/{meetingId}',
-                  'parts' => [
-                    'meetings',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'meetingId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'meetings',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -286,6 +316,10 @@ class ZoomConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.settings`',
+                  ],
+                  'parts' => [
+                    'meetings',
+                    '{id}',
                   ],
                 ],
               ],
@@ -309,13 +343,17 @@ class ZoomConfig
                   'kind' => 'http',
                   'method' => 'DELETE',
                   'orig' => '/meetings/{meetingId}',
-                  'parts' => [
-                    'meetings',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'meetingId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'meetings',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -326,6 +364,10 @@ class ZoomConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'meetings',
+                    '{id}',
                   ],
                 ],
               ],
@@ -349,13 +391,17 @@ class ZoomConfig
                   'kind' => 'http',
                   'method' => 'PATCH',
                   'orig' => '/meetings/{meetingId}',
-                  'parts' => [
-                    'meetings',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'meetingId' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'meetings',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -366,6 +412,10 @@ class ZoomConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'meetings',
+                    '{id}',
                   ],
                 ],
               ],
