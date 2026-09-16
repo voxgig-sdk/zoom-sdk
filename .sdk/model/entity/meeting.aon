@@ -130,6 +130,12 @@ main: kit: entity: meeting: {
               }
             ]
           }
+          contract: {
+            id: "POST /users/{userId}/meetings"
+            json: "{\"operationId\":\"createMeeting\",\"parameters\":[{\"in\":\"path\",\"name\":\"userId\",\"required\":true,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"agenda\":{\"type\":\"string\"},\"duration\":{\"type\":\"integer\"},\"password\":{\"type\":\"string\"},\"settings\":{\"properties\":{\"host_video\":{\"type\":\"boolean\"},\"join_before_host\":{\"type\":\"boolean\"},\"mute_upon_entry\":{\"type\":\"boolean\"},\"participant_video\":{\"type\":\"boolean\"},\"waiting_room\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"start_time\":{\"type\":\"string\"},\"timezone\":{\"type\":\"string\"},\"topic\":{\"type\":\"string\"},\"type\":{\"type\":\"integer\"}},\"required\":[\"topic\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"201\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"agenda\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"duration\":{\"type\":\"integer\"},\"host_id\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"join_url\":{\"type\":\"string\"},\"settings\":{\"properties\":{\"host_video\":{\"type\":\"boolean\"},\"join_before_host\":{\"type\":\"boolean\"},\"mute_upon_entry\":{\"type\":\"boolean\"},\"participant_video\":{\"type\":\"boolean\"},\"waiting_room\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"start_time\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"},\"timezone\":{\"type\":\"string\"},\"topic\":{\"type\":\"string\"},\"type\":{\"type\":\"integer\"},\"uuid\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"The created meeting\"}},\"security\":[{\"bearerAuth\":[]}],\"securitySchemes\":{\"bearerAuth\":{\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "POST"
           orig: "/users/{userId}/meetings"
           rename: {
@@ -198,6 +204,12 @@ main: kit: entity: meeting: {
               }
             ]
           }
+          contract: {
+            id: "GET /users/{userId}/meetings"
+            json: "{\"operationId\":\"listMeetings\",\"parameters\":[{\"in\":\"path\",\"name\":\"userId\",\"required\":true,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"type\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"in\":\"query\",\"name\":\"page_size\",\"required\":false,\"schema\":{\"type\":\"integer\"}},{\"in\":\"query\",\"name\":\"next_page_token\",\"required\":false,\"schema\":{\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"meetings\":{\"items\":{\"properties\":{\"agenda\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"duration\":{\"type\":\"integer\"},\"host_id\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"join_url\":{\"type\":\"string\"},\"settings\":{\"properties\":{\"host_video\":{\"type\":\"boolean\"},\"join_before_host\":{\"type\":\"boolean\"},\"mute_upon_entry\":{\"type\":\"boolean\"},\"participant_video\":{\"type\":\"boolean\"},\"waiting_room\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"start_time\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"},\"timezone\":{\"type\":\"string\"},\"topic\":{\"type\":\"string\"},\"type\":{\"type\":\"integer\"},\"uuid\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"next_page_token\":{\"type\":\"string\"},\"page_count\":{\"type\":\"integer\"},\"page_size\":{\"type\":\"integer\"},\"total_records\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"A page of meetings\"}},\"security\":[{\"bearerAuth\":[]}],\"securitySchemes\":{\"bearerAuth\":{\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/users/{userId}/meetings"
           rename: {
@@ -246,6 +258,12 @@ main: kit: entity: meeting: {
               }
             ]
           }
+          contract: {
+            id: "GET /meetings/{meetingId}"
+            json: "{\"operationId\":\"getMeeting\",\"parameters\":[{\"in\":\"path\",\"name\":\"meetingId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"agenda\":{\"type\":\"string\"},\"created_at\":{\"type\":\"string\"},\"duration\":{\"type\":\"integer\"},\"host_id\":{\"type\":\"string\"},\"id\":{\"type\":\"integer\"},\"join_url\":{\"type\":\"string\"},\"settings\":{\"properties\":{\"host_video\":{\"type\":\"boolean\"},\"join_before_host\":{\"type\":\"boolean\"},\"mute_upon_entry\":{\"type\":\"boolean\"},\"participant_video\":{\"type\":\"boolean\"},\"waiting_room\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"start_time\":{\"type\":\"string\"},\"status\":{\"type\":\"string\"},\"timezone\":{\"type\":\"string\"},\"topic\":{\"type\":\"string\"},\"type\":{\"type\":\"integer\"},\"uuid\":{\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"The requested meeting\"}},\"security\":[{\"bearerAuth\":[]}],\"securitySchemes\":{\"bearerAuth\":{\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/meetings/{meetingId}"
           rename: {
@@ -288,6 +306,12 @@ main: kit: entity: meeting: {
               }
             ]
           }
+          contract: {
+            id: "DELETE /meetings/{meetingId}"
+            json: "{\"operationId\":\"deleteMeeting\",\"parameters\":[{\"in\":\"path\",\"name\":\"meetingId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"204\":{\"description\":\"Deleted\"}},\"security\":[{\"bearerAuth\":[]}],\"securitySchemes\":{\"bearerAuth\":{\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "DELETE"
           orig: "/meetings/{meetingId}"
           rename: {
@@ -329,6 +353,12 @@ main: kit: entity: meeting: {
                 type: "`$INTEGER`"
               }
             ]
+          }
+          contract: {
+            id: "PATCH /meetings/{meetingId}"
+            json: "{\"operationId\":\"updateMeeting\",\"parameters\":[{\"in\":\"path\",\"name\":\"meetingId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"requestBody\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"agenda\":{\"type\":\"string\"},\"duration\":{\"type\":\"integer\"},\"password\":{\"type\":\"string\"},\"settings\":{\"properties\":{\"host_video\":{\"type\":\"boolean\"},\"join_before_host\":{\"type\":\"boolean\"},\"mute_upon_entry\":{\"type\":\"boolean\"},\"participant_video\":{\"type\":\"boolean\"},\"waiting_room\":{\"type\":\"boolean\"}},\"type\":\"object\"},\"start_time\":{\"type\":\"string\"},\"timezone\":{\"type\":\"string\"},\"topic\":{\"type\":\"string\"},\"type\":{\"type\":\"integer\"}},\"required\":[\"topic\"],\"type\":\"object\"}}},\"required\":true},\"responses\":{\"204\":{\"description\":\"Updated\"}},\"security\":[{\"bearerAuth\":[]}],\"securitySchemes\":{\"bearerAuth\":{\"scheme\":\"bearer\",\"type\":\"http\"}},\"securitySource\":\"definition\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "PATCH"
           orig: "/meetings/{meetingId}"

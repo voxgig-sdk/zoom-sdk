@@ -4,7 +4,7 @@
       "MEETING00": {
         "agenda": "sbe",
         "created_at": "sbf",
-        "duration": "sc0",
+        "duration": 192,
         "host_id": "HOST01",
         "host_video": true,
         "id": "MEETING00",
@@ -18,7 +18,7 @@
         "status": "scb",
         "timezone": "scc",
         "topic": "scd",
-        "type": "sce",
+        "type": 206,
         "uuid": "scf",
         "waiting_room": true,
         "user_id": "USER01"
@@ -26,7 +26,7 @@
       "MEETING01": {
         "agenda": "s17c",
         "created_at": "s17d",
-        "duration": "s17e",
+        "duration": 382,
         "host_id": "HOST01",
         "host_video": true,
         "id": "MEETING01",
@@ -40,7 +40,7 @@
         "status": "s189",
         "timezone": "s18a",
         "topic": "s18b",
-        "type": "s18c",
+        "type": 396,
         "uuid": "s18d",
         "waiting_room": true,
         "user_id": "USER01"
@@ -48,7 +48,7 @@
       "MEETING02": {
         "agenda": "s23a",
         "created_at": "s23b",
-        "duration": "s23c",
+        "duration": 572,
         "host_id": "HOST01",
         "host_video": true,
         "id": "MEETING02",
@@ -62,7 +62,7 @@
         "status": "s247",
         "timezone": "s248",
         "topic": "s249",
-        "type": "s24a",
+        "type": 586,
         "uuid": "s24b",
         "waiting_room": true,
         "user_id": "USER01"
@@ -74,7 +74,7 @@
       "meeting_ref01": {
         "agenda": "s2f8",
         "created_at": "s2f9",
-        "duration": "s2fa",
+        "duration": 762,
         "host_id": "HOST01",
         "host_video": true,
         "join_before_host": true,
@@ -87,9 +87,532 @@
         "status": "s305",
         "timezone": "s306",
         "topic": "s307",
-        "type": "s308",
+        "type": 776,
         "uuid": "s309",
         "waiting_room": true
+      }
+    }
+  },
+  "requests": {
+    "POST /users/{userId}/meetings": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "createMeeting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agenda": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "integer"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "settings": {
+                    "properties": {
+                      "host_video": {
+                        "type": "boolean"
+                      },
+                      "join_before_host": {
+                        "type": "boolean"
+                      },
+                      "mute_upon_entry": {
+                        "type": "boolean"
+                      },
+                      "participant_video": {
+                        "type": "boolean"
+                      },
+                      "waiting_room": {
+                        "type": "boolean"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  },
+                  "topic": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "topic"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "agenda": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "host_id": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "join_url": {
+                      "type": "string"
+                    },
+                    "settings": {
+                      "properties": {
+                        "host_video": {
+                          "type": "boolean"
+                        },
+                        "join_before_host": {
+                          "type": "boolean"
+                        },
+                        "mute_upon_entry": {
+                          "type": "boolean"
+                        },
+                        "participant_video": {
+                          "type": "boolean"
+                        },
+                        "waiting_room": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "start_time": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "type": "string"
+                    },
+                    "topic": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "integer"
+                    },
+                    "uuid": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The created meeting"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "bearerAuth": {
+            "scheme": "bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "GET /users/{userId}/meetings": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listMeetings",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "userId",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "type",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "page_size",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "next_page_token",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "meetings": {
+                      "items": {
+                        "properties": {
+                          "agenda": {
+                            "type": "string"
+                          },
+                          "created_at": {
+                            "type": "string"
+                          },
+                          "duration": {
+                            "type": "integer"
+                          },
+                          "host_id": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "integer"
+                          },
+                          "join_url": {
+                            "type": "string"
+                          },
+                          "settings": {
+                            "properties": {
+                              "host_video": {
+                                "type": "boolean"
+                              },
+                              "join_before_host": {
+                                "type": "boolean"
+                              },
+                              "mute_upon_entry": {
+                                "type": "boolean"
+                              },
+                              "participant_video": {
+                                "type": "boolean"
+                              },
+                              "waiting_room": {
+                                "type": "boolean"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "start_time": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "timezone": {
+                            "type": "string"
+                          },
+                          "topic": {
+                            "type": "string"
+                          },
+                          "type": {
+                            "type": "integer"
+                          },
+                          "uuid": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "next_page_token": {
+                      "type": "string"
+                    },
+                    "page_count": {
+                      "type": "integer"
+                    },
+                    "page_size": {
+                      "type": "integer"
+                    },
+                    "total_records": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "A page of meetings"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "bearerAuth": {
+            "scheme": "bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "GET /meetings/{meetingId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getMeeting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "meetingId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "agenda": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "duration": {
+                      "type": "integer"
+                    },
+                    "host_id": {
+                      "type": "string"
+                    },
+                    "id": {
+                      "type": "integer"
+                    },
+                    "join_url": {
+                      "type": "string"
+                    },
+                    "settings": {
+                      "properties": {
+                        "host_video": {
+                          "type": "boolean"
+                        },
+                        "join_before_host": {
+                          "type": "boolean"
+                        },
+                        "mute_upon_entry": {
+                          "type": "boolean"
+                        },
+                        "participant_video": {
+                          "type": "boolean"
+                        },
+                        "waiting_room": {
+                          "type": "boolean"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "start_time": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "timezone": {
+                      "type": "string"
+                    },
+                    "topic": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "integer"
+                    },
+                    "uuid": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "The requested meeting"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "bearerAuth": {
+            "scheme": "bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "DELETE /meetings/{meetingId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "deleteMeeting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "meetingId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "204": {
+            "description": "Deleted"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "bearerAuth": {
+            "scheme": "bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "definition"
+      }
+    },
+    "PATCH /meetings/{meetingId}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "updateMeeting",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "meetingId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "agenda": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "integer"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "settings": {
+                    "properties": {
+                      "host_video": {
+                        "type": "boolean"
+                      },
+                      "join_before_host": {
+                        "type": "boolean"
+                      },
+                      "mute_upon_entry": {
+                        "type": "boolean"
+                      },
+                      "participant_video": {
+                        "type": "boolean"
+                      },
+                      "waiting_room": {
+                        "type": "boolean"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "start_time": {
+                    "type": "string"
+                  },
+                  "timezone": {
+                    "type": "string"
+                  },
+                  "topic": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "topic"
+                ],
+                "type": "object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "204": {
+            "description": "Updated"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "securitySchemes": {
+          "bearerAuth": {
+            "scheme": "bearer",
+            "type": "http"
+          }
+        },
+        "securitySource": "definition"
       }
     }
   }

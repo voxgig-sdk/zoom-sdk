@@ -1,12 +1,26 @@
 # Zoom SDK feature factory
 
 from zoom_sdk.feature.base_feature import ZoomBaseFeature
+from zoom_sdk.feature.debug_feature import ZoomDebugFeature
+from zoom_sdk.feature.idempotency_feature import ZoomIdempotencyFeature
+from zoom_sdk.feature.metrics_feature import ZoomMetricsFeature
+from zoom_sdk.feature.paging_feature import ZoomPagingFeature
+from zoom_sdk.feature.ratelimit_feature import ZoomRatelimitFeature
+from zoom_sdk.feature.retry_feature import ZoomRetryFeature
 from zoom_sdk.feature.test_feature import ZoomTestFeature
+from zoom_sdk.feature.timeout_feature import ZoomTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ZoomBaseFeature(),
+    "debug": lambda: ZoomDebugFeature(),
+    "idempotency": lambda: ZoomIdempotencyFeature(),
+    "metrics": lambda: ZoomMetricsFeature(),
+    "paging": lambda: ZoomPagingFeature(),
+    "ratelimit": lambda: ZoomRatelimitFeature(),
+    "retry": lambda: ZoomRetryFeature(),
     "test": lambda: ZoomTestFeature(),
+    "timeout": lambda: ZoomTimeoutFeature(),
 }
 
 
