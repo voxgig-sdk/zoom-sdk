@@ -1,0 +1,92 @@
+# Entity: webinar_panelist_list
+
+main: kit: entity: webinar_panelist_list: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    panelists: {
+      h: "Panelists"
+      n: "panelists"
+      r: false
+      sh: "List of Panelist objects"
+      t: "`$ARRAY`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "Total records"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "webinar_panelist_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /webinars/{webinarId}/panelists"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/webinars/{webinarId}/panelists"
+          q: {
+            "$action": "panelists"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "panelists"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

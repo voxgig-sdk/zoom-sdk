@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "recording_setting": {
+      "RECORDING_SETTING00": {
+        "approval_type": 70,
+        "on_demand": false,
+        "password": "s48",
+        "send_email_to_host": false,
+        "share_recording": "s4a",
+        "show_social_share_buttons": false,
+        "viewer_download": true,
+        "meeting_id": "MEETING01",
+        "id": "RECORDING_SETTING00"
+      },
+      "RECORDING_SETTING01": {
+        "approval_type": 140,
+        "on_demand": false,
+        "password": "s8e",
+        "send_email_to_host": false,
+        "share_recording": "s90",
+        "show_social_share_buttons": false,
+        "viewer_download": true,
+        "meeting_id": "MEETING01",
+        "id": "RECORDING_SETTING01"
+      },
+      "RECORDING_SETTING02": {
+        "approval_type": 210,
+        "on_demand": false,
+        "password": "sd4",
+        "send_email_to_host": false,
+        "share_recording": "sd6",
+        "show_social_share_buttons": false,
+        "viewer_download": true,
+        "meeting_id": "MEETING01",
+        "id": "RECORDING_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "recording_setting": {
+      "recording_setting_ref01": {
+        "approval_type": 280,
+        "on_demand": false,
+        "password": "s11a",
+        "send_email_to_host": false,
+        "share_recording": "s11c",
+        "show_social_share_buttons": false,
+        "viewer_download": true
+      }
+    }
+  },
+  "requests": {
+    "GET /meetings/{meetingId}/recordings/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicWebinarRegistrantListFlow
+
+main: kit: flow: BasicWebinarRegistrantListFlow:
+{
+  entity: "webinar_registrant_list",
+  kind: "basic",
+  name: "BasicWebinarRegistrantListFlow",
+  step: [
+    {
+      i: {
+        ref: "webinar_registrant_list_ref01",
+        srcdatavar: "webinar_registrant_list_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "webinar_registrant_list01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webinar_registrant_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebinarRegistrantListFlow"
+}

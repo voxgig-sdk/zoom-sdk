@@ -1,0 +1,49 @@
+# BasicQosFlow
+
+main: kit: flow: BasicQosFlow:
+{
+  entity: "qos",
+  kind: "basic",
+  name: "BasicQosFlow",
+  step: [
+    {
+      m: {
+        webinar_id: "webinar01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "qos_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "qos_ref01",
+        srcdatavar: "qos_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "qos01",
+        webinar_id: "webinar01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-qos_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicQosFlow"
+}

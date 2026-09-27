@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "webhook": {
+      "WEBHOOK00": {
+        "auth_password": "s5a",
+        "auth_user": "s5b",
+        "created_at": "s5c",
+        "events": [],
+        "id": "WEBHOOK00",
+        "total_records": 95,
+        "url": "s60",
+        "webhook_id": "WEBHOOK01",
+        "webhooks": []
+      },
+      "WEBHOOK01": {
+        "auth_password": "sb4",
+        "auth_user": "sb5",
+        "created_at": "sb6",
+        "events": [],
+        "id": "WEBHOOK01",
+        "total_records": 185,
+        "url": "sba",
+        "webhook_id": "WEBHOOK01",
+        "webhooks": []
+      },
+      "WEBHOOK02": {
+        "auth_password": "s10e",
+        "auth_user": "s10f",
+        "created_at": "s110",
+        "events": [],
+        "id": "WEBHOOK02",
+        "total_records": 275,
+        "url": "s114",
+        "webhook_id": "WEBHOOK01",
+        "webhooks": []
+      }
+    }
+  },
+  "new": {
+    "webhook": {
+      "webhook_ref01": {
+        "auth_password": "s168",
+        "auth_user": "s169",
+        "created_at": "s16a",
+        "events": [],
+        "total_records": 365,
+        "url": "s16e",
+        "webhook_id": "WEBHOOK01",
+        "webhooks": []
+      }
+    }
+  },
+  "requests": {
+    "POST /webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /webhooks/{webhookId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /webhooks/{webhookId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /webhooks/{webhookId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /webhooks/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

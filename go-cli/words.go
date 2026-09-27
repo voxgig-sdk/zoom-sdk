@@ -9,18 +9,6 @@ import (
 	sdk "github.com/voxgig-sdk/zoom-sdk/go"
 )
 
-// registerSDKWords installs three native boru words bound to the SDK:
-// list / load / update. Each is declared with two overloads matching
-// the signature  [query?:(Node or Scalar) entity:atom]:
-//
-//   [entity:Atom]            — no query (e.g. `list book`)
-//   [query:Any entity:Atom]  — query is any Node or Scalar (e.g.
-//                              `load {id:1} book`, `load 1 book`)
-//
-// The entity slot is /q-quoted so a bareword `book` parses as the
-// Atom "book" rather than dispatching as an undefined word. Both
-// overloads are all-forward (BarrierAllForward), so args are collected
-// from the tokens following the word.
 func registerSDKWords(r *eng.Registry, client *sdk.ZoomSDK) {
 	for _, op := range []string{"list", "load", "update"} {
 		op := op
@@ -89,8 +77,78 @@ func runOp(client *sdk.ZoomSDK, op string, query *eng.Value, entityAtom eng.Valu
 // emits one `case "<name>":` per entity defined in the SDK model.
 func entityFor(client *sdk.ZoomSDK, name string) (sdk.ZoomEntity, error) {
 	switch strings.ToLower(name) {
+	case "account":
+		return client.Account(nil), nil
+	case "account_plan":
+		return client.AccountPlan(nil), nil
+	case "account_setting":
+		return client.AccountSetting(nil), nil
+	case "billing":
+		return client.Billing(nil), nil
+	case "cloud_recording":
+		return client.CloudRecording(nil), nil
+	case "dashboard":
+		return client.Dashboard(nil), nil
+	case "device":
+		return client.Device(nil), nil
+	case "domains_list":
+		return client.DomainsList(nil), nil
+	case "group":
+		return client.Group(nil), nil
+	case "group_member_list":
+		return client.GroupMemberList(nil), nil
+	case "im_chat":
+		return client.ImChat(nil), nil
+	case "im_group":
+		return client.ImGroup(nil), nil
+	case "im_group_list":
+		return client.ImGroupList(nil), nil
 	case "meeting":
 		return client.Meeting(nil), nil
+	case "meeting_instance":
+		return client.MeetingInstance(nil), nil
+	case "meeting_invitation":
+		return client.MeetingInvitation(nil), nil
+	case "meeting_registrant_list":
+		return client.MeetingRegistrantList(nil), nil
+	case "pac":
+		return client.Pac(nil), nil
+	case "poll":
+		return client.Poll(nil), nil
+	case "qos":
+		return client.Qos(nil), nil
+	case "recording":
+		return client.Recording(nil), nil
+	case "recording_setting":
+		return client.RecordingSetting(nil), nil
+	case "report":
+		return client.Report(nil), nil
+	case "tracking_field":
+		return client.TrackingField(nil), nil
+	case "tsp":
+		return client.Tsp(nil), nil
+	case "user":
+		return client.User(nil), nil
+	case "user_assistants_list":
+		return client.UserAssistantsList(nil), nil
+	case "user_permission":
+		return client.UserPermission(nil), nil
+	case "user_schedulers_list":
+		return client.UserSchedulersList(nil), nil
+	case "user_setting":
+		return client.UserSetting(nil), nil
+	case "webhook":
+		return client.Webhook(nil), nil
+	case "webinar":
+		return client.Webinar(nil), nil
+	case "webinar_instance":
+		return client.WebinarInstance(nil), nil
+	case "webinar_panelist_list":
+		return client.WebinarPanelistList(nil), nil
+	case "webinar_registrant_list":
+		return client.WebinarRegistrantList(nil), nil
+	case "zoom_room_list":
+		return client.ZoomRoomList(nil), nil
 
 	}
 	return nil, fmt.Errorf("unknown entity %q", name)

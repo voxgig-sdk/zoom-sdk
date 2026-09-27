@@ -1,0 +1,26 @@
+# BasicWebinarInstanceFlow
+
+main: kit: flow: BasicWebinarInstanceFlow:
+{
+  entity: "webinar_instance",
+  kind: "basic",
+  name: "BasicWebinarInstanceFlow",
+  step: [
+    {
+      m: {
+        past_webinar_id: "past_webinar01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "webinar_instance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebinarInstanceFlow"
+}

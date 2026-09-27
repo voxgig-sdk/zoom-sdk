@@ -1,0 +1,189 @@
+
+const envlocal = __dirname + '/../../../.env.local'
+require('../../utility').loadEnvLocal(envlocal)
+
+const Path = require('node:path')
+const Fs = require('node:fs')
+
+const { test, describe, afterEach } = require('node:test')
+const assert = require('node:assert')
+const { createLiveTransport } = require('../../live-runner')
+const { runLiveEntity } = require('../../live-entity')
+
+
+const { ZoomSDK, BaseFeature, stdutil, config } = require('../../..')
+
+const {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+} = require('../../utility')
+
+
+describe('UserEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when ZOOM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ZOOM_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = ZoomSDK.test()
+    const ent = testsdk.User()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"account_id":{"a":true,"h":"Account Id","n":"account_id","r":false,"t":"`$STRING`","key$":"account_id","index$":0},"cms_user_id":{"a":true,"h":"Cms User Id","n":"cms_user_id","r":false,"t":"`$STRING`","key$":"cms_user_id","index$":1},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":false,"sh":"User create time","t":"`$STRING`","key$":"created_at","index$":2},"dept":{"a":true,"h":"Dept","n":"dept","r":false,"sh":"Department","t":"`$STRING`","key$":"dept","index$":3},"email":{"a":true,"h":"Email","n":"email","r":true,"sh":"User's email address","t":"`$STRING`","key$":"email","index$":4},"first_name":{"a":true,"h":"First Name","n":"first_name","r":false,"sh":"User's first name","t":"`$STRING`","key$":"first_name","index$":5},"group_ids":{"a":true,"h":"Group Ids","n":"group_ids","r":false,"t":"`$ARRAY`","key$":"group_ids","index$":6},"host_key":{"a":true,"h":"Host Key","n":"host_key","r":false,"t":"`$STRING`","key$":"host_key","index$":7},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"User ID","t":"`$STRING`","key$":"id","index$":8},"im_group_ids":{"a":true,"h":"Im Group Ids","n":"im_group_ids","r":false,"t":"`$ARRAY`","key$":"im_group_ids","index$":9},"language":{"a":true,"h":"Language","n":"language","r":false,"t":"`$STRING`","key$":"language","index$":10},"last_client_version":{"a":true,"h":"Last Client Version","n":"last_client_version","r":false,"sh":"User last login client version","t":"`$STRING`","key$":"last_client_version","index$":11},"last_login_time":{"a":true,"fo":"date-time","h":"Last Login Time","n":"last_login_time","r":false,"sh":"User last login time","t":"`$STRING`","key$":"last_login_time","index$":12},"last_name":{"a":true,"h":"Last Name","n":"last_name","r":false,"sh":"User's last name","t":"`$STRING`","key$":"last_name","index$":13},"page_count":{"a":true,"h":"Page Count","n":"page_count","r":false,"sh":"The number of items returned on this page","t":"`$INTEGER`","key$":"page_count","index$":14},"page_number":{"a":true,"h":"Page Number","n":"page_number","r":false,"sh":"The page number of current results","t":"`$INTEGER`","key$":"page_number","index$":15},"page_size":{"a":true,"h":"Page Size","n":"page_size","r":false,"sh":"The number of records returned within a single API call","t":"`$INTEGER`","key$":"page_size","index$":16},"personal_meeting_url":{"a":true,"h":"Personal Meeting Url","n":"personal_meeting_url","r":false,"t":"`$STRING`","key$":"personal_meeting_url","index$":17},"pic_url":{"a":true,"h":"Pic Url","n":"pic_url","r":false,"t":"`$STRING`","key$":"pic_url","index$":18},"pmi":{"a":true,"h":"Pmi","n":"pmi","r":false,"sh":"Personal Meeting ID","t":"`$STRING`","key$":"pmi","index$":19},"timezone":{"a":true,"h":"Timezone","n":"timezone","r":false,"sh":"Time Zone","t":"`$STRING`","key$":"timezone","index$":20},"total_records":{"a":true,"h":"Total Records","n":"total_records","r":false,"sh":"The number of all records available across pages","t":"`$INTEGER`","key$":"total_records","index$":21},"type":{"a":true,"h":"Type","n":"type","r":true,"sh":"User's type","t":"`$INTEGER`","key$":"type","index$":22},"use_pmi":{"a":true,"h":"Use Pmi","n":"use_pmi","r":false,"t":"`$BOOLEAN`","key$":"use_pmi","index$":23},"users":{"a":true,"h":"Users","n":"users","r":false,"sh":"List of User objects","t":"`$ARRAY`","key$":"users","index$":24},"vanity_url":{"a":true,"h":"Vanity Url","n":"vanity_url","r":false,"t":"`$STRING`","key$":"vanity_url","index$":25},"verified":{"a":true,"h":"Verified","n":"verified","r":false,"t":"`$INTEGER`","key$":"verified","index$":26}},"id":{"field":"id","name":"id"},"name":"user","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /users/{userId}/assistants","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/users/{userId}/assistants","q":{"$action":"assistant","exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"assistants"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"POST /users/{userId}/picture","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"pic_file","or":"pic_file","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"POST","o":"/users/{userId}/picture","q":{"$action":"picture","exist":["id","pic_file"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"picture"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"POST /users","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/users","q":{"exist":["body"]},"r":{},"s":[{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /users","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"page_number","or":"page_number","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"page_size","or":"page_size","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"k":"query","n":"status","or":"status","r":false,"t":"`$ANY`","index$":2}]},"k":"http","m":"GET","o":"/users","q":{"exist":["page_number","page_size","status"]},"r":{},"s":[{"lit":"users"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /users/{userId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"login_type","or":"login_type","r":false,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/users/{userId}","q":{"exist":["id","login_type"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /users/{userId}/token","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"type","or":"type","r":false,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/users/{userId}/token","q":{"$action":"token","exist":["id","type"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"token"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"GET /users/email","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"email","or":"email","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/users/email","q":{"$action":"email","exist":["email"]},"r":{},"s":[{"lit":"users"},{"lit":"email"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"GET /users/vanity_name","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"vanity_name","or":"vanity_name","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/users/vanity_name","q":{"$action":"vanity_name","exist":["vanity_name"]},"r":{},"s":[{"lit":"users"},{"lit":"vanity_name"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3},{"a":true,"co":{"id":"GET /users/zpk","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"zpk","or":"zpk","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/users/zpk","q":{"$action":"zpk","exist":["zpk"]},"r":{},"s":[{"lit":"users"},{"lit":"zpk"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":4}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /users/{userId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"action","or":"action","r":false,"t":"`$ANY`","index$":0},{"a":true,"k":"query","n":"transfer_email","or":"transfer_email","r":false,"t":"`$ANY`","index$":1},{"a":true,"k":"query","n":"transfer_meeting","or":"transfer_meeting","r":false,"t":"`$ANY`","index$":2},{"a":true,"k":"query","n":"transfer_recording","or":"transfer_recording","r":false,"t":"`$ANY`","index$":3},{"a":true,"k":"query","n":"transfer_webinar","or":"transfer_webinar","r":false,"t":"`$ANY`","index$":4}]},"k":"http","m":"DELETE","o":"/users/{userId}","q":{"exist":["action","id","transfer_email","transfer_meeting","transfer_recording","transfer_webinar"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /users/{userId}/assistants/{assistantId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"assistant_id","or":"assistant_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/users/{userId}/assistants/{assistantId}","q":{"exist":["assistant_id","id"]},"r":{"param":{"assistantId":"assistant_id","userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"assistants"},{"var":"assistant_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"DELETE /users/{userId}/schedulers/{schedulerId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"scheduler_id","or":"scheduler_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/users/{userId}/schedulers/{schedulerId}","q":{"exist":["id","scheduler_id"]},"r":{"param":{"schedulerId":"scheduler_id","userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"schedulers"},{"var":"scheduler_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"DELETE /users/{userId}/assistants","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/users/{userId}/assistants","q":{"$action":"assistant","exist":["id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"assistants"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3},{"a":true,"co":{"id":"DELETE /users/{userId}/schedulers","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/users/{userId}/schedulers","q":{"$action":"scheduler","exist":["id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"schedulers"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":4},{"a":true,"co":{"id":"DELETE /users/{userId}/token","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/users/{userId}/token","q":{"$action":"token","exist":["id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"token"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":5}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PATCH /users/{userId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PATCH","o":"/users/{userId}","q":{"exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"PUT /users/{userId}/email","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PUT","o":"/users/{userId}/email","q":{"$action":"email","exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"email"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"PUT /users/{userId}/password","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PUT","o":"/users/{userId}/password","q":{"$action":"password","exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"password"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"PATCH /users/{userId}/settings","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PATCH","o":"/users/{userId}/settings","q":{"$action":"setting","exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"settings"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3},{"a":true,"co":{"id":"PUT /users/{userId}/status","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PUT","o":"/users/{userId}/status","q":{"$action":"status","exist":["body","id"]},"r":{"param":{"userId":"id"}},"s":[{"lit":"users"},{"var":"id"},{"lit":"status"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":4}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"user","name__orig":"user","Name":"User","name_":"user","name-":"user","NAME":"USER","index$":25}, {"active":true,"entity":"user","key$":"BasicUserFlow","kind":"basic","name":"BasicUserFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"user_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"user_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_up0","textfield":"account_id"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"user_ref01","srcdatavar":"user_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-user_ref01"}}],"index$":3},{"a":true,"d":{},"i":{"ref":"user_ref01","suffix":"_rm0"},"m":{"id":"user01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"user_ref01"}}],"index$":5}]}, 'User', {"POST /users/{userId}/assistants":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"body","description":"User assistant","required":true,"in":"body","schema":{"type":"object","title":"User assistants List","description":"List of User's assistants","properties":{"assistants":{"description":"List of User's assistants","items":{"properties":{"email":{"description":"User email address. Must have id or email, if given id, the email is ignored.","type":"string"},"id":{"description":"User ID","type":"string"}}},"key$":"assistants","maximum":30,"type":"array"}},"x-ref":"#/definitions/UserAssistantsList"},"index$":1}]},"POST /users/{userId}/picture":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"pic_file","description":"User picture file, must be a jpg/jpeg file","in":"formData","type":"file","required":true,"index$":1}]},"POST /users":{"protocol":"http","parameters":[{"in":"body","name":"body","required":true,"description":"User","schema":{"type":"object","required":["action"],"properties":{"action":{"type":"string","description":"Specify how to create the new user","enum":["create","autoCreate","custCreate","ssoCreate"],"x-enum-descriptions":["User will get an email sent from Zoom. There is a confirmation link in this email. User will then need to click this link to activate their account to the Zoom service. The user can set or change their password in Zoom. <br/>.","This action is provided for enterprise customer who has a managed domain. This feature is disabled by default because of the security risk involved in creating a user who does not belong to your domain without notifying the user. <br/>","This action is provided for API partner only. User created in this way has no password and is not able to log into the Zoom web site or client. <br/>","This action is provided for enabled \"Pre-provisioning SSO User\" option. User created in this way has no password. If it is not a basic user, will generate a Personal Vanity URL using user name (no domain) of the provisioning email. If user name or pmi is invalid or occupied, will use random number/random personal vanity URL. <br/>"]},"user_info":{"required":["email","type"],"properties":{"email":{"type":"string","description":"User's email address","maxLength":128},"type":{"type":"integer","enum":[1,2,3],"x-enum-descriptions":["basic","pro","corp"],"description":"User's type"},"first_name":{"type":"string","description":"User's first name. Cannot contain more than 5 Chinese words.","maxLength":64},"last_name":{"type":"string","description":"User's last name. Cannot contain more than 5 Chinese words.","maxLength":64},"password":{"type":"string","description":"User’s password. Only for \"autoCreate\" action.","minimum":8}}}}},"index$":0}]},"GET /users":{"protocol":"http","parameters":[{"in":"query","name":"status","description":"User status","type":"string","default":"active","enum":["active","inactive","pending"],"x-enum-descriptions":["users with active status","users with inactive status","users with pending status"],"index$":0},{"in":"query","name":"page_size","description":"The number of records returned within a single API call","type":"integer","default":30,"maximum":300,"x-ref":"#/parameters/PageSize","index$":1},{"in":"query","name":"page_number","description":"Current page number of returned records","type":"integer","default":1,"x-ref":"#/parameters/PageNumber","index$":2}]},"GET /users/{userId}":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"query","name":"login_type","type":"string","enum":[0,1,99,100,101],"x-enum-descriptions":["Facebook","Google","API","Zoom","SSO"],"x-ref":"#/parameters/LoginType","index$":1}]},"GET /users/{userId}/token":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"query","name":"type","description":"User token type","type":"string","enum":["token","zpk","zak"],"x-enum-descriptions":["Used for starting meeting with client SDK.","Used for generating the start meeting url. (Deprecated)","Used for generating the start meeting url. The expiration time is two hours. For API users, the expiration time is 90 days."],"index$":1}]},"GET /users/email":{"protocol":"http","parameters":[{"name":"email","description":"Zoom work email","in":"query","type":"string","required":true,"index$":0}]},"GET /users/vanity_name":{"protocol":"http","parameters":[{"name":"vanity_name","description":"Personal meeting room name","in":"query","type":"string","required":true,"index$":0}]},"GET /users/zpk":{"protocol":"http","parameters":[{"name":"zpk","description":"User zpk","in":"query","type":"string","required":true,"index$":0}]},"DELETE /users/{userId}":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"query","name":"action","description":"Delete action type","type":"string","default":"disassociate","enum":["disassociate","delete"],"x-enum-descriptions":["Disassociate a user","Permanently delete a user"],"index$":1},{"in":"query","name":"transfer_email","description":"Transfer email","type":"string","required":false,"x-ref":"#/parameters/TransferEmail","index$":2},{"in":"query","name":"transfer_meeting","description":"Transfer meeting","type":"boolean","required":false,"x-ref":"#/parameters/TransferMeeting","index$":3},{"in":"query","name":"transfer_webinar","description":"Transfer webinar","type":"boolean","required":false,"x-ref":"#/parameters/TransferWebinar","index$":4},{"in":"query","name":"transfer_recording","description":"Transfer recording","type":"boolean","required":false,"x-ref":"#/parameters/TransferRecording","index$":5}]},"DELETE /users/{userId}/assistants/{assistantId}":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"assistantId","description":"Assistant's ID","in":"path","type":"string","required":true,"index$":1}]},"DELETE /users/{userId}/schedulers/{schedulerId}":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"schedulerId","description":"Scheduler's ID","in":"path","type":"string","required":true,"index$":1}]},"DELETE /users/{userId}/assistants":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0}]},"DELETE /users/{userId}/schedulers":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0}]},"DELETE /users/{userId}/token":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0}]},"PATCH /users/{userId}":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"body","name":"body","required":true,"description":"User","schema":{"type":"object","description":"The user update object represents a User on Zoom","properties":{"first_name":{"type":"string","description":"User's first name. Cannot contain more than 5 Chinese words.","maxLength":64},"last_name":{"type":"string","description":"User's last name. Cannot contain more than 5 Chinese words.","maxLength":64},"type":{"type":"integer","enum":[1,2,3],"x-enum-descriptions":["basic","pro","corp"],"description":"User's type"},"pmi":{"type":"string","description":"Personal Meeting ID,length must be 10","minLength":10,"maxLength":10},"use_pmi":{"type":"boolean","description":"Use Personal Meeting ID for instant meetings.","default":false},"timezone":{"type":"string","description":"The time zone id for user profile. For this parameter value please refer to the id value in [timezone](#timezones) list.","format":"date-time"},"language":{"type":"string","description":"language"},"dept":{"type":"string","description":"Department for user profile, use for report"},"vanity_name":{"type":"string","description":"Personal meeting room name"},"host_key":{"type":"string","description":"Host Key, should be 6-digit number","minLength":6,"maxLength":6},"cms_user_id":{"type":"string","description":"Kaltura User Id"}},"x-ref":"#/definitions/UserUpdate"},"index$":1}]},"PUT /users/{userId}/email":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"body","description":"User email","required":true,"in":"body","schema":{"type":"object","required":["email"],"properties":{"email":{"type":"string","description":"User’s email. Character length is less than 128."}}},"index$":1}]},"PUT /users/{userId}/password":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"body","description":"User password","required":true,"in":"body","schema":{"type":"object","required":["password"],"properties":{"password":{"type":"string","description":"User’s password. Character length is less than 32,","minimum":8}}},"index$":1}]},"PATCH /users/{userId}/settings":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"body","name":"body","required":true,"description":"User Settings","schema":{"title":"User settings","type":"object","properties":{"schedule_meeting":{"title":"User settings: Meeting settings","description":"","type":"object","properties":{"host_video":{"description":"Host video","type":"boolean"},"participants_video":{"description":"Participants video","type":"boolean"},"audio_type":{"default":"voip","description":"Determine how participants can join the audio portion of the meeting","enum":["both","telephony","voip","thirdParty"],"type":"string","x-enum-descriptions":["Telephony and VoIP","Audio PSTN telephony only","VoIP only","3rd party audio conference"]},"join_before_host":{"description":"Join before host","type":"boolean"},"force_pmi_jbh_password":{"description":"Require a password for Personal Meetings if attendees can join before host","type":"boolean"},"pstn_password_protected":{"description":"Generate and require password for participants joining by phone","type":"boolean"}},"x-ref":"#/definitions/UserSettingsScheduleMeeting"},"in_meeting":{"title":"User settings: Meeting settings","description":"","type":"object","properties":{"e2e_encryption":{"description":"End-to-end encryption","type":"boolean"},"chat":{"default":false,"description":"Chat","type":"boolean"},"private_chat":{"default":false,"description":"Private chat","type":"boolean"},"auto_saving_chat":{"default":false,"description":"Auto saving chats","type":"boolean"},"entry_exit_chime":{"default":"a''","description":"Play sound on join/leave","enum":["host","all","none"],"type":"string","x-enum-descriptions":["when host joins/leaves","when any participant joins/leaves","no join/leave sound"]},"record_play_voice":{"description":"Record and play their own voice","type":"boolean"},"file_transfer":{"default":false,"description":"File transfer","type":"boolean"},"feedback":{"default":false,"description":"Feedback to Zoom","type":"boolean"},"co_host":{"default":false,"description":"Co-host","type":"boolean"},"polling":{"default":false,"description":"Polling","type":"boolean"},"attendee_on_hold":{"default":false,"description":"Allow host to put attendee on hold","type":"boolean"},"annotation":{"default":false,"description":"Annotation","type":"boolean"},"remote_control":{"default":false,"description":"Remote control","type":"boolean"},"non_verbal_feedback":{"default":false,"description":"Non-verbal feedback","type":"boolean"},"breakout_room":{"default":false,"description":"Breakout room","type":"boolean"},"remote_support":{"default":false,"description":"Remote support","type":"boolean"},"closed_caption":{"default":false,"description":"Closed caption","type":"boolean"},"group_hd":{"default":false,"description":"Group HD video","type":"boolean"},"virtual_background":{"default":false,"description":"Virtual background","type":"boolean"},"far_end_camera_control":{"default":false,"description":"Far end camera control","type":"boolean"},"share_dual_camera":{"default":false,"description":"Share dual camera (Deprecated)","type":"boolean"},"attention_tracking":{"default":false,"description":"Attention tracking","type":"boolean"},"waiting_room":{"default":false,"description":"Waiting room","type":"boolean"},"allow_live_streaming":{"description":"Allow live streaming","type":"boolean"},"workplace_by_facebook":{"description":"Workplace by facebook","type":"boolean"},"custom_live_streaming":{"description":"Custom live streaming","type":"boolean"},"custom_service_instructions":{"description":"Custom service instructions","type":"string"}},"x-ref":"#/definitions/UserSettingsInMeeting"},"email_notification":{"title":"User settings: Notification settings","description":"","type":"object","properties":{"jbh_reminder":{"default":false,"description":"When attendees join meeting before host","type":"boolean"},"cancel_meeting_reminder":{"default":false,"description":"When a meeting is cancelled","type":"boolean"},"alternative_host_reminder":{"default":false,"description":"When an alternative host is set or removed from a meeting","type":"boolean"}},"x-ref":"#/definitions/UserSettingsEmailNotification"},"recording":{"title":"User settings: Recording settings","description":"","type":"object","properties":{"local_recording":{"description":"Local recording","type":"boolean"},"cloud_recording":{"default":false,"description":"Cloud recording","type":"boolean"},"record_speaker_view":{"default":false,"description":"Record the active speaker view","type":"boolean"},"record_gallery_view":{"default":false,"description":"Record the gallery view","type":"boolean"},"record_audio_file":{"default":false,"description":"Record an audio only file","type":"boolean"},"save_chat_text":{"default":false,"description":"Save chat text from the meeting","type":"boolean"},"show_timestamp":{"default":false,"description":"Show timestamp on video","type":"boolean"},"recording_audio_transcript":{"description":"Audio transcript","type":"boolean"},"auto_recording":{"default":"local","description":"Automatic recording","enum":["local","cloud","none"],"type":"string","x-enum-descriptions":["Record on local","Record on cloud","Disabled"]},"auto_delete_cmr":{"default":false,"description":"Auto delete cloud recordings","type":"boolean"},"auto_delete_cmr_days":{"default":false,"description":"A specified number of days of auto delete cloud recordings","maximum":60,"minimum":1,"type":"integer"}},"x-ref":"#/definitions/UserSettingsRecording"},"telephony":{"title":"User settings: Meeting settings","description":"","type":"object","properties":{"third_party_audio":{"description":"3rd party audio conference","type":"boolean"},"audio_conference_info":{"default":"","description":"3rd party audio conference info","maxLength":2048,"type":"string"},"show_international_numbers_link":{"description":"Show international numbers link on the invitation email","type":"boolean"}},"x-ref":"#/definitions/UserSettingsTelephony"},"feature":{"title":"User settings: Feature settings","description":"","type":"object","properties":{"meeting_capacity":{"type":"integer","description":"User’s meeting capacity"},"large_meeting":{"type":"boolean","description":"Large meting feature"},"large_meeting_capacity":{"type":"integer","description":"Large meeting capacity, can be 100, 200, 300 or 500, depends on if having related large meeting capacity plan subscription or not"},"webinar":{"type":"boolean","description":"Webinar feature"},"webinar_capacity":{"type":"integer","description":"Webinar capacity, can be 100, 500, 1000, 3000, 5000 or 10000, depends on if having related webinar capacity plan subscription or not"}},"x-ref":"#/definitions/UserSettingsFeatureUpdate"}},"x-ref":"#/definitions/UserSettingsUpdate"},"index$":1}]},"PUT /users/{userId}/status":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"name":"body","description":"User status","in":"body","required":true,"schema":{"description":"The action","type":"object","required":["action"],"properties":{"action":{"type":"string","description":"The action type","enum":["activate","deactivate"],"x-enum-descriptions":["set users status to active","set users status to inactive"]}}},"index$":1}]}})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const user_ref01_ent = client.User()
+    let user_ref01_data = setup.data.new.user['user_ref01']
+
+    user_ref01_data = (await user_ref01_ent.create(user_ref01_data)).data()
+    assert(null != user_ref01_data.id)
+
+
+    // LIST
+    const user_ref01_match = {}
+
+    const user_ref01_list = (await user_ref01_ent.list(user_ref01_match)).map((e) => e.data())
+
+    assert(!isempty(select(user_ref01_list, { id: user_ref01_data.id })))
+
+
+    // UPDATE
+    const user_ref01_data_up0 = {}
+    user_ref01_data_up0.id = user_ref01_data.id
+
+    const user_ref01_markdef_up0 = { name: 'account_id', value: 'Mark01-user_ref01_' + setup.now }
+    user_ref01_data_up0 [user_ref01_markdef_up0.name] = user_ref01_markdef_up0.value
+
+    const user_ref01_resdata_up0 = (await user_ref01_ent.update(user_ref01_data_up0)).data()
+    assert(user_ref01_resdata_up0.id === user_ref01_data_up0.id)
+
+    assert(user_ref01_resdata_up0[user_ref01_markdef_up0.name] === user_ref01_markdef_up0.value)
+
+
+    // LOAD
+    const user_ref01_match_dt0 = {}
+    user_ref01_match_dt0.id = user_ref01_data.id
+    const user_ref01_data_dt0 = (await user_ref01_ent.load(user_ref01_match_dt0)).data()
+    assert(user_ref01_data_dt0.id === user_ref01_data.id)
+
+
+    // REMOVE
+    const user_ref01_match_rm0 = {}
+    user_ref01_match_rm0.id = user_ref01_data.id
+    await user_ref01_ent.remove(user_ref01_match_rm0)
+  
+
+    // LIST
+    const user_ref01_match_rt0 = {}
+
+    const user_ref01_list_rt0 = (await user_ref01_ent.list(user_ref01_match_rt0)).map((e) => e.data())
+
+    assert(isempty(select(user_ref01_list_rt0, { id: user_ref01_data.id })))
+
+
+  })
+})
+
+
+
+function basicSetup(extra) {
+  // TODO: fix test def options
+  const options = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname,
+      '../../../../.sdk/test/entity/user/UserTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = ZoomSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['user01','user02','user03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'ZOOM_TEST_USER_ENTID': idmap,
+    'ZOOM_TEST_LIVE': 'FALSE',
+    'ZOOM_TEST_EXPLAIN': 'FALSE',
+    'ZOOM_APIKEY': '',
+  })
+
+  idmap = env['ZOOM_TEST_USER_ENTID']
+
+  const live = 'TRUE' === env.ZOOM_TEST_LIVE
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['ZOOM_TEST_USER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new ZoomSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.ZOOM_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when
+      // the last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey and
+      // server values above and handed the SDK undefined.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.ZOOM_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

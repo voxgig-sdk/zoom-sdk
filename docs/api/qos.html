@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Qos | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a aria-current="page" href="../api/qos.html">Qos</a><div class="nav-sections"><a class="nav-section" href="#get-metricsmeetingsmeetingidparticipantsqos">GET /metrics/meetings/{meetingId}/participants/qos</a>
+<a class="nav-section" href="#get-metricswebinarswebinaridparticipantsqos">GET /metrics/webinars/{webinarId}/participants/qos</a>
+<a class="nav-section" href="#get-metricsmeetingsmeetingidparticipantsparticipantidqos">GET /metrics/meetings/{meetingId}/participants/{participantId}/qos</a>
+<a class="nav-section" href="#get-metricswebinarswebinaridparticipantsparticipantidqos">GET /metrics/webinars/{webinarId}/participants/{participantId}/qos</a></div>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="qos">Qos</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricsmeetingsmeetingidparticipantsqos"><code>/metrics/meetings/{meetingId}/participants/qos</code></a></td>
+<td><code>list</code></td>
+<td>Meeting Participants Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricswebinarswebinaridparticipantsqos"><code>/metrics/webinars/{webinarId}/participants/qos</code></a></td>
+<td><code>list</code></td>
+<td>Webinar Participants Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricsmeetingsmeetingidparticipantsparticipantidqos"><code>/metrics/meetings/{meetingId}/participants/{participantId}/qos</code></a></td>
+<td><code>load</code></td>
+<td>Meeting Participant QOS Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricswebinarswebinaridparticipantsparticipantidqos"><code>/metrics/webinars/{webinarId}/participants/{participantId}/qos</code></a></td>
+<td><code>load</code></td>
+<td>Webinar Participant QOS Returned</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">qoss, err := client.Qos(nil).List(map[string]any{&quot;meeting_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(qoss)
+qos, err := client.Qos(nil).Load(map[string]any{&quot;participant_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(qos)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const qoss = await client.Qos().list({ meeting_id: &quot;example&quot; })
+const qos = await client.Qos().load({ participant_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local qoss, err = client:Qos():list({ meeting_id = &quot;example&quot; })
+local qos, err = client:Qos():load({ participant_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$qoss = $client-&gt;Qos()-&gt;list([&quot;meeting_id&quot; =&gt; &quot;example&quot;]);
+$qos = $client-&gt;Qos()-&gt;load([&quot;participant_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">qoss = client.Qos().list({&quot;meeting_id&quot;: &quot;example&quot;})
+qos = client.Qos().load({&quot;participant_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const qoss = await client.Qos().list({ meeting_id: &quot;example&quot; })
+const qos = await client.Qos().load({ participant_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>as_input</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+<tr>
+<td><code>as_output</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+<tr>
+<td><code>audio_input</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+<tr>
+<td><code>audio_output</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+<tr>
+<td><code>cpu_usage</code></td>
+<td><code>any</code></td>
+<td>No</td>
+<td>Cpu Usage</td>
+</tr>
+<tr>
+<td><code>date_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Datetime of QOS</td>
+</tr>
+<tr>
+<td><code>next_page_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Next page token is used to paginate through large result sets.</td>
+</tr>
+<tr>
+<td><code>page_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items per page</td>
+</tr>
+<tr>
+<td><code>participants</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of user objects</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+<tr>
+<td><code>video_input</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+<tr>
+<td><code>video_output</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Quality of Service object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-metricsmeetingsmeetingidparticipantsqos" class="operation" data-method="get"><code>GET</code> /metrics/meetings/{meetingId}/participants/qos</h3>
+<p>Operation ID: <code>dashboardMeetingParticipantsQOS</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The meeting type |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | Number of items returned per page |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-meeting-participants-returned" class="status" data-status="2xx">200: Meeting Participants Returned</h5>
+<h3 id="get-metricswebinarswebinaridparticipantsqos" class="operation" data-method="get"><code>GET</code> /metrics/webinars/{webinarId}/participants/qos</h3>
+<p>Operation ID: <code>dashboardWebinarParticipantsQOS</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The webinar type |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | Number of items returned per page |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-webinar-participants-returned" class="status" data-status="2xx">200: Webinar Participants Returned</h5>
+<h2 id="load">load</h2>
+<h3 id="get-metricsmeetingsmeetingidparticipantsparticipantidqos" class="operation" data-method="get"><code>GET</code> /metrics/meetings/{meetingId}/participants/{participantId}/qos</h3>
+<p>Operation ID: <code>dashboardMeetingParticipantQOS</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |
+| <code>participantId</code> | <code>path</code> | <code>any</code> | Yes | Participant ID |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The meeting type |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-meeting-participant-qos-returned" class="status" data-status="2xx">200: Meeting Participant QOS Returned</h5>
+<h3 id="get-metricswebinarswebinaridparticipantsparticipantidqos" class="operation" data-method="get"><code>GET</code> /metrics/webinars/{webinarId}/participants/{participantId}/qos</h3>
+<p>Operation ID: <code>dashboardWebinarParticipantQOS</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |
+| <code>participantId</code> | <code>path</code> | <code>any</code> | Yes | Participant ID |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The webinar type |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-webinar-participant-qos-returned" class="status" data-status="2xx">200: Webinar Participant QOS Returned</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

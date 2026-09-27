@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "billing": {
+      "BILLING00": {
+        "address": "s64",
+        "apt": "s65",
+        "city": "s66",
+        "country": "s67",
+        "email": "s68",
+        "first_name": "s69",
+        "last_name": "s6a",
+        "phone_number": "s6b",
+        "state": "s6c",
+        "zip": "s6d",
+        "account_id": "ACCOUNT01",
+        "id": "BILLING00"
+      },
+      "BILLING01": {
+        "address": "sc8",
+        "apt": "sc9",
+        "city": "sca",
+        "country": "scb",
+        "email": "scc",
+        "first_name": "scd",
+        "last_name": "sce",
+        "phone_number": "scf",
+        "state": "sd0",
+        "zip": "sd1",
+        "account_id": "ACCOUNT01",
+        "id": "BILLING01"
+      },
+      "BILLING02": {
+        "address": "s12c",
+        "apt": "s12d",
+        "city": "s12e",
+        "country": "s12f",
+        "email": "s130",
+        "first_name": "s131",
+        "last_name": "s132",
+        "phone_number": "s133",
+        "state": "s134",
+        "zip": "s135",
+        "account_id": "ACCOUNT01",
+        "id": "BILLING02"
+      }
+    }
+  },
+  "new": {
+    "billing": {
+      "billing_ref01": {
+        "address": "s190",
+        "apt": "s191",
+        "city": "s192",
+        "country": "s193",
+        "email": "s194",
+        "first_name": "s195",
+        "last_name": "s196",
+        "phone_number": "s197",
+        "state": "s198",
+        "zip": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /accounts/{accountId}/plans/addons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /accounts/{accountId}/billing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /accounts/{accountId}/billing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /accounts/{accountId}/plans/addons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /accounts/{accountId}/plans/base": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

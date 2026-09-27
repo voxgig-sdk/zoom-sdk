@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "recording": {
+      "RECORDING00": {
+        "from": "s46",
+        "meetings": [],
+        "next_page_token": "s48",
+        "page_count": 73,
+        "page_size": 74,
+        "to": "s4b",
+        "total_records": 76,
+        "user_id": "USER01"
+      },
+      "RECORDING01": {
+        "from": "s8c",
+        "meetings": [],
+        "next_page_token": "s8e",
+        "page_count": 143,
+        "page_size": 144,
+        "to": "s91",
+        "total_records": 146,
+        "user_id": "USER01"
+      },
+      "RECORDING02": {
+        "from": "sd2",
+        "meetings": [],
+        "next_page_token": "sd4",
+        "page_count": 213,
+        "page_size": 214,
+        "to": "sd7",
+        "total_records": 216,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "recording": {
+      "recording_ref01": {
+        "from": "s118",
+        "meetings": [],
+        "next_page_token": "s11a",
+        "page_count": 283,
+        "page_size": 284,
+        "to": "s11d",
+        "total_records": 286
+      }
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/recordings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

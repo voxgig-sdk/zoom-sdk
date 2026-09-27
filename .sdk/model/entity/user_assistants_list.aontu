@@ -1,0 +1,78 @@
+# Entity: user_assistants_list
+
+main: kit: entity: user_assistants_list: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_assistants_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/assistants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/assistants"
+          q: {
+            "$action": "assistants"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "assistants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.assistants`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

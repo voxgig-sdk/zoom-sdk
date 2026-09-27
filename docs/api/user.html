@@ -1,0 +1,683 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>User | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a aria-current="page" href="../api/user.html">User</a><div class="nav-sections"><a class="nav-section" href="#post-usersuseridassistants">POST /users/{userId}/assistants</a>
+<a class="nav-section" href="#post-usersuseridpicture">POST /users/{userId}/picture</a>
+<a class="nav-section" href="#post-users">POST /users</a>
+<a class="nav-section" href="#get-users">GET /users</a>
+<a class="nav-section" href="#get-usersuserid">GET /users/{userId}</a>
+<a class="nav-section" href="#get-usersuseridtoken">GET /users/{userId}/token</a>
+<a class="nav-section" href="#get-usersemail">GET /users/email</a>
+<a class="nav-section" href="#get-usersvanity_name">GET /users/vanity_name</a>
+<a class="nav-section" href="#get-userszpk">GET /users/zpk</a>
+<a class="nav-section" href="#delete-usersuserid">DELETE /users/{userId}</a>
+<a class="nav-section" href="#delete-usersuseridassistantsassistantid">DELETE /users/{userId}/assistants/{assistantId}</a>
+<a class="nav-section" href="#delete-usersuseridschedulersschedulerid">DELETE /users/{userId}/schedulers/{schedulerId}</a>
+<a class="nav-section" href="#delete-usersuseridassistants">DELETE /users/{userId}/assistants</a>
+<a class="nav-section" href="#delete-usersuseridschedulers">DELETE /users/{userId}/schedulers</a>
+<a class="nav-section" href="#delete-usersuseridtoken">DELETE /users/{userId}/token</a>
+<a class="nav-section" href="#patch-usersuserid">PATCH /users/{userId}</a>
+<a class="nav-section" href="#put-usersuseridemail">PUT /users/{userId}/email</a>
+<a class="nav-section" href="#put-usersuseridpassword">PUT /users/{userId}/password</a>
+<a class="nav-section" href="#patch-usersuseridsettings">PATCH /users/{userId}/settings</a>
+<a class="nav-section" href="#put-usersuseridstatus">PUT /users/{userId}/status</a></div>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="user">User</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-usersuseridassistants"><code>/users/{userId}/assistants</code></a></td>
+<td><code>create</code></td>
+<td>Assitant Added</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-usersuseridpicture"><code>/users/{userId}/picture</code></a></td>
+<td><code>create</code></td>
+<td>Picture Uploaded</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-users"><code>/users</code></a></td>
+<td><code>create</code></td>
+<td>User Created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-users"><code>/users</code></a></td>
+<td><code>list</code></td>
+<td>User list returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-usersuserid"><code>/users/{userId}</code></a></td>
+<td><code>load</code></td>
+<td>User object returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-usersuseridtoken"><code>/users/{userId}/token</code></a></td>
+<td><code>load</code></td>
+<td>Token returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-usersemail"><code>/users/email</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-usersvanity_name"><code>/users/vanity_name</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-userszpk"><code>/users/zpk</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuserid"><code>/users/{userId}</code></a></td>
+<td><code>remove</code></td>
+<td>User deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuseridassistantsassistantid"><code>/users/{userId}/assistants/{assistantId}</code></a></td>
+<td><code>remove</code></td>
+<td>Assitant deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuseridschedulersschedulerid"><code>/users/{userId}/schedulers/{schedulerId}</code></a></td>
+<td><code>remove</code></td>
+<td>Scheduler deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuseridassistants"><code>/users/{userId}/assistants</code></a></td>
+<td><code>remove</code></td>
+<td>Assitants deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuseridschedulers"><code>/users/{userId}/schedulers</code></a></td>
+<td><code>remove</code></td>
+<td>Schedulers deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-usersuseridtoken"><code>/users/{userId}/token</code></a></td>
+<td><code>remove</code></td>
+<td>Token deleted</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-usersuserid"><code>/users/{userId}</code></a></td>
+<td><code>update</code></td>
+<td>User updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-usersuseridemail"><code>/users/{userId}/email</code></a></td>
+<td><code>update</code></td>
+<td>email updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-usersuseridpassword"><code>/users/{userId}/password</code></a></td>
+<td><code>update</code></td>
+<td>Password updated</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-usersuseridsettings"><code>/users/{userId}/settings</code></a></td>
+<td><code>update</code></td>
+<td>User setting's updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-usersuseridstatus"><code>/users/{userId}/status</code></a></td>
+<td><code>update</code></td>
+<td>Status updated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">users, err := client.User(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(users)
+user, err := client.User(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(user)
+created, err := client.User(nil).Create(map[string]any{&quot;body&quot;: map[string]any{}, &quot;email&quot;: &quot;example&quot;, &quot;type&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.User(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;body&quot;: map[string]any{}, &quot;account_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.User(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const users = await client.User().list()
+const user = await client.User().load({ id: &quot;example_id&quot; })
+const created = await client.User().create({ body: {}, email: &quot;example&quot;, type: 1 })
+const updated = await client.User().update({ id: &quot;example_id&quot;, body: {}, account_id: &quot;example&quot; })
+await client.User().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local users, err = client:User():list()
+local user, err = client:User():load({ id = &quot;example_id&quot; })
+local created, err = client:User():create({ body = {}, email = &quot;example&quot;, type = 1 })
+local updated, err = client:User():update({ id = &quot;example_id&quot;, body = {}, account_id = &quot;example&quot; })
+local removed, err = client:User():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$users = $client-&gt;User()-&gt;list();
+$user = $client-&gt;User()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;User()-&gt;create([&quot;body&quot; =&gt; [], &quot;email&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; 1]);
+$updated = $client-&gt;User()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;body&quot; =&gt; [], &quot;account_id&quot; =&gt; &quot;example&quot;]);
+$client-&gt;User()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">users = client.User().list()
+user = client.User().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.User().create({ &quot;body&quot;: {}, &quot;email&quot;: &quot;example&quot;, &quot;type&quot;: 1 })
+updated = client.User().update({&quot;id&quot;: &quot;example_id&quot;, &quot;body&quot;: {}, &quot;account_id&quot;: &quot;example&quot;})
+client.User().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const users = await client.User().list()
+const user = await client.User().load({ id: &quot;example_id&quot; })
+const created = await client.User().create({ body: {}, email: &quot;example&quot;, type: 1 })
+const updated = await client.User().update({ id: &quot;example_id&quot;, body: {}, account_id: &quot;example&quot; })
+await client.User().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>account_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account Id</td>
+</tr>
+<tr>
+<td><code>cms_user_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Cms User Id</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User create time</td>
+</tr>
+<tr>
+<td><code>dept</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Department</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>User's email address</td>
+</tr>
+<tr>
+<td><code>first_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User's first name</td>
+</tr>
+<tr>
+<td><code>group_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Group Ids</td>
+</tr>
+<tr>
+<td><code>host_key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Host Key</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User ID</td>
+</tr>
+<tr>
+<td><code>im_group_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Im Group Ids</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Language</td>
+</tr>
+<tr>
+<td><code>last_client_version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User last login client version</td>
+</tr>
+<tr>
+<td><code>last_login_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User last login time</td>
+</tr>
+<tr>
+<td><code>last_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User's last name</td>
+</tr>
+<tr>
+<td><code>page_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_number</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The page number of current results</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of records returned within a single API call</td>
+</tr>
+<tr>
+<td><code>personal_meeting_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Personal Meeting Url</td>
+</tr>
+<tr>
+<td><code>pic_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Pic Url</td>
+</tr>
+<tr>
+<td><code>pmi</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Personal Meeting ID</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time Zone</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>User's type</td>
+</tr>
+<tr>
+<td><code>use_pmi</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Use Pmi</td>
+</tr>
+<tr>
+<td><code>users</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of User objects</td>
+</tr>
+<tr>
+<td><code>vanity_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Vanity Url</td>
+</tr>
+<tr>
+<td><code>verified</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Verified</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-usersuseridassistants" class="operation" data-method="post"><code>POST</code> /users/{userId}/assistants</h3>
+<p>Operation ID: <code>userAssistantCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User assistant |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-assitant-added" class="status" data-status="2xx">201: Assitant Added</h5>
+<h5 id="404-user-not-found" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="post-usersuseridpicture" class="operation" data-method="post"><code>POST</code> /users/{userId}/picture</h3>
+<p>Operation ID: <code>userPicture</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>pic_file</code> | <code>formData</code> | <code>any</code> | Yes | User picture file, must be a jpg/jpeg file |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-picture-uploaded" class="status" data-status="2xx">201: Picture Uploaded</h5>
+<h5 id="404-user-not-found-1" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="post-users" class="operation" data-method="post"><code>POST</code> /users</h3>
+<p>Operation ID: <code>userCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-user-created" class="status" data-status="2xx">201: User Created</h5>
+<h5 id="409-user-with-that-email-already-exists" class="status" data-status="4xx">409: User with that email already exists</h5>
+<h2 id="list">list</h2>
+<h3 id="get-users" class="operation" data-method="get"><code>GET</code> /users</h3>
+<p>Operation ID: <code>users</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>status</code> | <code>query</code> | <code>any</code> | No | User status |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-user-list-returned" class="status" data-status="2xx">200: User list returned</h5>
+<h2 id="load">load</h2>
+<h3 id="get-usersuserid" class="operation" data-method="get"><code>GET</code> /users/{userId}</h3>
+<p>Operation ID: <code>user</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>login_type</code> | <code>query</code> | <code>any</code> | No |  |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-user-object-returned" class="status" data-status="2xx">200: User object returned</h5>
+<h5 id="404-user-not-found-2" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="get-usersuseridtoken" class="operation" data-method="get"><code>GET</code> /users/{userId}/token</h3>
+<p>Operation ID: <code>userToken</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | User token type |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-token-returned" class="status" data-status="2xx">200: Token returned</h5>
+<h5 id="404-user-not-found-3" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="get-usersemail" class="operation" data-method="get"><code>GET</code> /users/email</h3>
+<p>Operation ID: <code>userEmail</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>email</code> | <code>query</code> | <code>any</code> | Yes | Zoom work email |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<h3 id="get-usersvanity_name" class="operation" data-method="get"><code>GET</code> /users/vanity_name</h3>
+<p>Operation ID: <code>userVanityName</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>vanity_name</code> | <code>query</code> | <code>any</code> | Yes | Personal meeting room name |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<h3 id="get-userszpk" class="operation" data-method="get"><code>GET</code> /users/zpk</h3>
+<p>Operation ID: <code>userZPK</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>zpk</code> | <code>query</code> | <code>any</code> | Yes | User zpk |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-usersuserid" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}</h3>
+<p>Operation ID: <code>userDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>action</code> | <code>query</code> | <code>any</code> | No | Delete action type |
+| <code>transfer_email</code> | <code>query</code> | <code>any</code> | No | Transfer email |
+| <code>transfer_meeting</code> | <code>query</code> | <code>any</code> | No | Transfer meeting |
+| <code>transfer_webinar</code> | <code>query</code> | <code>any</code> | No | Transfer webinar |
+| <code>transfer_recording</code> | <code>query</code> | <code>any</code> | No | Transfer recording |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="204-user-deleted" class="status" data-status="2xx">204: User deleted</h5>
+<h5 id="404-user-not-found-4" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="delete-usersuseridassistantsassistantid" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}/assistants/{assistantId}</h3>
+<p>Operation ID: <code>userAssistantDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>assistantId</code> | <code>path</code> | <code>any</code> | Yes | Assistant's ID |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="204-assitant-deleted" class="status" data-status="2xx">204: Assitant deleted</h5>
+<h5 id="404-user-or-assistant-not-found" class="status" data-status="4xx">404: User or Assistant not found</h5>
+<h3 id="delete-usersuseridschedulersschedulerid" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}/schedulers/{schedulerId}</h3>
+<p>Operation ID: <code>userSchedulerDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>schedulerId</code> | <code>path</code> | <code>any</code> | Yes | Scheduler's ID |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="204-scheduler-deleted" class="status" data-status="2xx">204: Scheduler deleted</h5>
+<h5 id="404-user-or-scheduler-not-found" class="status" data-status="4xx">404: User or Scheduler not found</h5>
+<h3 id="delete-usersuseridassistants" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}/assistants</h3>
+<p>Operation ID: <code>userAssistantsDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="204-assitants-deleted" class="status" data-status="2xx">204: Assitants deleted</h5>
+<h5 id="404-user-not-found-5" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="delete-usersuseridschedulers" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}/schedulers</h3>
+<p>Operation ID: <code>userSchedulersDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="204-schedulers-deleted" class="status" data-status="2xx">204: Schedulers deleted</h5>
+<h5 id="404-user-not-found-6" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="delete-usersuseridtoken" class="operation" data-method="delete"><code>DELETE</code> /users/{userId}/token</h3>
+<p>Operation ID: <code>userSSOTokenDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="204-token-deleted" class="status" data-status="2xx">204: Token deleted</h5>
+<h5 id="404-user-not-found-7" class="status" data-status="4xx">404: User not found</h5>
+<h2 id="update">update</h2>
+<h3 id="patch-usersuserid" class="operation" data-method="patch"><code>PATCH</code> /users/{userId}</h3>
+<p>Operation ID: <code>userUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="204-user-updated" class="status" data-status="2xx">204: User updated</h5>
+<h5 id="404-user-not-found-8" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="put-usersuseridemail" class="operation" data-method="put"><code>PUT</code> /users/{userId}/email</h3>
+<p>Operation ID: <code>userEmailUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User email |</p>
+<h4 id="responses-16">Responses</h4>
+<h5 id="204-email-updated" class="status" data-status="2xx">204: email updated</h5>
+<h5 id="404-user-not-found-9" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="put-usersuseridpassword" class="operation" data-method="put"><code>PUT</code> /users/{userId}/password</h3>
+<p>Operation ID: <code>userPassword</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-17">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User password |</p>
+<h4 id="responses-17">Responses</h4>
+<h5 id="204-password-updated" class="status" data-status="2xx">204: Password updated</h5>
+<h5 id="404-user-not-found-10" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="patch-usersuseridsettings" class="operation" data-method="patch"><code>PATCH</code> /users/{userId}/settings</h3>
+<p>Operation ID: <code>userSettingsUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-18">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User Settings |</p>
+<h4 id="responses-18">Responses</h4>
+<h5 id="204-user-setting39s-updated" class="status" data-status="2xx">204: User setting's updated</h5>
+<h5 id="404-user-not-found-11" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="put-usersuseridstatus" class="operation" data-method="put"><code>PUT</code> /users/{userId}/status</h3>
+<p>Operation ID: <code>userStatus</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-19">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User status |</p>
+<h4 id="responses-19">Responses</h4>
+<h5 id="204-status-updated" class="status" data-status="2xx">204: Status updated</h5>
+<h5 id="404-user-not-found-12" class="status" data-status="4xx">404: User not found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

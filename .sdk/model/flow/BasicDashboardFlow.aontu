@@ -1,0 +1,44 @@
+# BasicDashboardFlow
+
+main: kit: flow: BasicDashboardFlow:
+{
+  entity: "dashboard",
+  kind: "basic",
+  name: "BasicDashboardFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dashboard_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dashboard_ref01",
+        srcdatavar: "dashboard_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "dashboard01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dashboard_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDashboardFlow"
+}

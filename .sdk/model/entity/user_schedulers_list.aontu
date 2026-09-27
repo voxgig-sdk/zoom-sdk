@@ -1,0 +1,78 @@
+# Entity: user_schedulers_list
+
+main: kit: entity: user_schedulers_list: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_schedulers_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/schedulers"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/schedulers"
+          q: {
+            "$action": "schedulers"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schedulers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.assistants`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

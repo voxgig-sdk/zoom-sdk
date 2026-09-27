@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "user_permission": {
+      "USER_PERMISSION00": {
+        "id": "USER_PERMISSION00",
+        "permissions": []
+      },
+      "USER_PERMISSION01": {
+        "id": "USER_PERMISSION01",
+        "permissions": []
+      },
+      "USER_PERMISSION02": {
+        "id": "USER_PERMISSION02",
+        "permissions": []
+      }
+    }
+  },
+  "new": {
+    "user_permission": {
+      "user_permission_ref01": {
+        "permissions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

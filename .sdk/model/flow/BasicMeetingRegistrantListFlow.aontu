@@ -1,0 +1,32 @@
+# BasicMeetingRegistrantListFlow
+
+main: kit: flow: BasicMeetingRegistrantListFlow:
+{
+  entity: "meeting_registrant_list",
+  kind: "basic",
+  name: "BasicMeetingRegistrantListFlow",
+  step: [
+    {
+      i: {
+        ref: "meeting_registrant_list_ref01",
+        srcdatavar: "meeting_registrant_list_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "meeting_registrant_list01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-meeting_registrant_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMeetingRegistrantListFlow"
+}

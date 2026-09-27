@@ -1,0 +1,429 @@
+# Entity: tsp
+
+main: kit: entity: tsp: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "Country Code"
+      t: "`$STRING`"
+    }
+    conference_code: {
+      h: "Conference Code"
+      n: "conference_code"
+      r: true
+      sh: "Conference code, numeric value, length is less than 16."
+      t: "`$STRING`"
+    }
+    dial_in_numbers: {
+      h: "Dial In Numbers"
+      n: "dial_in_numbers"
+      r: true
+      sh: "List of Dial In Numbers"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    leader_pin: {
+      h: "Leader Pin"
+      n: "leader_pin"
+      r: true
+      sh: "Leader PIN, numeric value, length is less than 16."
+      t: "`$STRING`"
+    }
+    number: {
+      h: "Number"
+      n: "number"
+      r: false
+      sh: "Dial-in number, length is less than 16"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tsp"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /users/{userId}/tsp"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/users/{userId}/tsp"
+          q: {
+            exist: [
+              "body"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "tsp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/tsp"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/tsp"
+          q: {
+            exist: [
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "tsp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tsp_accounts`"
+          }
+        }
+        {
+          co: {
+            id: "GET /tsp"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/tsp"
+          s: [
+            {
+              lit: "tsp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dial_in_numbers`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/tsp/{tspId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "tsp_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/tsp/{tspId}"
+          q: {
+            exist: [
+              "id"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              tspId: "id"
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "tsp"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /users/{userId}/tsp/{tspId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "tsp_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/users/{userId}/tsp/{tspId}"
+          q: {
+            exist: [
+              "id"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              tspId: "id"
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "tsp"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /users/{userId}/tsp/{tspId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "tsp_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/users/{userId}/tsp/{tspId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              tspId: "id"
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "tsp"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /tsp"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/tsp"
+          q: {
+            exist: [
+              "body"
+            ]
+          }
+          s: [
+            {
+              lit: "tsp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

@@ -307,10 +307,220 @@ class ZoomSDK:
         return res
 
 
+    def Account(self, data=None) -> "AccountEntity":
+        """Entity factory: client.Account().list() / client.Account().load({"id": ...})."""
+        from zoom_sdk.entity.account_entity import AccountEntity
+        return AccountEntity(self, data)
+
+
+    def AccountPlan(self, data=None) -> "AccountPlanEntity":
+        """Entity factory: client.AccountPlan().list() / client.AccountPlan().load({"id": ...})."""
+        from zoom_sdk.entity.account_plan_entity import AccountPlanEntity
+        return AccountPlanEntity(self, data)
+
+
+    def AccountSetting(self, data=None) -> "AccountSettingEntity":
+        """Entity factory: client.AccountSetting().list() / client.AccountSetting().load({"id": ...})."""
+        from zoom_sdk.entity.account_setting_entity import AccountSettingEntity
+        return AccountSettingEntity(self, data)
+
+
+    def Billing(self, data=None) -> "BillingEntity":
+        """Entity factory: client.Billing().list() / client.Billing().load({"id": ...})."""
+        from zoom_sdk.entity.billing_entity import BillingEntity
+        return BillingEntity(self, data)
+
+
+    def CloudRecording(self, data=None) -> "CloudRecordingEntity":
+        """Entity factory: client.CloudRecording().list() / client.CloudRecording().load({"id": ...})."""
+        from zoom_sdk.entity.cloud_recording_entity import CloudRecordingEntity
+        return CloudRecordingEntity(self, data)
+
+
+    def Dashboard(self, data=None) -> "DashboardEntity":
+        """Entity factory: client.Dashboard().list() / client.Dashboard().load({"id": ...})."""
+        from zoom_sdk.entity.dashboard_entity import DashboardEntity
+        return DashboardEntity(self, data)
+
+
+    def Device(self, data=None) -> "DeviceEntity":
+        """Entity factory: client.Device().list() / client.Device().load({"id": ...})."""
+        from zoom_sdk.entity.device_entity import DeviceEntity
+        return DeviceEntity(self, data)
+
+
+    def DomainsList(self, data=None) -> "DomainsListEntity":
+        """Entity factory: client.DomainsList().list() / client.DomainsList().load({"id": ...})."""
+        from zoom_sdk.entity.domains_list_entity import DomainsListEntity
+        return DomainsListEntity(self, data)
+
+
+    def Group(self, data=None) -> "GroupEntity":
+        """Entity factory: client.Group().list() / client.Group().load({"id": ...})."""
+        from zoom_sdk.entity.group_entity import GroupEntity
+        return GroupEntity(self, data)
+
+
+    def GroupMemberList(self, data=None) -> "GroupMemberListEntity":
+        """Entity factory: client.GroupMemberList().list() / client.GroupMemberList().load({"id": ...})."""
+        from zoom_sdk.entity.group_member_list_entity import GroupMemberListEntity
+        return GroupMemberListEntity(self, data)
+
+
+    def ImChat(self, data=None) -> "ImChatEntity":
+        """Entity factory: client.ImChat().list() / client.ImChat().load({"id": ...})."""
+        from zoom_sdk.entity.im_chat_entity import ImChatEntity
+        return ImChatEntity(self, data)
+
+
+    def ImGroup(self, data=None) -> "ImGroupEntity":
+        """Entity factory: client.ImGroup().list() / client.ImGroup().load({"id": ...})."""
+        from zoom_sdk.entity.im_group_entity import ImGroupEntity
+        return ImGroupEntity(self, data)
+
+
+    def ImGroupList(self, data=None) -> "ImGroupListEntity":
+        """Entity factory: client.ImGroupList().list() / client.ImGroupList().load({"id": ...})."""
+        from zoom_sdk.entity.im_group_list_entity import ImGroupListEntity
+        return ImGroupListEntity(self, data)
+
+
     def Meeting(self, data=None) -> "MeetingEntity":
         """Entity factory: client.Meeting().list() / client.Meeting().load({"id": ...})."""
         from zoom_sdk.entity.meeting_entity import MeetingEntity
         return MeetingEntity(self, data)
+
+
+    def MeetingInstance(self, data=None) -> "MeetingInstanceEntity":
+        """Entity factory: client.MeetingInstance().list() / client.MeetingInstance().load({"id": ...})."""
+        from zoom_sdk.entity.meeting_instance_entity import MeetingInstanceEntity
+        return MeetingInstanceEntity(self, data)
+
+
+    def MeetingInvitation(self, data=None) -> "MeetingInvitationEntity":
+        """Entity factory: client.MeetingInvitation().list() / client.MeetingInvitation().load({"id": ...})."""
+        from zoom_sdk.entity.meeting_invitation_entity import MeetingInvitationEntity
+        return MeetingInvitationEntity(self, data)
+
+
+    def MeetingRegistrantList(self, data=None) -> "MeetingRegistrantListEntity":
+        """Entity factory: client.MeetingRegistrantList().list() / client.MeetingRegistrantList().load({"id": ...})."""
+        from zoom_sdk.entity.meeting_registrant_list_entity import MeetingRegistrantListEntity
+        return MeetingRegistrantListEntity(self, data)
+
+
+    def Pac(self, data=None) -> "PacEntity":
+        """Entity factory: client.Pac().list() / client.Pac().load({"id": ...})."""
+        from zoom_sdk.entity.pac_entity import PacEntity
+        return PacEntity(self, data)
+
+
+    def Poll(self, data=None) -> "PollEntity":
+        """Entity factory: client.Poll().list() / client.Poll().load({"id": ...})."""
+        from zoom_sdk.entity.poll_entity import PollEntity
+        return PollEntity(self, data)
+
+
+    def Qos(self, data=None) -> "QosEntity":
+        """Entity factory: client.Qos().list() / client.Qos().load({"id": ...})."""
+        from zoom_sdk.entity.qos_entity import QosEntity
+        return QosEntity(self, data)
+
+
+    def Recording(self, data=None) -> "RecordingEntity":
+        """Entity factory: client.Recording().list() / client.Recording().load({"id": ...})."""
+        from zoom_sdk.entity.recording_entity import RecordingEntity
+        return RecordingEntity(self, data)
+
+
+    def RecordingSetting(self, data=None) -> "RecordingSettingEntity":
+        """Entity factory: client.RecordingSetting().list() / client.RecordingSetting().load({"id": ...})."""
+        from zoom_sdk.entity.recording_setting_entity import RecordingSettingEntity
+        return RecordingSettingEntity(self, data)
+
+
+    def Report(self, data=None) -> "ReportEntity":
+        """Entity factory: client.Report().list() / client.Report().load({"id": ...})."""
+        from zoom_sdk.entity.report_entity import ReportEntity
+        return ReportEntity(self, data)
+
+
+    def TrackingField(self, data=None) -> "TrackingFieldEntity":
+        """Entity factory: client.TrackingField().list() / client.TrackingField().load({"id": ...})."""
+        from zoom_sdk.entity.tracking_field_entity import TrackingFieldEntity
+        return TrackingFieldEntity(self, data)
+
+
+    def Tsp(self, data=None) -> "TspEntity":
+        """Entity factory: client.Tsp().list() / client.Tsp().load({"id": ...})."""
+        from zoom_sdk.entity.tsp_entity import TspEntity
+        return TspEntity(self, data)
+
+
+    def User(self, data=None) -> "UserEntity":
+        """Entity factory: client.User().list() / client.User().load({"id": ...})."""
+        from zoom_sdk.entity.user_entity import UserEntity
+        return UserEntity(self, data)
+
+
+    def UserAssistantsList(self, data=None) -> "UserAssistantsListEntity":
+        """Entity factory: client.UserAssistantsList().list() / client.UserAssistantsList().load({"id": ...})."""
+        from zoom_sdk.entity.user_assistants_list_entity import UserAssistantsListEntity
+        return UserAssistantsListEntity(self, data)
+
+
+    def UserPermission(self, data=None) -> "UserPermissionEntity":
+        """Entity factory: client.UserPermission().list() / client.UserPermission().load({"id": ...})."""
+        from zoom_sdk.entity.user_permission_entity import UserPermissionEntity
+        return UserPermissionEntity(self, data)
+
+
+    def UserSchedulersList(self, data=None) -> "UserSchedulersListEntity":
+        """Entity factory: client.UserSchedulersList().list() / client.UserSchedulersList().load({"id": ...})."""
+        from zoom_sdk.entity.user_schedulers_list_entity import UserSchedulersListEntity
+        return UserSchedulersListEntity(self, data)
+
+
+    def UserSetting(self, data=None) -> "UserSettingEntity":
+        """Entity factory: client.UserSetting().list() / client.UserSetting().load({"id": ...})."""
+        from zoom_sdk.entity.user_setting_entity import UserSettingEntity
+        return UserSettingEntity(self, data)
+
+
+    def Webhook(self, data=None) -> "WebhookEntity":
+        """Entity factory: client.Webhook().list() / client.Webhook().load({"id": ...})."""
+        from zoom_sdk.entity.webhook_entity import WebhookEntity
+        return WebhookEntity(self, data)
+
+
+    def Webinar(self, data=None) -> "WebinarEntity":
+        """Entity factory: client.Webinar().list() / client.Webinar().load({"id": ...})."""
+        from zoom_sdk.entity.webinar_entity import WebinarEntity
+        return WebinarEntity(self, data)
+
+
+    def WebinarInstance(self, data=None) -> "WebinarInstanceEntity":
+        """Entity factory: client.WebinarInstance().list() / client.WebinarInstance().load({"id": ...})."""
+        from zoom_sdk.entity.webinar_instance_entity import WebinarInstanceEntity
+        return WebinarInstanceEntity(self, data)
+
+
+    def WebinarPanelistList(self, data=None) -> "WebinarPanelistListEntity":
+        """Entity factory: client.WebinarPanelistList().list() / client.WebinarPanelistList().load({"id": ...})."""
+        from zoom_sdk.entity.webinar_panelist_list_entity import WebinarPanelistListEntity
+        return WebinarPanelistListEntity(self, data)
+
+
+    def WebinarRegistrantList(self, data=None) -> "WebinarRegistrantListEntity":
+        """Entity factory: client.WebinarRegistrantList().list() / client.WebinarRegistrantList().load({"id": ...})."""
+        from zoom_sdk.entity.webinar_registrant_list_entity import WebinarRegistrantListEntity
+        return WebinarRegistrantListEntity(self, data)
+
+
+    def ZoomRoomList(self, data=None) -> "ZoomRoomListEntity":
+        """Entity factory: client.ZoomRoomList().list() / client.ZoomRoomList().load({"id": ...})."""
+        from zoom_sdk.entity.zoom_room_list_entity import ZoomRoomListEntity
+        return ZoomRoomListEntity(self, data)
 
 
 
@@ -340,4 +550,39 @@ class ZoomSDK:
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
+    from zoom_sdk.entity.account_entity import AccountEntity
+    from zoom_sdk.entity.account_plan_entity import AccountPlanEntity
+    from zoom_sdk.entity.account_setting_entity import AccountSettingEntity
+    from zoom_sdk.entity.billing_entity import BillingEntity
+    from zoom_sdk.entity.cloud_recording_entity import CloudRecordingEntity
+    from zoom_sdk.entity.dashboard_entity import DashboardEntity
+    from zoom_sdk.entity.device_entity import DeviceEntity
+    from zoom_sdk.entity.domains_list_entity import DomainsListEntity
+    from zoom_sdk.entity.group_entity import GroupEntity
+    from zoom_sdk.entity.group_member_list_entity import GroupMemberListEntity
+    from zoom_sdk.entity.im_chat_entity import ImChatEntity
+    from zoom_sdk.entity.im_group_entity import ImGroupEntity
+    from zoom_sdk.entity.im_group_list_entity import ImGroupListEntity
     from zoom_sdk.entity.meeting_entity import MeetingEntity
+    from zoom_sdk.entity.meeting_instance_entity import MeetingInstanceEntity
+    from zoom_sdk.entity.meeting_invitation_entity import MeetingInvitationEntity
+    from zoom_sdk.entity.meeting_registrant_list_entity import MeetingRegistrantListEntity
+    from zoom_sdk.entity.pac_entity import PacEntity
+    from zoom_sdk.entity.poll_entity import PollEntity
+    from zoom_sdk.entity.qos_entity import QosEntity
+    from zoom_sdk.entity.recording_entity import RecordingEntity
+    from zoom_sdk.entity.recording_setting_entity import RecordingSettingEntity
+    from zoom_sdk.entity.report_entity import ReportEntity
+    from zoom_sdk.entity.tracking_field_entity import TrackingFieldEntity
+    from zoom_sdk.entity.tsp_entity import TspEntity
+    from zoom_sdk.entity.user_entity import UserEntity
+    from zoom_sdk.entity.user_assistants_list_entity import UserAssistantsListEntity
+    from zoom_sdk.entity.user_permission_entity import UserPermissionEntity
+    from zoom_sdk.entity.user_schedulers_list_entity import UserSchedulersListEntity
+    from zoom_sdk.entity.user_setting_entity import UserSettingEntity
+    from zoom_sdk.entity.webhook_entity import WebhookEntity
+    from zoom_sdk.entity.webinar_entity import WebinarEntity
+    from zoom_sdk.entity.webinar_instance_entity import WebinarInstanceEntity
+    from zoom_sdk.entity.webinar_panelist_list_entity import WebinarPanelistListEntity
+    from zoom_sdk.entity.webinar_registrant_list_entity import WebinarRegistrantListEntity
+    from zoom_sdk.entity.zoom_room_list_entity import ZoomRoomListEntity

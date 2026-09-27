@@ -1,0 +1,1317 @@
+# Entity: meeting
+
+main: kit: entity: meeting: {
+
+  alias: field: {}
+
+  fields: {
+    agenda: {
+      h: "Agenda"
+      n: "agenda"
+      r: false
+      sh: "Agenda"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Create time"
+      t: "`$STRING`"
+    }
+    duration: {
+      h: "Duration"
+      n: "duration"
+      r: false
+      sh: "Meeting duration"
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "User email"
+      t: "`$STRING`"
+    }
+    end_time: {
+      fo: "date-time"
+      h: "End Time"
+      n: "end_time"
+      r: false
+      sh: "Meeting end time"
+      t: "`$STRING`"
+    }
+    h323_password: {
+      h: "H323 Password"
+      n: "h323_password"
+      r: false
+      sh: "H.323/SIP room system password"
+      t: "`$STRING`"
+    }
+    has_3rd_party_audio: {
+      h: "Has 3rd Party Audio"
+      n: "has_3rd_party_audio"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_pstn: {
+      h: "Has Pstn"
+      n: "has_pstn"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_recording: {
+      h: "Has Recording"
+      n: "has_recording"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_screen_share: {
+      h: "Has Screen Share"
+      n: "has_screen_share"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_sip: {
+      h: "Has Sip"
+      n: "has_sip"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_video: {
+      h: "Has Video"
+      n: "has_video"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_voip: {
+      h: "Has Voip"
+      n: "has_voip"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: false
+      sh: "User display name"
+      t: "`$STRING`"
+    }
+    host_id: {
+      h: "Host Id"
+      n: "host_id"
+      r: false
+      sh: "ID of the user set as host of meeting"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Meeting Poll ID"
+      t: "`$STRING`"
+    }
+    join_url: {
+      h: "Join Url"
+      n: "join_url"
+      r: false
+      sh: "Join url"
+      t: "`$STRING`"
+    }
+    meetings: {
+      h: "Meetings"
+      n: "meetings"
+      r: false
+      sh: "List of Meeting objects"
+      t: "`$ARRAY`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Next page token is used to paginate through large result sets."
+      t: "`$STRING`"
+    }
+    occurrences: {
+      h: "Occurrences"
+      n: "occurrences"
+      r: false
+      sh: "Array of occurrence objects"
+      t: "`$ARRAY`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_number: {
+      h: "Page Number"
+      n: "page_number"
+      r: false
+      sh: "The page number of current results"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call"
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "Meeting participant count"
+      t: "`$INTEGER`"
+    }
+    participants_count: {
+      h: "Participants Count"
+      n: "participants_count"
+      r: false
+      sh: "Number of meeting participants"
+      t: "`$INTEGER`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: false
+      sh: "Meeting password"
+      t: "`$STRING`"
+    }
+    questions: {
+      h: "Questions"
+      n: "questions"
+      r: false
+      sh: "Array of Polls"
+      t: "`$ARRAY`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: false
+      sh: "Meeting Settings"
+      t: "`$OBJECT`"
+    }
+    start_time: {
+      fo: "date-time"
+      h: "Start Time"
+      n: "start_time"
+      r: false
+      sh: "Meeting start time"
+      t: "`$STRING`"
+    }
+    start_url: {
+      h: "Start Url"
+      n: "start_url"
+      r: false
+      sh: "Start url"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Status of the Meeting Poll"
+      t: "`$STRING`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: false
+      sh: "Timezone to format start_time"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Poll Title"
+      t: "`$STRING`"
+    }
+    topic: {
+      h: "Topic"
+      n: "topic"
+      r: false
+      sh: "Meeting topic"
+      t: "`$STRING`"
+    }
+    total_minutes: {
+      h: "Total Minutes"
+      n: "total_minutes"
+      r: false
+      sh: "Number of meeting minutes"
+      t: "`$INTEGER`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    tracking_fields: {
+      h: "Tracking Fields"
+      n: "tracking_fields"
+      r: false
+      sh: "Tracking fields"
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Meeting Type"
+      t: "`$INTEGER`"
+    }
+    user_email: {
+      h: "User Email"
+      n: "user_email"
+      r: false
+      sh: "User email"
+      t: "`$STRING`"
+    }
+    user_name: {
+      h: "User Name"
+      n: "user_name"
+      r: false
+      sh: "User display name"
+      t: "`$STRING`"
+    }
+    user_type: {
+      h: "User Type"
+      n: "user_type"
+      r: false
+      sh: "User type"
+      t: "`$STRING`"
+    }
+    uuid: {
+      fo: "uuid"
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Meeting UUID"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "meeting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /meetings/{meetingId}/registrants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/meetings/{meetingId}/registrants"
+          q: {
+            "$action": "registrant"
+            exist: [
+              "body"
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registrants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /meetings/{meetingId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/meetings/{meetingId}/polls"
+          q: {
+            "$action": "poll"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /users/{userId}/meetings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/users/{userId}/meetings"
+          q: {
+            exist: [
+              "body"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/meetings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/meetings"
+          q: {
+            exist: [
+              "page_number"
+              "page_size"
+              "type"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /past_meetings/{meetingUUID}/participants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_uuid"
+                or: "meeting_uuid"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/past_meetings/{meetingUUID}/participants"
+          q: {
+            exist: [
+              "meeting_uuid"
+              "next_page_token"
+              "page_size"
+            ]
+          }
+          r: {
+            param: {
+              meetingUUID: "meeting_uuid"
+            }
+          }
+          s: [
+            {
+              lit: "past_meetings"
+            }
+            {
+              var: "meeting_uuid"
+            }
+            {
+              lit: "participants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /meetings/{meetingId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}/polls/{pollId}"
+          q: {
+            exist: [
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+              pollId: "poll_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/meetings/{meetingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings/{meetingId}"
+          q: {
+            exist: [
+              "id"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /meetings/{meetingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /past_meetings/{meetingUUID}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_uuid"
+                or: "meeting_uuid"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/past_meetings/{meetingUUID}"
+          q: {
+            exist: [
+              "meeting_uuid"
+            ]
+          }
+          r: {
+            param: {
+              meetingUUID: "meeting_uuid"
+            }
+          }
+          s: [
+            {
+              lit: "past_meetings"
+            }
+            {
+              var: "meeting_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /meetings/{meetingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/meetings/{meetingId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /meetings/{meetingId}/livestream"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/meetings/{meetingId}/livestream"
+          q: {
+            "$action": "livestream"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "livestream"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /meetings/{meetingId}/livestream/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/meetings/{meetingId}/livestream/status"
+          q: {
+            "$action": "livestream_status"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "livestream"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /meetings/{meetingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/meetings/{meetingId}"
+          q: {
+            exist: [
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /meetings/{meetingId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/meetings/{meetingId}/polls/{pollId}"
+          q: {
+            exist: [
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+              pollId: "poll_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /meetings/{meetingId}/registrants/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/meetings/{meetingId}/registrants/status"
+          q: {
+            "$action": "registrant_status"
+            exist: [
+              "body"
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registrants"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /meetings/{meetingId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/meetings/{meetingId}/polls/{pollId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+              pollId: "poll_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /meetings/{meetingId}/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/meetings/{meetingId}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.poll")]
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

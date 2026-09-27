@@ -1,0 +1,827 @@
+# Entity: dashboard
+
+main: kit: entity: dashboard: {
+
+  alias: field: {}
+
+  fields: {
+    account_type: {
+      h: "Account Type"
+      n: "account_type"
+      r: false
+      sh: "Zoom Room email type"
+      t: "`$STRING`"
+    }
+    calender_name: {
+      h: "Calender Name"
+      n: "calender_name"
+      r: false
+      sh: "Zoom Calendar name"
+      t: "`$STRING`"
+    }
+    camera: {
+      h: "Camera"
+      n: "camera"
+      r: false
+      sh: "Zoom Room camera"
+      t: "`$STRING`"
+    }
+    crc_ports_usage: {
+      h: "Crc Ports Usage"
+      n: "crc_ports_usage"
+      r: false
+      t: "`$ARRAY`"
+    }
+    device_ip: {
+      h: "Device Ip"
+      n: "device_ip"
+      r: false
+      sh: "Zoom Room device IP"
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "Zoom Room email"
+      t: "`$STRING`"
+    }
+    from: {
+      fo: "date"
+      h: "From"
+      n: "from"
+      r: false
+      sh: "Start date for this report"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Zoom Room ID"
+      t: "`$STRING`"
+    }
+    last_start_time: {
+      h: "Last Start Time"
+      n: "last_start_time"
+      r: false
+      sh: "Zoom Room last start time"
+      t: "`$STRING`"
+    }
+    live_meeting: {
+      h: "Live Meeting"
+      n: "live_meeting"
+      r: false
+      sh: "Meeting metric details"
+      t: "`$OBJECT`"
+    }
+    meetings: {
+      h: "Meetings"
+      n: "meetings"
+      r: false
+      sh: "Array of meeting objects"
+      t: "`$ARRAY`"
+    }
+    microphone: {
+      h: "Microphone"
+      n: "microphone"
+      r: false
+      sh: "Zoom Room microphone"
+      t: "`$STRING`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Next page token is used to paginate through large result sets."
+      t: "`$STRING`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call."
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "Array of user objects"
+      t: "`$ARRAY`"
+    }
+    past_meetings: {
+      h: "Past Meetings"
+      n: "past_meetings"
+      r: false
+      t: "`$OBJECT`"
+    }
+    room_name: {
+      h: "Room Name"
+      n: "room_name"
+      r: false
+      sh: "Zoom Room name"
+      t: "`$STRING`"
+    }
+    speaker: {
+      h: "Speaker"
+      n: "speaker"
+      r: false
+      sh: "Zoom Room speaker"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Zoom Room status"
+      t: "`$STRING`"
+    }
+    to: {
+      fo: "date"
+      h: "To"
+      n: "to"
+      r: false
+      sh: "End date for this report"
+      t: "`$STRING`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    users: {
+      h: "Users"
+      n: "users"
+      r: false
+      t: "`$ARRAY`"
+    }
+    webinars: {
+      h: "Webinars"
+      n: "webinars"
+      r: false
+      sh: "Array of webinar objects"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dashboard"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /metrics/meetings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "to"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "to"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/im"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/im"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "im"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/meetings/{meetingId}/participants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings/{meetingId}/participants"
+          q: {
+            exist: [
+              "meeting_id"
+              "next_page_token"
+              "page_size"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "participants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/meetings/{meetingId}/participants/sharing"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings/{meetingId}/participants/sharing"
+          q: {
+            exist: [
+              "meeting_id"
+              "next_page_token"
+              "page_size"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              lit: "sharing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars/{webinarId}/participants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars/{webinarId}/participants"
+          q: {
+            exist: [
+              "next_page_token"
+              "page_size"
+              "type"
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "participants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars/{webinarId}/participants/sharing"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars/{webinarId}/participants/sharing"
+          q: {
+            exist: [
+              "next_page_token"
+              "page_size"
+              "type"
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              lit: "sharing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/crc"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/crc"
+          q: {
+            exist: [
+              "from"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "crc"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /metrics/zoomrooms/{zoomroomId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "zoomroom_id"
+                or: "zoomroom_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/zoomrooms/{zoomroomId}"
+          q: {
+            exist: [
+              "from"
+              "page_number"
+              "page_size"
+              "to"
+              "zoomroom_id"
+            ]
+          }
+          r: {
+            param: {
+              zoomroomId: "zoomroom_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "zoomrooms"
+            }
+            {
+              var: "zoomroom_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.webinar")]
+  ]
+
+}

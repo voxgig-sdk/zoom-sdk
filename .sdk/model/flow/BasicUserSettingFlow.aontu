@@ -1,0 +1,32 @@
+# BasicUserSettingFlow
+
+main: kit: flow: BasicUserSettingFlow:
+{
+  entity: "user_setting",
+  kind: "basic",
+  name: "BasicUserSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "user_setting_ref01",
+        srcdatavar: "user_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "user_setting01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-user_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserSettingFlow"
+}

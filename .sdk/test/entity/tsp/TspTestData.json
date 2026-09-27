@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "tsp": {
+      "TSP00": {
+        "code": "s46",
+        "conference_code": "s47",
+        "dial_in_numbers": [],
+        "id": "TSP00",
+        "leader_pin": "s4a",
+        "number": "s4b",
+        "type": "s4c",
+        "user_id": "USER01"
+      },
+      "TSP01": {
+        "code": "s8c",
+        "conference_code": "s8d",
+        "dial_in_numbers": [],
+        "id": "TSP01",
+        "leader_pin": "s90",
+        "number": "s91",
+        "type": "s92",
+        "user_id": "USER01"
+      },
+      "TSP02": {
+        "code": "sd2",
+        "conference_code": "sd3",
+        "dial_in_numbers": [],
+        "id": "TSP02",
+        "leader_pin": "sd6",
+        "number": "sd7",
+        "type": "sd8",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "tsp": {
+      "tsp_ref01": {
+        "code": "s118",
+        "conference_code": "s119",
+        "dial_in_numbers": [],
+        "leader_pin": "s11c",
+        "number": "s11d",
+        "type": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /users/{userId}/tsp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{userId}/tsp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /tsp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{userId}/tsp/{tspId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/tsp/{tspId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /users/{userId}/tsp/{tspId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /tsp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

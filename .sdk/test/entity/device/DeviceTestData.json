@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "device": {
+      "DEVICE00": {
+        "devices": [],
+        "id": "DEVICE00",
+        "page_count": 62,
+        "page_number": 63,
+        "page_size": 64,
+        "total_records": 65
+      },
+      "DEVICE01": {
+        "devices": [],
+        "id": "DEVICE01",
+        "page_count": 122,
+        "page_number": 123,
+        "page_size": 124,
+        "total_records": 125
+      },
+      "DEVICE02": {
+        "devices": [],
+        "id": "DEVICE02",
+        "page_count": 182,
+        "page_number": 183,
+        "page_size": 184,
+        "total_records": 185
+      }
+    }
+  },
+  "new": {
+    "device": {
+      "device_ref01": {
+        "devices": [],
+        "page_count": 242,
+        "page_number": 243,
+        "page_size": 244,
+        "total_records": 245
+      }
+    }
+  },
+  "requests": {
+    "POST /h323/devices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /h323/devices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /h323/devices/{deviceId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /h323/devices/{deviceId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

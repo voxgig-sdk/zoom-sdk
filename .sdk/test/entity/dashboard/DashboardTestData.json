@@ -1,0 +1,169 @@
+{
+  "existing": {
+    "dashboard": {
+      "DASHBOARD00": {
+        "account_type": "sf0",
+        "calender_name": "sf1",
+        "camera": "sf2",
+        "crc_ports_usage": [],
+        "device_ip": "sf4",
+        "email": "sf5",
+        "from": "sf6",
+        "id": "DASHBOARD00",
+        "last_start_time": "sf8",
+        "live_meeting": {},
+        "meetings": [],
+        "microphone": "sfb",
+        "next_page_token": "sfc",
+        "page_count": 253,
+        "page_size": 254,
+        "participants": [],
+        "past_meetings": {},
+        "room_name": "s101",
+        "speaker": "s102",
+        "status": "s103",
+        "to": "s104",
+        "total_records": 261,
+        "users": [],
+        "webinars": [],
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "zoomroom_id": "ZOOMROOM01"
+      },
+      "DASHBOARD01": {
+        "account_type": "s1e0",
+        "calender_name": "s1e1",
+        "camera": "s1e2",
+        "crc_ports_usage": [],
+        "device_ip": "s1e4",
+        "email": "s1e5",
+        "from": "s1e6",
+        "id": "DASHBOARD01",
+        "last_start_time": "s1e8",
+        "live_meeting": {},
+        "meetings": [],
+        "microphone": "s1eb",
+        "next_page_token": "s1ec",
+        "page_count": 493,
+        "page_size": 494,
+        "participants": [],
+        "past_meetings": {},
+        "room_name": "s1f1",
+        "speaker": "s1f2",
+        "status": "s1f3",
+        "to": "s1f4",
+        "total_records": 501,
+        "users": [],
+        "webinars": [],
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "zoomroom_id": "ZOOMROOM01"
+      },
+      "DASHBOARD02": {
+        "account_type": "s2d0",
+        "calender_name": "s2d1",
+        "camera": "s2d2",
+        "crc_ports_usage": [],
+        "device_ip": "s2d4",
+        "email": "s2d5",
+        "from": "s2d6",
+        "id": "DASHBOARD02",
+        "last_start_time": "s2d8",
+        "live_meeting": {},
+        "meetings": [],
+        "microphone": "s2db",
+        "next_page_token": "s2dc",
+        "page_count": 733,
+        "page_size": 734,
+        "participants": [],
+        "past_meetings": {},
+        "room_name": "s2e1",
+        "speaker": "s2e2",
+        "status": "s2e3",
+        "to": "s2e4",
+        "total_records": 741,
+        "users": [],
+        "webinars": [],
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "zoomroom_id": "ZOOMROOM01"
+      }
+    }
+  },
+  "new": {
+    "dashboard": {
+      "dashboard_ref01": {
+        "account_type": "s3c0",
+        "calender_name": "s3c1",
+        "camera": "s3c2",
+        "crc_ports_usage": [],
+        "device_ip": "s3c4",
+        "email": "s3c5",
+        "from": "s3c6",
+        "last_start_time": "s3c8",
+        "live_meeting": {},
+        "meetings": [],
+        "microphone": "s3cb",
+        "next_page_token": "s3cc",
+        "page_count": 973,
+        "page_size": 974,
+        "participants": [],
+        "past_meetings": {},
+        "room_name": "s3d1",
+        "speaker": "s3d2",
+        "status": "s3d3",
+        "to": "s3d4",
+        "total_records": 981,
+        "users": [],
+        "webinars": []
+      }
+    }
+  },
+  "requests": {
+    "GET /metrics/meetings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/im": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/meetings/{meetingId}/participants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/meetings/{meetingId}/participants/sharing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars/{webinarId}/participants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars/{webinarId}/participants/sharing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/crc": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/zoomrooms/{zoomroomId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

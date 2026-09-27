@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "pac": {
+      "PAC00": {
+        "conference_id": "CONFERENCE01",
+        "dedicated_dial_in_number": [],
+        "global_dial_in_numbers": [],
+        "listen_only_password": "s35",
+        "participant_password": "s36",
+        "user_id": "USER01"
+      },
+      "PAC01": {
+        "conference_id": "CONFERENCE01",
+        "dedicated_dial_in_number": [],
+        "global_dial_in_numbers": [],
+        "listen_only_password": "s67",
+        "participant_password": "s68",
+        "user_id": "USER01"
+      },
+      "PAC02": {
+        "conference_id": "CONFERENCE01",
+        "dedicated_dial_in_number": [],
+        "global_dial_in_numbers": [],
+        "listen_only_password": "s99",
+        "participant_password": "s9a",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "pac": {
+      "pac_ref01": {
+        "conference_id": "CONFERENCE01",
+        "dedicated_dial_in_number": [],
+        "global_dial_in_numbers": [],
+        "listen_only_password": "scb",
+        "participant_password": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/pac": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "im_group": {
+      "IM_GROUP00": {
+        "id": "IM_GROUP00",
+        "group_id": "GROUP01",
+        "member_id": "MEMBER01"
+      },
+      "IM_GROUP01": {
+        "id": "IM_GROUP01",
+        "group_id": "GROUP01",
+        "member_id": "MEMBER01"
+      },
+      "IM_GROUP02": {
+        "id": "IM_GROUP02",
+        "group_id": "GROUP01",
+        "member_id": "MEMBER01"
+      }
+    }
+  },
+  "new": {
+    "im_group": {
+      "im_group_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /im/groups/{groupId}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /im/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /im/groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /im/groups/{groupId}/members/{memberId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /im/groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /im/groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

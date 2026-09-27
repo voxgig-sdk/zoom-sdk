@@ -1,0 +1,129 @@
+# Entity: poll
+
+main: kit: entity: poll: {
+
+  alias: field: {}
+
+  fields: {
+    polls: {
+      h: "Polls"
+      n: "polls"
+      r: false
+      sh: "Array of Polls"
+      t: "`$ARRAY`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "poll"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /meetings/{meetingId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}/polls"
+          q: {
+            exist: [
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /webinars/{webinarId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/webinars/{webinarId}/polls"
+          q: {
+            exist: [
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.webinar")]
+  ]
+
+}

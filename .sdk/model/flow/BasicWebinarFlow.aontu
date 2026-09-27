@@ -1,0 +1,112 @@
+# BasicWebinarFlow
+
+main: kit: flow: BasicWebinarFlow:
+{
+  entity: "webinar",
+  kind: "basic",
+  name: "BasicWebinarFlow",
+  step: [
+    {
+      i: {
+        ref: "webinar_ref01"
+      }
+
+      m: {
+        user_id: "user01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "webinar_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "webinar_ref01",
+        srcdatavar: "webinar_ref01_data",
+        suffix: "_up0",
+        textfield: "agenda"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webinar_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "webinar_ref01",
+        srcdatavar: "webinar_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "webinar01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-webinar_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "webinar_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "webinar01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "webinar_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebinarFlow"
+}

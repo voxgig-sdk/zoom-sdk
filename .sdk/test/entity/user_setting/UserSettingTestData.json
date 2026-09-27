@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "user_setting": {
+      "USER_SETTING00": {
+        "email_notification": {},
+        "feature": {},
+        "id": "USER_SETTING00",
+        "in_meeting": {},
+        "recording": {},
+        "schedule_meeting": {},
+        "telephony": {}
+      },
+      "USER_SETTING01": {
+        "email_notification": {},
+        "feature": {},
+        "id": "USER_SETTING01",
+        "in_meeting": {},
+        "recording": {},
+        "schedule_meeting": {},
+        "telephony": {}
+      },
+      "USER_SETTING02": {
+        "email_notification": {},
+        "feature": {},
+        "id": "USER_SETTING02",
+        "in_meeting": {},
+        "recording": {},
+        "schedule_meeting": {},
+        "telephony": {}
+      }
+    }
+  },
+  "new": {
+    "user_setting": {
+      "user_setting_ref01": {
+        "email_notification": {},
+        "feature": {},
+        "in_meeting": {},
+        "recording": {},
+        "schedule_meeting": {},
+        "telephony": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

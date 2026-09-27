@@ -77,6 +77,7 @@ class TestMeetingEntity:
         meeting_ref01_ent = client.Meeting(None)
         meeting_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.meeting"), "meeting_ref01"))
+        meeting_ref01_data["meeting_uuid"] = setup["idmap"]["meeting_uuid01"]
         meeting_ref01_data["user_id"] = setup["idmap"]["user01"]
 
         meeting_ref01_data = helpers.to_map(runner.entity_data(meeting_ref01_ent.create(meeting_ref01_data, None)))
@@ -85,7 +86,7 @@ class TestMeetingEntity:
 
         # LIST
         meeting_ref01_match = {
-            "user_id": setup["idmap"]["user01"],
+            "meeting_uuid": setup["idmap"]["meeting_uuid01"],
         }
 
         meeting_ref01_list_result = meeting_ref01_ent.list(meeting_ref01_match, None)
@@ -127,7 +128,7 @@ class TestMeetingEntity:
 
         # LIST
         meeting_ref01_match_rt0 = {
-            "user_id": setup["idmap"]["user01"],
+            "meeting_uuid": setup["idmap"]["meeting_uuid01"],
         }
 
         meeting_ref01_list_rt0_result = meeting_ref01_ent.list(meeting_ref01_match_rt0, None)
@@ -156,7 +157,7 @@ def _meeting_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["meeting01", "meeting02", "meeting03", "user01", "user02", "user03"],
+        ["meeting01", "meeting02", "meeting03", "poll01", "poll02", "poll03", "user01", "user02", "user03", "meeting_uuid01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

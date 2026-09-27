@@ -1,0 +1,248 @@
+{
+  "existing": {
+    "webinar": {
+      "WEBINAR00": {
+        "agenda": "s15e",
+        "created_at": "s15f",
+        "duration": "s160",
+        "email": "s161",
+        "end_time": "s162",
+        "has_3rd_party_audio": false,
+        "has_pstn": true,
+        "has_recording": false,
+        "has_screen_share": true,
+        "has_sip": false,
+        "has_video": true,
+        "has_voip": false,
+        "host": "s16a",
+        "host_id": "HOST01",
+        "id": "WEBINAR00",
+        "join_url": "s16d",
+        "occurrences": [],
+        "page_count": 367,
+        "page_number": 368,
+        "page_size": 369,
+        "participants": 370,
+        "questions": [],
+        "settings": {},
+        "start_time": "s175",
+        "start_url": "s176",
+        "status": "s177",
+        "timezone": "s178",
+        "title": "s179",
+        "topic": "s17a",
+        "total_records": 379,
+        "tracking_fields": [],
+        "type": 381,
+        "user_type": "s17e",
+        "uuid": "s17f",
+        "webinars": [],
+        "user_id": "USER01",
+        "poll_id": "POLL01",
+        "panelist_id": "PANELIST01"
+      },
+      "WEBINAR01": {
+        "agenda": "s2bc",
+        "created_at": "s2bd",
+        "duration": "s2be",
+        "email": "s2bf",
+        "end_time": "s2c0",
+        "has_3rd_party_audio": false,
+        "has_pstn": true,
+        "has_recording": false,
+        "has_screen_share": true,
+        "has_sip": false,
+        "has_video": true,
+        "has_voip": false,
+        "host": "s2c8",
+        "host_id": "HOST01",
+        "id": "WEBINAR01",
+        "join_url": "s2cb",
+        "occurrences": [],
+        "page_count": 717,
+        "page_number": 718,
+        "page_size": 719,
+        "participants": 720,
+        "questions": [],
+        "settings": {},
+        "start_time": "s2d3",
+        "start_url": "s2d4",
+        "status": "s2d5",
+        "timezone": "s2d6",
+        "title": "s2d7",
+        "topic": "s2d8",
+        "total_records": 729,
+        "tracking_fields": [],
+        "type": 731,
+        "user_type": "s2dc",
+        "uuid": "s2dd",
+        "webinars": [],
+        "user_id": "USER01",
+        "poll_id": "POLL01",
+        "panelist_id": "PANELIST01"
+      },
+      "WEBINAR02": {
+        "agenda": "s41a",
+        "created_at": "s41b",
+        "duration": "s41c",
+        "email": "s41d",
+        "end_time": "s41e",
+        "has_3rd_party_audio": false,
+        "has_pstn": true,
+        "has_recording": false,
+        "has_screen_share": true,
+        "has_sip": false,
+        "has_video": true,
+        "has_voip": false,
+        "host": "s426",
+        "host_id": "HOST01",
+        "id": "WEBINAR02",
+        "join_url": "s429",
+        "occurrences": [],
+        "page_count": 1067,
+        "page_number": 1068,
+        "page_size": 1069,
+        "participants": 1070,
+        "questions": [],
+        "settings": {},
+        "start_time": "s431",
+        "start_url": "s432",
+        "status": "s433",
+        "timezone": "s434",
+        "title": "s435",
+        "topic": "s436",
+        "total_records": 1079,
+        "tracking_fields": [],
+        "type": 1081,
+        "user_type": "s43a",
+        "uuid": "s43b",
+        "webinars": [],
+        "user_id": "USER01",
+        "poll_id": "POLL01",
+        "panelist_id": "PANELIST01"
+      }
+    }
+  },
+  "new": {
+    "webinar": {
+      "webinar_ref01": {
+        "agenda": "s578",
+        "created_at": "s579",
+        "duration": "s57a",
+        "email": "s57b",
+        "end_time": "s57c",
+        "has_3rd_party_audio": false,
+        "has_pstn": true,
+        "has_recording": false,
+        "has_screen_share": true,
+        "has_sip": false,
+        "has_video": true,
+        "has_voip": false,
+        "host": "s584",
+        "host_id": "HOST01",
+        "join_url": "s587",
+        "occurrences": [],
+        "page_count": 1417,
+        "page_number": 1418,
+        "page_size": 1419,
+        "participants": 1420,
+        "questions": [],
+        "settings": {},
+        "start_time": "s58f",
+        "start_url": "s590",
+        "status": "s591",
+        "timezone": "s592",
+        "title": "s593",
+        "topic": "s594",
+        "total_records": 1429,
+        "tracking_fields": [],
+        "type": 1431,
+        "user_type": "s598",
+        "uuid": "s599",
+        "webinars": []
+      }
+    }
+  },
+  "requests": {
+    "POST /webinars/{webinarId}/registrants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /webinars/{webinarId}/panelists": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /webinars/{webinarId}/polls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /users/{userId}/webinars": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{userId}/webinars": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /webinars/{webinarId}/polls/{pollId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars/{webinarId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /webinars/{webinarId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /webinars/{webinarId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /webinars/{webinarId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /webinars/{webinarId}/panelists/{panelistId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /webinars/{webinarId}/polls/{pollId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /webinars/{webinarId}/panelists": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /webinars/{webinarId}/registrants/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /webinars/{webinarId}/polls/{pollId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /webinars/{webinarId}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

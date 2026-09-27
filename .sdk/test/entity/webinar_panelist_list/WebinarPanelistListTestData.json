@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "webinar_panelist_list": {
+      "WEBINAR_PANELIST_LIST00": {
+        "id": "WEBINAR_PANELIST_LIST00",
+        "panelists": [],
+        "total_records": 32
+      },
+      "WEBINAR_PANELIST_LIST01": {
+        "id": "WEBINAR_PANELIST_LIST01",
+        "panelists": [],
+        "total_records": 62
+      },
+      "WEBINAR_PANELIST_LIST02": {
+        "id": "WEBINAR_PANELIST_LIST02",
+        "panelists": [],
+        "total_records": 92
+      }
+    }
+  },
+  "new": {
+    "webinar_panelist_list": {
+      "webinar_panelist_list_ref01": {
+        "panelists": [],
+        "total_records": 122
+      }
+    }
+  },
+  "requests": {
+    "GET /webinars/{webinarId}/panelists": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

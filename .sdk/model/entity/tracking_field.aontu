@@ -1,0 +1,298 @@
+# Entity: tracking_field
+
+main: kit: entity: tracking_field: {
+
+  alias: field: {}
+
+  fields: {
+    field: {
+      h: "Field"
+      n: "field"
+      r: false
+      sh: "Tracking Field Name"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Tracking Field ID"
+      t: "`$STRING`"
+    }
+    recommended_values: {
+      h: "Recommended Values"
+      n: "recommended_values"
+      r: false
+      sh: "Array of recommended values"
+      t: "`$ARRAY`"
+    }
+    required: {
+      h: "Required"
+      n: "required"
+      r: false
+      sh: "Tracking Field Required"
+      t: "`$BOOLEAN`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    tracking_fields: {
+      h: "Tracking Fields"
+      n: "tracking_fields"
+      r: false
+      sh: "Array of Tracking Fields"
+      t: "`$ARRAY`"
+    }
+    visible: {
+      h: "Visible"
+      n: "visible"
+      r: false
+      sh: "Tracking Field Visible"
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tracking_field"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/tracking_fields"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/tracking_fields"
+          q: {
+            exist: [
+              "body"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "tracking_fields"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/tracking_fields"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/tracking_fields"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "tracking_fields"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/tracking_fields/{fieldId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "field_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/tracking_fields/{fieldId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              fieldId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "tracking_fields"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/tracking_fields/{fieldId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "field_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/tracking_fields/{fieldId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              fieldId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "tracking_fields"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/tracking_fields/{fieldId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "field_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/tracking_fields/{fieldId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              fieldId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "tracking_fields"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

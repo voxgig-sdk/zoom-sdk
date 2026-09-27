@@ -1,0 +1,26 @@
+# BasicGroupMemberListFlow
+
+main: kit: flow: BasicGroupMemberListFlow:
+{
+  entity: "group_member_list",
+  kind: "basic",
+  name: "BasicGroupMemberListFlow",
+  step: [
+    {
+      m: {
+        group_id: "group01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "group_member_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGroupMemberListFlow"
+}

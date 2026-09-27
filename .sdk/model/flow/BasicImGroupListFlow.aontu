@@ -1,0 +1,22 @@
+# BasicImGroupListFlow
+
+main: kit: flow: BasicImGroupListFlow:
+{
+  entity: "im_group_list",
+  kind: "basic",
+  name: "BasicImGroupListFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "im_group_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImGroupListFlow"
+}

@@ -1,0 +1,664 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 36
+  metrics: count: path: 103
+  metrics: count: method: 155
+
+  entity: account: {
+    path: "/accounts": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/accounts/{accountId}": {
+      rename: param: "accountId": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.options`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/accounts/{accountId}/options": {
+      action: "option": {}
+      rename: param: "accountId": *"id"
+      op: patch: method: *PATCH
+    }
+    path: "/accounts/{accountId}/settings": {
+      action: "setting": {}
+      rename: param: "accountId": *"id"
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: account_plan: {
+    path: "/accounts/{accountId}/plans": {
+      rename: param: "accountId": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: account_setting: {
+    path: "/accounts/{accountId}/settings": {
+      rename: param: "accountId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: billing: {
+    path: "/accounts/{accountId}/billing": {
+      rename: param: "accountId": *"account_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+    path: "/accounts/{accountId}/plans/addons": {
+      rename: param: "accountId": *"account_id"
+      op: create: method: *POST
+      op: update: method: *PUT
+    }
+    path: "/accounts/{accountId}/plans/base": {
+      rename: param: "accountId": *"account_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: cloud_recording: {
+    path: "/meetings/{meetingId}/recordings": {
+      rename: param: "meetingId": *"meeting_id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/meetings/{meetingId}/recordings/settings": {
+      rename: param: "meetingId": *"meeting_id"
+      op: patch: method: *PATCH
+    }
+    path: "/meetings/{meetingId}/recordings/status": {
+      rename: param: "meetingId": *"meeting_id"
+      op: update: method: *PUT
+    }
+    path: "/meetings/{meetingId}/recordings/{recordingId}": {
+      rename: param: "meetingId": *"meeting_id"
+      rename: param: "recordingId": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/meetings/{meetingId}/recordings/{recordingId}/status": {
+      action: "status": {}
+      rename: param: "meetingId": *"meeting_id"
+      rename: param: "recordingId": *"recording_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: dashboard: {
+    path: "/metrics/crc": {
+      op: list: method: *GET
+    }
+    path: "/metrics/im": {
+      op: list: method: *GET
+    }
+    path: "/metrics/meetings": {
+      op: list: method: *GET
+    }
+    path: "/metrics/meetings/{meetingId}/participants": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/meetings/{meetingId}/participants/sharing": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/webinars": {
+      op: list: method: *GET
+    }
+    path: "/metrics/webinars/{webinarId}/participants": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/webinars/{webinarId}/participants/sharing": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/zoomrooms/{zoomroomId}": {
+      rename: param: "zoomroomId": *"zoomroom_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: device: {
+    path: "/h323/devices": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/h323/devices/{deviceId}": {
+      rename: param: "deviceId": *"id"
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: domains_list: {
+    path: "/accounts/{accountId}/managed_domains": {
+      rename: param: "accountId": *"account_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.domains`")|top
+    }
+  }
+
+  entity: group: {
+    path: "/groups": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.groups`")|top
+    }
+    path: "/groups/{groupId}": {
+      rename: param: "groupId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/groups/{groupId}/members": {
+      action: "member": {}
+      rename: param: "groupId": *"id"
+      op: create: method: *POST
+    }
+    path: "/groups/{groupId}/members/{memberId}": {
+      rename: param: "groupId": *"id"
+      rename: param: "memberId": *"member_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: group_member_list: {
+    path: "/groups/{groupId}/members": {
+      action: "members": {}
+      rename: param: "groupId": *"id"
+      op: list: method: *GET
+    }
+    path: "/im/groups/{groupId}/members": {
+      action: "members": {}
+      rename: param: "groupId": *"id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: im_chat: {
+    path: "/im/chat/sessions": {
+      op: list: method: *GET
+    }
+    path: "/im/chat/sessions/{sessionId}": {
+      rename: param: "sessionId": *"session_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: im_group: {
+    path: "/im/groups": {
+      op: create: method: *POST
+    }
+    path: "/im/groups/{groupId}": {
+      rename: param: "groupId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/im/groups/{groupId}/members": {
+      rename: param: "groupId": *"group_id"
+      op: create: method: *POST
+    }
+    path: "/im/groups/{groupId}/members/{memberId}": {
+      rename: param: "groupId": *"group_id"
+      rename: param: "memberId": *"member_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: im_group_list: {
+    path: "/im/groups": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: meeting: {
+    path: "/meetings/{meetingId}": {
+      rename: param: "meetingId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/meetings/{meetingId}/livestream": {
+      action: "livestream": {}
+      rename: param: "meetingId": *"id"
+      op: patch: method: *PATCH
+    }
+    path: "/meetings/{meetingId}/livestream/status": {
+      action: "livestream_status": {}
+      rename: param: "meetingId": *"id"
+      op: patch: method: *PATCH
+    }
+    path: "/meetings/{meetingId}/polls": {
+      action: "poll": {}
+      rename: param: "meetingId": *"id"
+      op: create: method: *POST
+    }
+    path: "/meetings/{meetingId}/polls/{pollId}": {
+      rename: param: "meetingId": *"id"
+      rename: param: "pollId": *"poll_id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/meetings/{meetingId}/registrants": {
+      action: "registrant": {}
+      rename: param: "meetingId": *"id"
+      op: create: method: *POST
+    }
+    path: "/meetings/{meetingId}/registrants/status": {
+      action: "registrant_status": {}
+      rename: param: "meetingId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/meetings/{meetingId}/status": {
+      action: "status": {}
+      rename: param: "meetingId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/metrics/meetings/{meetingId}": {
+      rename: param: "meetingId": *"id"
+      op: load: method: *GET
+    }
+    path: "/past_meetings/{meetingUUID}": {
+      rename: param: "meetingUUID": *"meeting_uuid"
+      op: load: method: *GET
+    }
+    path: "/past_meetings/{meetingUUID}/participants": {
+      rename: param: "meetingUUID": *"meeting_uuid"
+      op: list: method: *GET
+    }
+    path: "/users/{userId}/meetings": {
+      rename: param: "userId": *"user_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: meeting_instance: {
+    path: "/past_meetings/{meetingId}/instances": {
+      rename: param: "meetingId": *"past_meeting_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: meeting_invitation: {
+    path: "/meetings/{meetingId}/invitation": {
+      rename: param: "meetingId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: meeting_registrant_list: {
+    path: "/meetings/{meetingId}/registrants": {
+      action: "registrants": {}
+      rename: param: "meetingId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: pac: {
+    path: "/users/{userId}/pac": {
+      rename: param: "userId": *"user_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tsp_accounts`")|top
+    }
+  }
+
+  entity: poll: {
+    path: "/meetings/{meetingId}/polls": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+    }
+    path: "/webinars/{webinarId}/polls": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: qos: {
+    path: "/metrics/meetings/{meetingId}/participants/qos": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/meetings/{meetingId}/participants/{participantId}/qos": {
+      rename: param: "meetingId": *"meeting_id"
+      rename: param: "participantId": *"participant_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.user_qos`")|top
+    }
+    path: "/metrics/webinars/{webinarId}/participants/qos": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+    }
+    path: "/metrics/webinars/{webinarId}/participants/{participantId}/qos": {
+      rename: param: "participantId": *"participant_id"
+      rename: param: "webinarId": *"webinar_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.user_qos`")|top
+    }
+  }
+
+  entity: recording: {
+    path: "/users/{userId}/recordings": {
+      rename: param: "userId": *"user_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: recording_setting: {
+    path: "/meetings/{meetingId}/recordings/settings": {
+      rename: param: "meetingId": *"meeting_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: report: {
+    path: "/report/cloud_recording": {
+      action: "cloud_recording": {}
+      op: list: method: *GET
+    }
+    path: "/report/daily": {
+      action: "daily": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.dates`")|top
+    }
+    path: "/report/meetings/{meetingId}": {
+      rename: param: "meetingId": *"meeting_id"
+      op: load: method: *GET
+    }
+    path: "/report/meetings/{meetingId}/participants": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+    }
+    path: "/report/meetings/{meetingId}/polls": {
+      rename: param: "meetingId": *"meeting_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.questions`")|top
+    }
+    path: "/report/telephone": {
+      action: "telephone": {}
+      op: list: method: *GET
+    }
+    path: "/report/users": {
+      action: "user": {}
+      op: list: method: *GET
+    }
+    path: "/report/users/{userId}/meetings": {
+      rename: param: "userId": *"user_id"
+      op: list: method: *GET
+    }
+    path: "/report/webinars/{webinarId}": {
+      rename: param: "webinarId": *"webinar_id"
+      op: load: method: *GET
+    }
+    path: "/report/webinars/{webinarId}/participants": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+    }
+    path: "/report/webinars/{webinarId}/polls": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.questions`")|top
+    }
+    path: "/report/webinars/{webinarId}/qa": {
+      rename: param: "webinarId": *"webinar_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.questions`")|top
+    }
+  }
+
+  entity: tracking_field: {
+    path: "/v2/tracking_fields": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/v2/tracking_fields/{fieldId}": {
+      rename: param: "fieldId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: tsp: {
+    path: "/tsp": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.dial_in_numbers`")|top
+      op: patch: method: *PATCH
+    }
+    path: "/users/{userId}/tsp": {
+      rename: param: "userId": *"user_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tsp_accounts`")|top
+    }
+    path: "/users/{userId}/tsp/{tspId}": {
+      rename: param: "tspId": *"id"
+      rename: param: "userId": *"user_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: user: {
+    path: "/users": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/users/email": {
+      action: "email": {}
+      op: load: method: *GET
+    }
+    path: "/users/vanity_name": {
+      action: "vanity_name": {}
+      op: load: method: *GET
+    }
+    path: "/users/zpk": {
+      action: "zpk": {}
+      op: load: method: *GET
+    }
+    path: "/users/{userId}": {
+      rename: param: "userId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/assistants": {
+      action: "assistant": {}
+      rename: param: "userId": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/assistants/{assistantId}": {
+      rename: param: "assistantId": *"assistant_id"
+      rename: param: "userId": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/email": {
+      action: "email": {}
+      rename: param: "userId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/users/{userId}/password": {
+      action: "password": {}
+      rename: param: "userId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/users/{userId}/picture": {
+      action: "picture": {}
+      rename: param: "userId": *"id"
+      op: create: method: *POST
+    }
+    path: "/users/{userId}/schedulers": {
+      action: "scheduler": {}
+      rename: param: "userId": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/schedulers/{schedulerId}": {
+      rename: param: "schedulerId": *"scheduler_id"
+      rename: param: "userId": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/users/{userId}/settings": {
+      action: "setting": {}
+      rename: param: "userId": *"id"
+      op: patch: method: *PATCH
+    }
+    path: "/users/{userId}/status": {
+      action: "status": {}
+      rename: param: "userId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/users/{userId}/token": {
+      action: "token": {}
+      rename: param: "userId": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: user_assistants_list: {
+    path: "/users/{userId}/assistants": {
+      action: "assistants": {}
+      rename: param: "userId": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.assistants`")|top
+    }
+  }
+
+  entity: user_permission: {
+    path: "/users/{userId}/permissions": {
+      rename: param: "userId": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.permissions`")|top
+    }
+  }
+
+  entity: user_schedulers_list: {
+    path: "/users/{userId}/schedulers": {
+      action: "schedulers": {}
+      rename: param: "userId": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.assistants`")|top
+    }
+  }
+
+  entity: user_setting: {
+    path: "/users/{userId}/settings": {
+      rename: param: "userId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: webhook: {
+    path: "/webhooks": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/webhooks/options": {
+      action: "option": {}
+      op: patch: method: *PATCH
+    }
+    path: "/webhooks/{webhookId}": {
+      rename: param: "webhookId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: webinar: {
+    path: "/metrics/webinars/{webinarId}": {
+      rename: param: "webinarId": *"id"
+      op: load: method: *GET
+    }
+    path: "/users/{userId}/webinars": {
+      rename: param: "userId": *"user_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/webinars/{webinarId}": {
+      rename: param: "webinarId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+    path: "/webinars/{webinarId}/panelists": {
+      action: "panelist": {}
+      rename: param: "webinarId": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/webinars/{webinarId}/panelists/{panelistId}": {
+      rename: param: "panelistId": *"panelist_id"
+      rename: param: "webinarId": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/webinars/{webinarId}/polls": {
+      action: "poll": {}
+      rename: param: "webinarId": *"id"
+      op: create: method: *POST
+    }
+    path: "/webinars/{webinarId}/polls/{pollId}": {
+      rename: param: "pollId": *"poll_id"
+      rename: param: "webinarId": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/webinars/{webinarId}/registrants": {
+      action: "registrant": {}
+      rename: param: "webinarId": *"id"
+      op: create: method: *POST
+    }
+    path: "/webinars/{webinarId}/registrants/status": {
+      action: "registrant_status": {}
+      rename: param: "webinarId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/webinars/{webinarId}/status": {
+      action: "status": {}
+      rename: param: "webinarId": *"id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: webinar_instance: {
+    path: "/past_webinars/{webinarId}/instances": {
+      rename: param: "webinarId": *"past_webinar_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: webinar_panelist_list: {
+    path: "/webinars/{webinarId}/panelists": {
+      action: "panelists": {}
+      rename: param: "webinarId": *"id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: webinar_registrant_list: {
+    path: "/webinars/{webinarId}/registrants": {
+      action: "registrants": {}
+      rename: param: "webinarId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: zoom_room_list: {
+    path: "/metrics/zoomrooms": {
+      op: list: method: *GET
+    }
+  }
+
+}

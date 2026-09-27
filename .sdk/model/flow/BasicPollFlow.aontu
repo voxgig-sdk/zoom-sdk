@@ -1,0 +1,26 @@
+# BasicPollFlow
+
+main: kit: flow: BasicPollFlow:
+{
+  entity: "poll",
+  kind: "basic",
+  name: "BasicPollFlow",
+  step: [
+    {
+      m: {
+        webinar_id: "webinar01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "poll_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPollFlow"
+}

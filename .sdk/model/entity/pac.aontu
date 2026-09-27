@@ -1,0 +1,104 @@
+# Entity: pac
+
+main: kit: entity: pac: {
+
+  alias: field: {}
+
+  fields: {
+    conference_id: {
+      h: "Conference Id"
+      n: "conference_id"
+      r: false
+      sh: "Conference ID"
+      t: "`$INTEGER`"
+    }
+    dedicated_dial_in_number: {
+      h: "Dedicated Dial In Number"
+      n: "dedicated_dial_in_number"
+      r: true
+      sh: "List of Dedicated Dial In Numbers"
+      t: "`$ARRAY`"
+    }
+    global_dial_in_numbers: {
+      h: "Global Dial In Numbers"
+      n: "global_dial_in_numbers"
+      r: true
+      sh: "List of Global Dial In Numbers"
+      t: "`$ARRAY`"
+    }
+    listen_only_password: {
+      h: "Listen Only Password"
+      n: "listen_only_password"
+      r: false
+      sh: "Listen-Only Password, numeric value, length is less than 6"
+      t: "`$STRING`"
+    }
+    participant_password: {
+      h: "Participant Password"
+      n: "participant_password"
+      r: false
+      sh: "Participant Password, numeric value, length is less than 6"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "pac"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/pac"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/pac"
+          q: {
+            exist: [
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "pac"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tsp_accounts`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

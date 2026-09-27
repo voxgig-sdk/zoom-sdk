@@ -53,8 +53,113 @@ func init() {
 	core.NewTimeoutFeatureFunc = func() core.Feature {
 		return feature.NewTimeoutFeature()
 	}
+	core.NewAccountEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewAccountEntity(client, entopts)
+	}
+	core.NewAccountPlanEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewAccountPlanEntity(client, entopts)
+	}
+	core.NewAccountSettingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewAccountSettingEntity(client, entopts)
+	}
+	core.NewBillingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewBillingEntity(client, entopts)
+	}
+	core.NewCloudRecordingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewCloudRecordingEntity(client, entopts)
+	}
+	core.NewDashboardEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewDashboardEntity(client, entopts)
+	}
+	core.NewDeviceEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewDeviceEntity(client, entopts)
+	}
+	core.NewDomainsListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewDomainsListEntity(client, entopts)
+	}
+	core.NewGroupEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewGroupEntity(client, entopts)
+	}
+	core.NewGroupMemberListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewGroupMemberListEntity(client, entopts)
+	}
+	core.NewImChatEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewImChatEntity(client, entopts)
+	}
+	core.NewImGroupEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewImGroupEntity(client, entopts)
+	}
+	core.NewImGroupListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewImGroupListEntity(client, entopts)
+	}
 	core.NewMeetingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
 		return entity.NewMeetingEntity(client, entopts)
+	}
+	core.NewMeetingInstanceEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewMeetingInstanceEntity(client, entopts)
+	}
+	core.NewMeetingInvitationEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewMeetingInvitationEntity(client, entopts)
+	}
+	core.NewMeetingRegistrantListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewMeetingRegistrantListEntity(client, entopts)
+	}
+	core.NewPacEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewPacEntity(client, entopts)
+	}
+	core.NewPollEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewPollEntity(client, entopts)
+	}
+	core.NewQosEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewQosEntity(client, entopts)
+	}
+	core.NewRecordingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewRecordingEntity(client, entopts)
+	}
+	core.NewRecordingSettingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewRecordingSettingEntity(client, entopts)
+	}
+	core.NewReportEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewReportEntity(client, entopts)
+	}
+	core.NewTrackingFieldEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewTrackingFieldEntity(client, entopts)
+	}
+	core.NewTspEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewTspEntity(client, entopts)
+	}
+	core.NewUserEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewUserEntity(client, entopts)
+	}
+	core.NewUserAssistantsListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewUserAssistantsListEntity(client, entopts)
+	}
+	core.NewUserPermissionEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewUserPermissionEntity(client, entopts)
+	}
+	core.NewUserSchedulersListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewUserSchedulersListEntity(client, entopts)
+	}
+	core.NewUserSettingEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewUserSettingEntity(client, entopts)
+	}
+	core.NewWebhookEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewWebhookEntity(client, entopts)
+	}
+	core.NewWebinarEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewWebinarEntity(client, entopts)
+	}
+	core.NewWebinarInstanceEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewWebinarInstanceEntity(client, entopts)
+	}
+	core.NewWebinarPanelistListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewWebinarPanelistListEntity(client, entopts)
+	}
+	core.NewWebinarRegistrantListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewWebinarRegistrantListEntity(client, entopts)
+	}
+	core.NewZoomRoomListEntityFunc = func(client *core.ZoomSDK, entopts map[string]any) core.ZoomEntity {
+		return entity.NewZoomRoomListEntity(client, entopts)
 	}
 }
 

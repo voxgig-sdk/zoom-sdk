@@ -149,12 +149,14 @@ func TestMeetingDirect(t *testing.T) {
 			}
 			firstEnt := core.ToMapAny(listData[0])
 			params["id"] = firstEnt["id"]
+			params["poll_id"] = setup.idmap["poll01"]
 		} else {
 			params["id"] = "direct01"
+			params["poll_id"] = "direct02"
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "meetings/{id}",
+			"path":   "meetings/{id}/polls/{poll_id}",
 			"method": "GET",
 			"params": params,
 			"query":  query,
@@ -208,6 +210,9 @@ func TestMeetingDirect(t *testing.T) {
 			if url, ok := call["url"].(string); ok {
 				if !strings.Contains(url, "direct01") {
 					t.Fatalf("expected url to contain direct01, got %v", url)
+				}
+				if !strings.Contains(url, "direct02") {
+					t.Fatalf("expected url to contain direct02, got %v", url)
 				}
 			}
 		}

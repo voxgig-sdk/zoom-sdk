@@ -1,0 +1,77 @@
+# Entity: im_group_list
+
+main: kit: entity: im_group_list: {
+
+  alias: field: {}
+
+  fields: {
+    groups: {
+      h: "Groups"
+      n: "groups"
+      r: false
+      sh: "List of Group objects"
+      t: "`$ARRAY`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_number: {
+      h: "Page Number"
+      n: "page_number"
+      r: false
+      sh: "The page number of current results"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call"
+      t: "`$INTEGER`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "im_group_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /im/groups"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/im/groups"
+          s: [
+            {
+              lit: "im"
+            }
+            {
+              lit: "groups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

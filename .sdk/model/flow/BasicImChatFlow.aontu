@@ -1,0 +1,44 @@
+# BasicImChatFlow
+
+main: kit: flow: BasicImChatFlow:
+{
+  entity: "im_chat",
+  kind: "basic",
+  name: "BasicImChatFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "im_chat_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "im_chat_ref01",
+        srcdatavar: "im_chat_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "im_chat01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-im_chat_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImChatFlow"
+}

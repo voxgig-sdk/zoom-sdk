@@ -1,0 +1,26 @@
+# BasicWebinarPanelistListFlow
+
+main: kit: flow: BasicWebinarPanelistListFlow:
+{
+  entity: "webinar_panelist_list",
+  kind: "basic",
+  name: "BasicWebinarPanelistListFlow",
+  step: [
+    {
+      m: {
+        webinar_id: "webinar01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "webinar_panelist_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWebinarPanelistListFlow"
+}

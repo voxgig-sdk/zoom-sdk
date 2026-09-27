@@ -1,0 +1,112 @@
+# Entity: webinar_registrant_list
+
+main: kit: entity: webinar_registrant_list: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "webinar_registrant_list"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /webinars/{webinarId}/registrants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/webinars/{webinarId}/registrants"
+          q: {
+            "$action": "registrants"
+            exist: [
+              "id"
+              "occurrence_id"
+              "page_number"
+              "page_size"
+              "status"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registrants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

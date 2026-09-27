@@ -1,0 +1,22 @@
+# BasicZoomRoomListFlow
+
+main: kit: flow: BasicZoomRoomListFlow:
+{
+  entity: "zoom_room_list",
+  kind: "basic",
+  name: "BasicZoomRoomListFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "zoom_room_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicZoomRoomListFlow"
+}

@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "account_setting": {
+      "ACCOUNT_SETTING00": {
+        "email_notification": {},
+        "feature": {},
+        "id": "ACCOUNT_SETTING00",
+        "in_meeting": {},
+        "integration": {},
+        "recording": {},
+        "schedule_meting": {},
+        "security": {},
+        "telephony": {},
+        "zoom_rooms": {}
+      },
+      "ACCOUNT_SETTING01": {
+        "email_notification": {},
+        "feature": {},
+        "id": "ACCOUNT_SETTING01",
+        "in_meeting": {},
+        "integration": {},
+        "recording": {},
+        "schedule_meting": {},
+        "security": {},
+        "telephony": {},
+        "zoom_rooms": {}
+      },
+      "ACCOUNT_SETTING02": {
+        "email_notification": {},
+        "feature": {},
+        "id": "ACCOUNT_SETTING02",
+        "in_meeting": {},
+        "integration": {},
+        "recording": {},
+        "schedule_meting": {},
+        "security": {},
+        "telephony": {},
+        "zoom_rooms": {}
+      }
+    }
+  },
+  "new": {
+    "account_setting": {
+      "account_setting_ref01": {
+        "email_notification": {},
+        "feature": {},
+        "in_meeting": {},
+        "integration": {},
+        "recording": {},
+        "schedule_meting": {},
+        "security": {},
+        "telephony": {},
+        "zoom_rooms": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /accounts/{accountId}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

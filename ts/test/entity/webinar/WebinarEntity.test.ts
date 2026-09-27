@@ -1,0 +1,201 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { ZoomSDK, BaseFeature, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('WebinarEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when ZOOM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ZOOM_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = ZoomSDK.test()
+    const ent = testsdk.Webinar()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.ZOOM_TEST_LIVE
+    for (const op of ['create', 'list', 'update', 'load', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'webinar.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"agenda":{"a":true,"h":"Agenda","n":"agenda","r":false,"sh":"Webinar agenda","t":"`$STRING`","key$":"agenda","index$":0},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":false,"sh":"Create time","t":"`$STRING`","key$":"created_at","index$":1},"duration":{"a":true,"h":"Duration","n":"duration","r":false,"sh":"Webinar duration","t":"`$STRING`","key$":"duration","index$":2},"email":{"a":true,"h":"Email","n":"email","r":false,"sh":"User email","t":"`$STRING`","key$":"email","index$":3},"end_time":{"a":true,"fo":"date-time","h":"End Time","n":"end_time","r":false,"sh":"Webinar end time","t":"`$STRING`","key$":"end_time","index$":4},"has_3rd_party_audio":{"a":true,"h":"Has 3rd Party Audio","n":"has_3rd_party_audio","r":false,"t":"`$BOOLEAN`","key$":"has_3rd_party_audio","index$":5},"has_pstn":{"a":true,"h":"Has Pstn","n":"has_pstn","r":false,"t":"`$BOOLEAN`","key$":"has_pstn","index$":6},"has_recording":{"a":true,"h":"Has Recording","n":"has_recording","r":false,"t":"`$BOOLEAN`","key$":"has_recording","index$":7},"has_screen_share":{"a":true,"h":"Has Screen Share","n":"has_screen_share","r":false,"t":"`$BOOLEAN`","key$":"has_screen_share","index$":8},"has_sip":{"a":true,"h":"Has Sip","n":"has_sip","r":false,"t":"`$BOOLEAN`","key$":"has_sip","index$":9},"has_video":{"a":true,"h":"Has Video","n":"has_video","r":false,"t":"`$BOOLEAN`","key$":"has_video","index$":10},"has_voip":{"a":true,"h":"Has Voip","n":"has_voip","r":false,"t":"`$BOOLEAN`","key$":"has_voip","index$":11},"host":{"a":true,"h":"Host","n":"host","r":false,"sh":"User display name","t":"`$STRING`","key$":"host","index$":12},"host_id":{"a":true,"h":"Host Id","n":"host_id","r":false,"sh":"ID of the user set as host of webinar","t":"`$STRING`","key$":"host_id","index$":13},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Webinar Poll ID","t":"`$STRING`","key$":"id","index$":14},"join_url":{"a":true,"h":"Join Url","n":"join_url","r":false,"sh":"Join url","t":"`$STRING`","key$":"join_url","index$":15},"occurrences":{"a":true,"h":"Occurrences","n":"occurrences","r":false,"sh":"Array of occurrence objects","t":"`$ARRAY`","key$":"occurrences","index$":16},"page_count":{"a":true,"h":"Page Count","n":"page_count","r":false,"sh":"The number of items returned on this page","t":"`$INTEGER`","key$":"page_count","index$":17},"page_number":{"a":true,"h":"Page Number","n":"page_number","r":false,"sh":"The page number of current results","t":"`$INTEGER`","key$":"page_number","index$":18},"page_size":{"a":true,"h":"Page Size","n":"page_size","r":false,"sh":"The number of records returned within a single API call","t":"`$INTEGER`","key$":"page_size","index$":19},"participants":{"a":true,"h":"Participants","n":"participants","r":false,"sh":"Webinar participant count","t":"`$INTEGER`","key$":"participants","index$":20},"questions":{"a":true,"h":"Questions","n":"questions","r":false,"sh":"Array of Polls","t":"`$ARRAY`","key$":"questions","index$":21},"settings":{"a":true,"h":"Settings","n":"settings","r":false,"sh":"Webinar Settings","t":"`$OBJECT`","key$":"settings","index$":22},"start_time":{"a":true,"fo":"date-time","h":"Start Time","n":"start_time","r":false,"sh":"Webinar start time","t":"`$STRING`","key$":"start_time","index$":23},"start_url":{"a":true,"h":"Start Url","n":"start_url","r":false,"sh":"Start url","t":"`$STRING`","key$":"start_url","index$":24},"status":{"a":true,"h":"Status","n":"status","r":false,"sh":"Status of the Webinar Poll","t":"`$STRING`","key$":"status","index$":25},"timezone":{"a":true,"h":"Timezone","n":"timezone","r":false,"sh":"Timezone to format start_time","t":"`$STRING`","key$":"timezone","index$":26},"title":{"a":true,"h":"Title","n":"title","r":false,"sh":"Poll Title","t":"`$STRING`","key$":"title","index$":27},"topic":{"a":true,"h":"Topic","n":"topic","r":false,"sh":"Webinar topic","t":"`$STRING`","key$":"topic","index$":28},"total_records":{"a":true,"h":"Total Records","n":"total_records","r":false,"sh":"The number of all records available across pages","t":"`$INTEGER`","key$":"total_records","index$":29},"tracking_fields":{"a":true,"h":"Tracking Fields","n":"tracking_fields","r":false,"sh":"Tracking fields","t":"`$ARRAY`","key$":"tracking_fields","index$":30},"type":{"a":true,"h":"Type","n":"type","r":false,"sh":"Webinar Type","t":"`$INTEGER`","key$":"type","index$":31},"user_type":{"a":true,"h":"User Type","n":"user_type","r":false,"sh":"User type","t":"`$STRING`","key$":"user_type","index$":32},"uuid":{"a":true,"fo":"uuid","h":"Uuid","n":"uuid","r":false,"sh":"Webinar UUID","t":"`$STRING`","key$":"uuid","index$":33},"webinars":{"a":true,"h":"Webinars","n":"webinars","r":false,"sh":"List of Webinar objects","t":"`$ARRAY`","key$":"webinars","index$":34}},"id":{"field":"id","name":"id"},"name":"webinar","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /webinars/{webinarId}/registrants","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0},{"a":true,"k":"query","n":"occurrence_id","or":"occurrence_id","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"POST","o":"/webinars/{webinarId}/registrants","q":{"$action":"registrant","exist":["body","id","occurrence_id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"registrants"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"POST /webinars/{webinarId}/panelists","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/webinars/{webinarId}/panelists","q":{"$action":"panelist","exist":["body","id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"panelists"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"POST /webinars/{webinarId}/polls","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"POST","o":"/webinars/{webinarId}/polls","q":{"$action":"poll","exist":["body","id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"polls"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"POST /users/{userId}/webinars","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"user_id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"POST","o":"/users/{userId}/webinars","q":{"exist":["body","user_id"]},"r":{"param":{"userId":"user_id"}},"s":[{"lit":"users"},{"var":"user_id"},{"lit":"webinars"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /users/{userId}/webinars","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"user_id","or":"user_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"page_number","or":"page_number","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"k":"query","n":"page_size","or":"page_size","r":false,"t":"`$INTEGER`","index$":1}]},"k":"http","m":"GET","o":"/users/{userId}/webinars","q":{"exist":["page_number","page_size","user_id"]},"r":{"param":{"userId":"user_id"}},"s":[{"lit":"users"},{"var":"user_id"},{"lit":"webinars"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /webinars/{webinarId}/polls/{pollId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"poll_id","or":"poll_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/webinars/{webinarId}/polls/{pollId}","q":{"exist":["id","poll_id"]},"r":{"param":{"pollId":"poll_id","webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"polls"},{"var":"poll_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /metrics/webinars/{webinarId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"type","or":"type","r":false,"t":"`$ANY`","index$":0}]},"k":"http","m":"GET","o":"/metrics/webinars/{webinarId}","q":{"exist":["id","type"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"metrics"},{"lit":"webinars"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"GET /webinars/{webinarId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/webinars/{webinarId}","q":{"exist":["id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"load"},"patch":{"input":"data","name":"patch","points":[{"a":true,"co":{"id":"PATCH /webinars/{webinarId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$OBJECT`","index$":0}]},"k":"http","m":"PATCH","o":"/webinars/{webinarId}","q":{"exist":["body","id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"patch"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /webinars/{webinarId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"occurrence_id","or":"occurrence_id","r":false,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/webinars/{webinarId}","q":{"exist":["id","occurrence_id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /webinars/{webinarId}/panelists/{panelistId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"panelist_id","or":"panelist_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/webinars/{webinarId}/panelists/{panelistId}","q":{"exist":["id","panelist_id"]},"r":{"param":{"panelistId":"panelist_id","webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"panelists"},{"var":"panelist_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"DELETE /webinars/{webinarId}/polls/{pollId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"poll_id","or":"poll_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/webinars/{webinarId}/polls/{pollId}","q":{"exist":["id","poll_id"]},"r":{"param":{"pollId":"poll_id","webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"polls"},{"var":"poll_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"co":{"id":"DELETE /webinars/{webinarId}/panelists","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/webinars/{webinarId}/panelists","q":{"$action":"panelist","exist":["id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"panelists"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PUT /webinars/{webinarId}/registrants/status","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0},{"a":true,"k":"query","n":"occurrence_id","or":"occurrence_id","r":false,"t":"`$STRING`","index$":1}]},"k":"http","m":"PUT","o":"/webinars/{webinarId}/registrants/status","q":{"$action":"registrant_status","exist":["body","id","occurrence_id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"registrants"},{"lit":"status"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"PUT /webinars/{webinarId}/polls/{pollId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"poll_id","or":"poll_id","r":true,"t":"`$STRING`","index$":1}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"PUT","o":"/webinars/{webinarId}/polls/{pollId}","q":{"exist":["body","id","poll_id"]},"r":{"param":{"pollId":"poll_id","webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"polls"},{"var":"poll_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"co":{"id":"PUT /webinars/{webinarId}/status","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"webinar_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"PUT","o":"/webinars/{webinarId}/status","q":{"$action":"status","exist":["body","id"]},"r":{"param":{"webinarId":"id"}},"s":[{"lit":"webinars"},{"var":"id"},{"lit":"status"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"update"}},"relations":{"ancestors":[["$.main.kit.entity.user"],["$.main.kit.entity.poll"]]},"key$":"webinar","name__orig":"webinar","Name":"Webinar","name_":"webinar","name-":"webinar","NAME":"WEBINAR","index$":31}, {"active":true,"entity":"webinar","key$":"BasicWebinarFlow","kind":"basic","name":"BasicWebinarFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"webinar_ref01"},"m":{"user_id":"user01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{"user_id":"user01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"webinar_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"webinar_ref01","srcdatavar":"webinar_ref01_data","suffix":"_up0","textfield":"agenda"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-webinar_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"webinar_ref01","srcdatavar":"webinar_ref01_data","suffix":"_dt0"},"m":{"id":"webinar01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-webinar_ref01"}}],"index$":3},{"a":true,"d":{},"i":{"ref":"webinar_ref01","suffix":"_rm0"},"m":{"id":"webinar01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{"user_id":"user01"},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"webinar_ref01"}}],"index$":5}]}, 'Webinar', {"POST /webinars/{webinarId}/registrants":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"query","name":"occurrence_ids","type":"string","description":"Occurrence IDs, could get this value from Webinar Get API. Multiple value separated by comma.","index$":1},{"in":"body","name":"body","required":true,"schema":{"type":"object","description":"Webianr registrant","allOf":[{"type":"object","description":"Registrant base object","required":["email","first_name","last_name"],"properties":{"email":{"type":"string","description":"A valid email address"},"first_name":{"type":"string","description":"User’s first name"},"last_name":{"type":"string","description":"User’s last name"},"address":{"type":"string","description":"Address"},"city":{"type":"string","description":"City"},"country":{"type":"string","description":"Country"},"zip":{"type":"string","description":"Zip/Postal Code"},"state":{"type":"string","description":"State/Province"},"phone":{"type":"string","description":"Phone"},"industry":{"type":"string","description":"Industry"},"org":{"type":"string","description":"Organization"},"job_title":{"type":"string","description":"Job Title"},"purchasing_time_frame":{"type":"string","description":"Purchasing Time Frame","enum":["Within a month","1-3 months","4-6 months","More than 6 months","No timeframe"]},"role_in_purchase_process":{"type":"string","description":"Role in Purchase Process","enum":["Decision Maker","Evaluator/Recommender","Influencer","Not involved"]},"no_of_employees":{"type":"string","description":"Number of Employees","enum":["1-20","21-50","51-100","101-500","500-1,000","1,001-5,000","5,001-10,000","More than 10,000"]},"comments":{"type":"string","description":"Questions & Comments"},"custom_questions":{"type":"array","description":"Custom Questions","items":{"type":"object","description":"Custom Question","properties":{"title":{},"value":{}},"x-ref":"#/definitions/CustomQuestion"}}},"x-ref":"#/definitions/Registrant"}],"x-ref":"#/definitions/WebinarRegistrant"},"index$":2}]},"POST /webinars/{webinarId}/panelists":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"body","name":"body","required":true,"schema":{"type":"object","description":"Webinar panelist","properties":{"panelists":{"type":"array","description":"List of Panelist objects","maximum":30,"items":{"allOf":[{"type":"object","description":"Panelist base object","properties":{"name":{},"email":{}},"x-ref":"#/definitions/Panelist"}]}}},"x-ref":"#/definitions/WebinarPanelist"},"index$":1}]},"POST /webinars/{webinarId}/polls":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"body","name":"body","required":true,"description":"Webinar poll object","schema":{"allOf":[{"type":"object","title":"Poll","description":"Poll","properties":{"title":{"description":"Poll Title","type":"string","key$":"title"},"questions":{"description":"Array of Polls","items":{"properties":{"answers":{},"name":{},"type":{}}},"type":"array","key$":"questions"}},"x-ref":"#/definitions/Poll"}]},"index$":1}]},"POST /users/{userId}/webinars":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"body","name":"body","required":true,"description":"User","schema":{"type":"object","description":"Webinar object","allOf":[{"type":"object","description":"Base webinar object for sessions","properties":{"topic":{"type":"string","description":"Webinar topic"},"type":{"type":"integer","description":"Webinar Type","default":5,"enum":[5,6,9],"x-enum-descriptions":["Webinar","Recurring Webinar with no fixed time","Recurring Webinar with fixed time"]},"start_time":{"type":"string","format":"date-time","description":"Webinar start time, in the format \"yyyy-MM-dd'T'HH:mm:ss'Z'\", should be GMT time. In the format \"yyyy-MM-dd'T'HH:mm:ss\", should be local time, need to specify the time zone. Only used for scheduled webinar and recurring webinar with fixed time."},"duration":{"type":"integer","description":"Webinar duration (minutes). Used for scheduled webinar only"},"timezone":{"type":"string","description":"Timezone to format start_time. For example, \"America/Los_Angeles\". For scheduled meetings only. Please reference our [timezone](#timezones) list for supported timezones and their formats."},"password":{"type":"string","description":"Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters."},"agenda":{"type":"string","description":"Webinar description"},"tracking_fields":{"type":"array","description":"Tracking fields","items":{"properties":{"field":{},"value":{}}}},"recurrence":{"type":"object","description":"Recurrence object","properties":{"type":{"type":"integer","description":"Recurrence meeting type","enum":[],"x-enum-descriptions":[]},"repeat_interval":{"type":"integer","description":"At which interval should the meeting repeat? For a daily meeting, max of 90 days. For a weekly meeting, max of 12 weeks. For a monthly meeting, max of 3 months."},"weekly_days":{"type":"integer","description":"Days of the week the meeting should repeat, multiple values separated by comma","enum":[],"x-enum-descriptions":[]},"monthly_day":{"type":"integer","description":"Day of the month for the meeting to be scheduled. The value range is from 1 to 31."},"monthly_week":{"type":"integer","description":"Week for which the meeting should recur each month,","enum":[],"x-enum-descriptions":[]},"monthly_week_day":{"type":"integer","description":"Day for which the meeting should recur each month","enum":[],"x-enum-descriptions":[]},"end_times":{"type":"integer","description":"Select how many times the meeting will occur before it is canceled. (Cannot be used with \"end_date_time\".)","default":1,"maximum":50},"end_date_time":{"type":"string","description":"Select a date the meeting will occur before it is canceled.. Should be UTC time, such as 2017-11-25T12:00:00Z. (Cannot be used with \"end_times\".)","format":"date-time"}},"x-ref":"#/definitions/Recurrence"},"settings":{"type":"object","description":"Webinar Settings","properties":{"host_video":{"type":"boolean","description":"Start video when host joins webinar"},"panelists_video":{"type":"boolean","description":"Start video when panelists join webinar"},"practice_session":{"type":"boolean","description":"Enable Practice Session","default":false},"hd_video":{"type":"boolean","description":"Default to HD Video","default":false},"approval_type":{"type":"integer","default":2,"enum":[],"x-enum-descriptions":[]},"registration_type":{"type":"integer","description":"Registration type. Used for recurring webinar with fixed time only.","default":1,"enum":[],"x-enum-descriptions":[]},"audio":{"type":"string","description":"Determine how participants can join the audio portion of the meeting","default":"both","enum":[],"x-enum-descriptions":[]},"auto_recording":{"type":"string","default":"none","enum":[],"x-enum-descriptions":[]},"enforce_login":{"type":"boolean","description":"Only signed-in users can join this meeting"},"enforce_login_domains":{"type":"string","description":"Only signed-in users with specified domains can join meetings"},"alternative_hosts":{"type":"string","description":"Alternative hosts emails or IDs. Multiple values separated by comma."},"close_registration":{"type":"boolean","description":"Close registration after event date"},"show_share_button":{"type":"boolean","description":"Show social share buttons on registration page"},"allow_multiple_devices":{"type":"boolean","description":"Allow attendees to join from multiple devices"},"on_demand":{"type":"boolean","description":"Make the webinar on-demand","default":false}},"x-ref":"#/definitions/WebinarSettings"}},"x-ref":"#/definitions/SessionWebinar"}],"x-ref":"#/definitions/Webinar"},"index$":1}]},"GET /users/{userId}/webinars":{"protocol":"http","parameters":[{"in":"path","name":"userId","description":"The user ID or email address","type":"string","required":true,"x-ref":"#/parameters/UserId","index$":0},{"in":"query","name":"page_size","description":"The number of records returned within a single API call","type":"integer","default":30,"maximum":300,"x-ref":"#/parameters/PageSize","index$":1},{"in":"query","name":"page_number","description":"Current page number of returned records","type":"integer","default":1,"x-ref":"#/parameters/PageNumber","index$":2}]},"GET /webinars/{webinarId}/polls/{pollId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"path","name":"pollId","description":"The poll ID","type":"string","required":true,"index$":1}]},"GET /metrics/webinars/{webinarId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance.","type":"string","required":true,"x-ref":"#/parameters/WebinarId4Metrics","index$":0},{"in":"query","name":"type","description":"The webinar type","type":"string","default":"live","enum":["past","live"],"x-enum-descriptions":["past webinar","live webinar"],"x-ref":"#/parameters/WebinarTypePast2","index$":1}]},"GET /webinars/{webinarId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0}]},"PATCH /webinars/{webinarId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"body","name":"body","required":true,"description":"Webinar","schema":{"type":"object","description":"Webinar object","allOf":[{"type":"object","description":"Base webinar object for sessions","properties":{"topic":{"type":"string","description":"Webinar topic"},"type":{"type":"integer","description":"Webinar Type","default":5,"enum":[5,6,9],"x-enum-descriptions":["Webinar","Recurring Webinar with no fixed time","Recurring Webinar with fixed time"]},"start_time":{"type":"string","format":"date-time","description":"Webinar start time, in the format \"yyyy-MM-dd'T'HH:mm:ss'Z'\", should be GMT time. In the format \"yyyy-MM-dd'T'HH:mm:ss\", should be local time, need to specify the time zone. Only used for scheduled webinar and recurring webinar with fixed time."},"duration":{"type":"integer","description":"Webinar duration (minutes). Used for scheduled webinar only"},"timezone":{"type":"string","description":"Timezone to format start_time. For example, \"America/Los_Angeles\". For scheduled meetings only. Please reference our [timezone](#timezones) list for supported timezones and their formats."},"password":{"type":"string","description":"Webinar password. Password may only contain the following characters: [a-z A-Z 0-9 @ - _ *]. Max of 10 characters."},"agenda":{"type":"string","description":"Webinar description"},"tracking_fields":{"type":"array","description":"Tracking fields","items":{"properties":{"field":{},"value":{}}}},"recurrence":{"type":"object","description":"Recurrence object","properties":{"type":{"type":"integer","description":"Recurrence meeting type","enum":[],"x-enum-descriptions":[]},"repeat_interval":{"type":"integer","description":"At which interval should the meeting repeat? For a daily meeting, max of 90 days. For a weekly meeting, max of 12 weeks. For a monthly meeting, max of 3 months."},"weekly_days":{"type":"integer","description":"Days of the week the meeting should repeat, multiple values separated by comma","enum":[],"x-enum-descriptions":[]},"monthly_day":{"type":"integer","description":"Day of the month for the meeting to be scheduled. The value range is from 1 to 31."},"monthly_week":{"type":"integer","description":"Week for which the meeting should recur each month,","enum":[],"x-enum-descriptions":[]},"monthly_week_day":{"type":"integer","description":"Day for which the meeting should recur each month","enum":[],"x-enum-descriptions":[]},"end_times":{"type":"integer","description":"Select how many times the meeting will occur before it is canceled. (Cannot be used with \"end_date_time\".)","default":1,"maximum":50},"end_date_time":{"type":"string","description":"Select a date the meeting will occur before it is canceled.. Should be UTC time, such as 2017-11-25T12:00:00Z. (Cannot be used with \"end_times\".)","format":"date-time"}},"x-ref":"#/definitions/Recurrence"},"settings":{"allOf":[{"type":"object","description":"Webinar Settings","properties":{},"x-ref":"#/definitions/WebinarSettings"},{"properties":{}}]}},"x-ref":"#/definitions/SessionWebinarUpdate"}],"x-ref":"#/definitions/WebinarUpdate"},"index$":1}]},"DELETE /webinars/{webinarId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"query","name":"occurrence_id","description":"The meeting occurrence ID","type":"string","x-ref":"#/parameters/OccurrenceId","index$":1}]},"DELETE /webinars/{webinarId}/panelists/{panelistId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"path","name":"panelistId","description":"The panelist ID","type":"integer","required":true,"index$":1}]},"DELETE /webinars/{webinarId}/polls/{pollId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"path","name":"pollId","description":"The poll ID","type":"string","required":true,"index$":1}]},"DELETE /webinars/{webinarId}/panelists":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0}]},"PUT /webinars/{webinarId}/registrants/status":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"query","name":"occurrence_id","description":"The meeting occurrence ID","type":"string","x-ref":"#/parameters/OccurrenceId","index$":1},{"in":"body","name":"body","required":true,"schema":{"required":["action"],"properties":{"action":{"type":"string","enum":["approve","cancel","deny"],"x-enum-descriptions":["Approve registrant","Cancel registrant","Deny registrant"]},"registrants":{"type":"array","description":"List of registrants","maximum":30,"items":{"properties":{"id":{"type":"string"},"email":{"type":"string"}}}}}},"index$":2}]},"PUT /webinars/{webinarId}/polls/{pollId}":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"path","name":"pollId","description":"The poll ID","type":"string","required":true,"index$":1},{"in":"body","name":"body","required":true,"description":"Webinar Poll","schema":{"allOf":[{"type":"object","title":"Poll","description":"Poll","properties":{"title":{"description":"Poll Title","type":"string","key$":"title"},"questions":{"description":"Array of Polls","items":{"properties":{"answers":{},"name":{},"type":{}}},"type":"array","key$":"questions"}},"x-ref":"#/definitions/Poll"}]},"index$":2}]},"PUT /webinars/{webinarId}/status":{"protocol":"http","parameters":[{"in":"path","name":"webinarId","description":"The webinar ID","type":"integer","required":true,"x-ref":"#/parameters/WebinarId","index$":0},{"in":"body","name":"body","required":true,"schema":{"properties":{"action":{"type":"string","enum":["end"],"x-enum-descriptions":["end a webinar"]}}},"index$":1}]}})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const webinar_ref01_ent = client.Webinar()
+    let webinar_ref01_data = setup.data.new.webinar['webinar_ref01']
+    webinar_ref01_data['user_id'] = setup.idmap['user01']
+
+    webinar_ref01_data = (await webinar_ref01_ent.create(webinar_ref01_data)).data()
+    assert(null != webinar_ref01_data.id)
+
+
+    // LIST
+    const webinar_ref01_match: any = {}
+    webinar_ref01_match['user_id'] = setup.idmap['user01']
+
+    const webinar_ref01_list = (await webinar_ref01_ent.list(webinar_ref01_match)).map((e: any) => e.data())
+
+    assert(!isempty(select(webinar_ref01_list, { id: webinar_ref01_data.id })))
+
+
+    // UPDATE
+    const webinar_ref01_data_up0: any = {}
+    webinar_ref01_data_up0.id = webinar_ref01_data.id
+
+    const webinar_ref01_markdef_up0 = { name: 'agenda', value: 'Mark01-webinar_ref01_' + setup.now }
+    ;(webinar_ref01_data_up0 as any)[webinar_ref01_markdef_up0.name] = webinar_ref01_markdef_up0.value
+
+    const webinar_ref01_resdata_up0 = (await webinar_ref01_ent.update(webinar_ref01_data_up0)).data()
+    assert(webinar_ref01_resdata_up0.id === webinar_ref01_data_up0.id)
+
+    assert((webinar_ref01_resdata_up0 as any)[webinar_ref01_markdef_up0.name] === webinar_ref01_markdef_up0.value)
+
+
+    // LOAD
+    const webinar_ref01_match_dt0: any = {}
+    webinar_ref01_match_dt0.id = webinar_ref01_data.id
+    const webinar_ref01_data_dt0 = (await webinar_ref01_ent.load(webinar_ref01_match_dt0)).data()
+    assert(webinar_ref01_data_dt0.id === webinar_ref01_data.id)
+
+
+    // REMOVE
+    const webinar_ref01_match_rm0: any = { id: webinar_ref01_data.id }
+    await webinar_ref01_ent.remove(webinar_ref01_match_rm0)
+  
+
+    // LIST
+    const webinar_ref01_match_rt0: any = {}
+    webinar_ref01_match_rt0['user_id'] = setup.idmap['user01']
+
+    const webinar_ref01_list_rt0 = (await webinar_ref01_ent.list(webinar_ref01_match_rt0)).map((e: any) => e.data())
+
+    assert(isempty(select(webinar_ref01_list_rt0, { id: webinar_ref01_data.id })))
+
+
+  })
+})
+
+
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/webinar/WebinarTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = ZoomSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['webinar01','webinar02','webinar03','user01','user02','user03','poll01','poll02','poll03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'ZOOM_TEST_WEBINAR_ENTID': idmap,
+    'ZOOM_TEST_LIVE': 'FALSE',
+    'ZOOM_TEST_EXPLAIN': 'FALSE',
+    'ZOOM_APIKEY': '',
+  })
+
+  idmap = env['ZOOM_TEST_WEBINAR_ENTID']
+
+  const live = 'TRUE' === env.ZOOM_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['ZOOM_TEST_WEBINAR_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new ZoomSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.ZOOM_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.ZOOM_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

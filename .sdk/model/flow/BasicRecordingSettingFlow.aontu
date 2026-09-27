@@ -1,0 +1,32 @@
+# BasicRecordingSettingFlow
+
+main: kit: flow: BasicRecordingSettingFlow:
+{
+  entity: "recording_setting",
+  kind: "basic",
+  name: "BasicRecordingSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "recording_setting_ref01",
+        srcdatavar: "recording_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "recording_setting01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-recording_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRecordingSettingFlow"
+}

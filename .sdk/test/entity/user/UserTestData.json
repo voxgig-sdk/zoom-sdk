@@ -1,0 +1,233 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "account_id": "ACCOUNT01",
+        "cms_user_id": "CMS_USER01",
+        "created_at": "s110",
+        "dept": "s111",
+        "email": "s112",
+        "first_name": "s113",
+        "group_ids": [],
+        "host_key": "s115",
+        "id": "USER00",
+        "im_group_ids": [],
+        "language": "s118",
+        "last_client_version": "s119",
+        "last_login_time": "s11a",
+        "last_name": "s11b",
+        "page_count": 284,
+        "page_number": 285,
+        "page_size": 286,
+        "personal_meeting_url": "s11f",
+        "pic_url": "s120",
+        "pmi": "s121",
+        "timezone": "s122",
+        "total_records": 291,
+        "type": 292,
+        "use_pmi": false,
+        "users": [],
+        "vanity_url": "s127",
+        "verified": 296,
+        "assistant_id": "ASSISTANT01",
+        "scheduler_id": "SCHEDULER01"
+      },
+      "USER01": {
+        "account_id": "ACCOUNT01",
+        "cms_user_id": "CMS_USER01",
+        "created_at": "s21e",
+        "dept": "s21f",
+        "email": "s220",
+        "first_name": "s221",
+        "group_ids": [],
+        "host_key": "s223",
+        "id": "USER01",
+        "im_group_ids": [],
+        "language": "s226",
+        "last_client_version": "s227",
+        "last_login_time": "s228",
+        "last_name": "s229",
+        "page_count": 554,
+        "page_number": 555,
+        "page_size": 556,
+        "personal_meeting_url": "s22d",
+        "pic_url": "s22e",
+        "pmi": "s22f",
+        "timezone": "s230",
+        "total_records": 561,
+        "type": 562,
+        "use_pmi": false,
+        "users": [],
+        "vanity_url": "s235",
+        "verified": 566,
+        "assistant_id": "ASSISTANT01",
+        "scheduler_id": "SCHEDULER01"
+      },
+      "USER02": {
+        "account_id": "ACCOUNT01",
+        "cms_user_id": "CMS_USER01",
+        "created_at": "s32c",
+        "dept": "s32d",
+        "email": "s32e",
+        "first_name": "s32f",
+        "group_ids": [],
+        "host_key": "s331",
+        "id": "USER02",
+        "im_group_ids": [],
+        "language": "s334",
+        "last_client_version": "s335",
+        "last_login_time": "s336",
+        "last_name": "s337",
+        "page_count": 824,
+        "page_number": 825,
+        "page_size": 826,
+        "personal_meeting_url": "s33b",
+        "pic_url": "s33c",
+        "pmi": "s33d",
+        "timezone": "s33e",
+        "total_records": 831,
+        "type": 832,
+        "use_pmi": false,
+        "users": [],
+        "vanity_url": "s343",
+        "verified": 836,
+        "assistant_id": "ASSISTANT01",
+        "scheduler_id": "SCHEDULER01"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "account_id": "ACCOUNT01",
+        "cms_user_id": "CMS_USER01",
+        "created_at": "s43a",
+        "dept": "s43b",
+        "email": "s43c",
+        "first_name": "s43d",
+        "group_ids": [],
+        "host_key": "s43f",
+        "im_group_ids": [],
+        "language": "s442",
+        "last_client_version": "s443",
+        "last_login_time": "s444",
+        "last_name": "s445",
+        "page_count": 1094,
+        "page_number": 1095,
+        "page_size": 1096,
+        "personal_meeting_url": "s449",
+        "pic_url": "s44a",
+        "pmi": "s44b",
+        "timezone": "s44c",
+        "total_records": 1101,
+        "type": 1102,
+        "use_pmi": false,
+        "users": [],
+        "vanity_url": "s451",
+        "verified": 1106
+      }
+    }
+  },
+  "requests": {
+    "POST /users/{userId}/assistants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /users/{userId}/picture": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{userId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/{userId}/token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/vanity_name": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /users/zpk": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/assistants/{assistantId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/schedulers/{schedulerId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/assistants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/schedulers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /users/{userId}/token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /users/{userId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /users/{userId}/email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /users/{userId}/password": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /users/{userId}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /users/{userId}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

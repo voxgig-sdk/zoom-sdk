@@ -1,0 +1,26 @@
+# BasicRecordingFlow
+
+main: kit: flow: BasicRecordingFlow:
+{
+  entity: "recording",
+  kind: "basic",
+  name: "BasicRecordingFlow",
+  step: [
+    {
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "recording_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRecordingFlow"
+}

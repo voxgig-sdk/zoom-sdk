@@ -264,7 +264,6 @@ func (sdk *ZoomSDK) rawRequest(fetchargs map[string]any) (map[string]any, error)
 		if !noBody {
 			if jf := vs.GetProp(fm, "json"); jf != nil {
 				if f, ok := jf.(func() any); ok {
-					// f() returns nil on parse error in our fetcher.
 					jsonData = f()
 				}
 			}
@@ -281,17 +280,6 @@ func (sdk *ZoomSDK) rawRequest(fetchargs map[string]any) (map[string]any, error)
 	return map[string]any{"ok": false, "err": ctx.MakeError("direct_invalid", "invalid response type")}, nil
 }
 
-// Raw GraphQL access: the pressure valve that makes the generated surface's
-// deliberate omissions (per-call selection sets, typed filter builders,
-// batching, subscriptions) livable — the whole schema stays reachable.
-//
-// Thin wrapper over the same prepare/fetch path Direct uses, with the one
-// thing raw Direct cannot do for GraphQL: a GraphQL failure rides HTTP 200
-// as a top-level `errors` array, so status alone would report a failed query
-// as ok.
-//
-// NOTE: like Direct, this bypasses the feature pipeline — no retry,
-// ratelimit or paging features apply.
 func (sdk *ZoomSDK) Graphql(
 	query string, variables map[string]any, ctrl map[string]any,
 ) (map[string]any, error) {
@@ -338,11 +326,291 @@ func (sdk *ZoomSDK) Graphql(
 }
 
 
+// Account returns a Account entity bound to this client.
+// Idiomatic usage: client.Account(nil).List(nil, nil) or
+// client.Account(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Account(data map[string]any) ZoomEntity {
+	return NewAccountEntityFunc(sdk, data)
+}
+
+
+// AccountPlan returns a AccountPlan entity bound to this client.
+// Idiomatic usage: client.AccountPlan(nil).List(nil, nil) or
+// client.AccountPlan(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) AccountPlan(data map[string]any) ZoomEntity {
+	return NewAccountPlanEntityFunc(sdk, data)
+}
+
+
+// AccountSetting returns a AccountSetting entity bound to this client.
+// Idiomatic usage: client.AccountSetting(nil).List(nil, nil) or
+// client.AccountSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) AccountSetting(data map[string]any) ZoomEntity {
+	return NewAccountSettingEntityFunc(sdk, data)
+}
+
+
+// Billing returns a Billing entity bound to this client.
+// Idiomatic usage: client.Billing(nil).List(nil, nil) or
+// client.Billing(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Billing(data map[string]any) ZoomEntity {
+	return NewBillingEntityFunc(sdk, data)
+}
+
+
+// CloudRecording returns a CloudRecording entity bound to this client.
+// Idiomatic usage: client.CloudRecording(nil).List(nil, nil) or
+// client.CloudRecording(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) CloudRecording(data map[string]any) ZoomEntity {
+	return NewCloudRecordingEntityFunc(sdk, data)
+}
+
+
+// Dashboard returns a Dashboard entity bound to this client.
+// Idiomatic usage: client.Dashboard(nil).List(nil, nil) or
+// client.Dashboard(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Dashboard(data map[string]any) ZoomEntity {
+	return NewDashboardEntityFunc(sdk, data)
+}
+
+
+// Device returns a Device entity bound to this client.
+// Idiomatic usage: client.Device(nil).List(nil, nil) or
+// client.Device(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Device(data map[string]any) ZoomEntity {
+	return NewDeviceEntityFunc(sdk, data)
+}
+
+
+// DomainsList returns a DomainsList entity bound to this client.
+// Idiomatic usage: client.DomainsList(nil).List(nil, nil) or
+// client.DomainsList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) DomainsList(data map[string]any) ZoomEntity {
+	return NewDomainsListEntityFunc(sdk, data)
+}
+
+
+// Group returns a Group entity bound to this client.
+// Idiomatic usage: client.Group(nil).List(nil, nil) or
+// client.Group(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Group(data map[string]any) ZoomEntity {
+	return NewGroupEntityFunc(sdk, data)
+}
+
+
+// GroupMemberList returns a GroupMemberList entity bound to this client.
+// Idiomatic usage: client.GroupMemberList(nil).List(nil, nil) or
+// client.GroupMemberList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) GroupMemberList(data map[string]any) ZoomEntity {
+	return NewGroupMemberListEntityFunc(sdk, data)
+}
+
+
+// ImChat returns a ImChat entity bound to this client.
+// Idiomatic usage: client.ImChat(nil).List(nil, nil) or
+// client.ImChat(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) ImChat(data map[string]any) ZoomEntity {
+	return NewImChatEntityFunc(sdk, data)
+}
+
+
+// ImGroup returns a ImGroup entity bound to this client.
+// Idiomatic usage: client.ImGroup(nil).List(nil, nil) or
+// client.ImGroup(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) ImGroup(data map[string]any) ZoomEntity {
+	return NewImGroupEntityFunc(sdk, data)
+}
+
+
+// ImGroupList returns a ImGroupList entity bound to this client.
+// Idiomatic usage: client.ImGroupList(nil).List(nil, nil) or
+// client.ImGroupList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) ImGroupList(data map[string]any) ZoomEntity {
+	return NewImGroupListEntityFunc(sdk, data)
+}
+
+
 // Meeting returns a Meeting entity bound to this client.
 // Idiomatic usage: client.Meeting(nil).List(nil, nil) or
 // client.Meeting(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ZoomSDK) Meeting(data map[string]any) ZoomEntity {
 	return NewMeetingEntityFunc(sdk, data)
+}
+
+
+// MeetingInstance returns a MeetingInstance entity bound to this client.
+// Idiomatic usage: client.MeetingInstance(nil).List(nil, nil) or
+// client.MeetingInstance(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) MeetingInstance(data map[string]any) ZoomEntity {
+	return NewMeetingInstanceEntityFunc(sdk, data)
+}
+
+
+// MeetingInvitation returns a MeetingInvitation entity bound to this client.
+// Idiomatic usage: client.MeetingInvitation(nil).List(nil, nil) or
+// client.MeetingInvitation(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) MeetingInvitation(data map[string]any) ZoomEntity {
+	return NewMeetingInvitationEntityFunc(sdk, data)
+}
+
+
+// MeetingRegistrantList returns a MeetingRegistrantList entity bound to this client.
+// Idiomatic usage: client.MeetingRegistrantList(nil).List(nil, nil) or
+// client.MeetingRegistrantList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) MeetingRegistrantList(data map[string]any) ZoomEntity {
+	return NewMeetingRegistrantListEntityFunc(sdk, data)
+}
+
+
+// Pac returns a Pac entity bound to this client.
+// Idiomatic usage: client.Pac(nil).List(nil, nil) or
+// client.Pac(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Pac(data map[string]any) ZoomEntity {
+	return NewPacEntityFunc(sdk, data)
+}
+
+
+// Poll returns a Poll entity bound to this client.
+// Idiomatic usage: client.Poll(nil).List(nil, nil) or
+// client.Poll(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Poll(data map[string]any) ZoomEntity {
+	return NewPollEntityFunc(sdk, data)
+}
+
+
+// Qos returns a Qos entity bound to this client.
+// Idiomatic usage: client.Qos(nil).List(nil, nil) or
+// client.Qos(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Qos(data map[string]any) ZoomEntity {
+	return NewQosEntityFunc(sdk, data)
+}
+
+
+// Recording returns a Recording entity bound to this client.
+// Idiomatic usage: client.Recording(nil).List(nil, nil) or
+// client.Recording(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Recording(data map[string]any) ZoomEntity {
+	return NewRecordingEntityFunc(sdk, data)
+}
+
+
+// RecordingSetting returns a RecordingSetting entity bound to this client.
+// Idiomatic usage: client.RecordingSetting(nil).List(nil, nil) or
+// client.RecordingSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) RecordingSetting(data map[string]any) ZoomEntity {
+	return NewRecordingSettingEntityFunc(sdk, data)
+}
+
+
+// Report returns a Report entity bound to this client.
+// Idiomatic usage: client.Report(nil).List(nil, nil) or
+// client.Report(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Report(data map[string]any) ZoomEntity {
+	return NewReportEntityFunc(sdk, data)
+}
+
+
+// TrackingField returns a TrackingField entity bound to this client.
+// Idiomatic usage: client.TrackingField(nil).List(nil, nil) or
+// client.TrackingField(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) TrackingField(data map[string]any) ZoomEntity {
+	return NewTrackingFieldEntityFunc(sdk, data)
+}
+
+
+// Tsp returns a Tsp entity bound to this client.
+// Idiomatic usage: client.Tsp(nil).List(nil, nil) or
+// client.Tsp(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Tsp(data map[string]any) ZoomEntity {
+	return NewTspEntityFunc(sdk, data)
+}
+
+
+// User returns a User entity bound to this client.
+// Idiomatic usage: client.User(nil).List(nil, nil) or
+// client.User(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) User(data map[string]any) ZoomEntity {
+	return NewUserEntityFunc(sdk, data)
+}
+
+
+// UserAssistantsList returns a UserAssistantsList entity bound to this client.
+// Idiomatic usage: client.UserAssistantsList(nil).List(nil, nil) or
+// client.UserAssistantsList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) UserAssistantsList(data map[string]any) ZoomEntity {
+	return NewUserAssistantsListEntityFunc(sdk, data)
+}
+
+
+// UserPermission returns a UserPermission entity bound to this client.
+// Idiomatic usage: client.UserPermission(nil).List(nil, nil) or
+// client.UserPermission(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) UserPermission(data map[string]any) ZoomEntity {
+	return NewUserPermissionEntityFunc(sdk, data)
+}
+
+
+// UserSchedulersList returns a UserSchedulersList entity bound to this client.
+// Idiomatic usage: client.UserSchedulersList(nil).List(nil, nil) or
+// client.UserSchedulersList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) UserSchedulersList(data map[string]any) ZoomEntity {
+	return NewUserSchedulersListEntityFunc(sdk, data)
+}
+
+
+// UserSetting returns a UserSetting entity bound to this client.
+// Idiomatic usage: client.UserSetting(nil).List(nil, nil) or
+// client.UserSetting(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) UserSetting(data map[string]any) ZoomEntity {
+	return NewUserSettingEntityFunc(sdk, data)
+}
+
+
+// Webhook returns a Webhook entity bound to this client.
+// Idiomatic usage: client.Webhook(nil).List(nil, nil) or
+// client.Webhook(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Webhook(data map[string]any) ZoomEntity {
+	return NewWebhookEntityFunc(sdk, data)
+}
+
+
+// Webinar returns a Webinar entity bound to this client.
+// Idiomatic usage: client.Webinar(nil).List(nil, nil) or
+// client.Webinar(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) Webinar(data map[string]any) ZoomEntity {
+	return NewWebinarEntityFunc(sdk, data)
+}
+
+
+// WebinarInstance returns a WebinarInstance entity bound to this client.
+// Idiomatic usage: client.WebinarInstance(nil).List(nil, nil) or
+// client.WebinarInstance(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) WebinarInstance(data map[string]any) ZoomEntity {
+	return NewWebinarInstanceEntityFunc(sdk, data)
+}
+
+
+// WebinarPanelistList returns a WebinarPanelistList entity bound to this client.
+// Idiomatic usage: client.WebinarPanelistList(nil).List(nil, nil) or
+// client.WebinarPanelistList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) WebinarPanelistList(data map[string]any) ZoomEntity {
+	return NewWebinarPanelistListEntityFunc(sdk, data)
+}
+
+
+// WebinarRegistrantList returns a WebinarRegistrantList entity bound to this client.
+// Idiomatic usage: client.WebinarRegistrantList(nil).List(nil, nil) or
+// client.WebinarRegistrantList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) WebinarRegistrantList(data map[string]any) ZoomEntity {
+	return NewWebinarRegistrantListEntityFunc(sdk, data)
+}
+
+
+// ZoomRoomList returns a ZoomRoomList entity bound to this client.
+// Idiomatic usage: client.ZoomRoomList(nil).List(nil, nil) or
+// client.ZoomRoomList(nil).Load(map[string]any{"id": ...}, nil).
+func (sdk *ZoomSDK) ZoomRoomList(data map[string]any) ZoomEntity {
+	return NewZoomRoomListEntityFunc(sdk, data)
 }
 
 

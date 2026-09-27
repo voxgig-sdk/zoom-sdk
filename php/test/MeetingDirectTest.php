@@ -88,10 +88,11 @@ class MeetingDirectTest extends TestCase
         $query = [];
         if (!$setup["live"]) {
             $params["id"] = "direct01";
+            $params["poll_id"] = "direct02";
         }
 
         $result = $client->direct([
-            "path" => "meetings/{id}",
+            "path" => "meetings/{id}/polls/{poll_id}",
             "method" => "GET",
             "params" => $params,
             "query" => $query,

@@ -1,0 +1,223 @@
+# Entity: im_chat
+
+main: kit: entity: im_chat: {
+
+  alias: field: {}
+
+  fields: {
+    from: {
+      fo: "date"
+      h: "From"
+      n: "from"
+      r: false
+      sh: "Start date"
+      t: "`$STRING`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: false
+      sh: "Array of session objects"
+      t: "`$ARRAY`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Next page token, used to paginate through large result sets."
+      t: "`$STRING`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The amount of records returns within a single API call."
+      t: "`$INTEGER`"
+    }
+    session_id: {
+      h: "Session Id"
+      n: "session_id"
+      r: false
+      sh: "IM Chat session ID"
+      t: "`$STRING`"
+    }
+    sessions: {
+      h: "Sessions"
+      n: "sessions"
+      r: false
+      sh: "Array of session objects"
+      t: "`$ARRAY`"
+    }
+    to: {
+      fo: "date"
+      h: "To"
+      n: "to"
+      r: false
+      sh: "End date"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "im_chat"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /im/chat/sessions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/im/chat/sessions"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "im"
+            }
+            {
+              lit: "chat"
+            }
+            {
+              lit: "sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /im/chat/sessions/{sessionId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "session_id"
+                or: "session_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/im/chat/sessions/{sessionId}"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "session_id"
+              "to"
+            ]
+          }
+          r: {
+            param: {
+              sessionId: "session_id"
+            }
+          }
+          s: [
+            {
+              lit: "im"
+            }
+            {
+              lit: "chat"
+            }
+            {
+              lit: "sessions"
+            }
+            {
+              var: "session_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

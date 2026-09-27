@@ -1,0 +1,140 @@
+# Entity: account_setting
+
+main: kit: entity: account_setting: {
+
+  alias: field: {}
+
+  fields: {
+    email_notification: {
+      h: "Email Notification"
+      n: "email_notification"
+      r: false
+      sh: "Account Settings: Notification"
+      t: "`$OBJECT`"
+    }
+    feature: {
+      h: "Feature"
+      n: "feature"
+      r: false
+      sh: "Account Settings: Feature"
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    in_meeting: {
+      h: "In Meeting"
+      n: "in_meeting"
+      r: false
+      sh: "Account Settings: In Meeting"
+      t: "`$OBJECT`"
+    }
+    integration: {
+      h: "Integration"
+      n: "integration"
+      r: false
+      sh: "Account Settings: Integration"
+      t: "`$OBJECT`"
+    }
+    recording: {
+      h: "Recording"
+      n: "recording"
+      r: false
+      sh: "Account Settings: Recording"
+      t: "`$OBJECT`"
+    }
+    schedule_meting: {
+      h: "Schedule Meting"
+      n: "schedule_meting"
+      r: false
+      sh: "Account Settings: Schedule Meeting"
+      t: "`$OBJECT`"
+    }
+    security: {
+      h: "Security"
+      n: "security"
+      r: false
+      sh: "Account Settings: Security"
+      t: "`$OBJECT`"
+    }
+    telephony: {
+      h: "Telephony"
+      n: "telephony"
+      r: false
+      sh: "Account Settings: Telephony"
+      t: "`$OBJECT`"
+    }
+    zoom_rooms: {
+      h: "Zoom Rooms"
+      n: "zoom_rooms"
+      r: false
+      sh: "Account Settings: Zoom Rooms"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "account_setting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /accounts/{accountId}/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/accounts/{accountId}/settings"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,84 @@
+# Entity: user_permission
+
+main: kit: entity: user_permission: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: false
+      sh: "List of user permissions"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_permission"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/permissions"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/permissions"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "permissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.permissions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

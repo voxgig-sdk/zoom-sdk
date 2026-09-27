@@ -1,0 +1,180 @@
+{
+  "existing": {
+    "report": {
+      "REPORT00": {
+        "duration": 230,
+        "email": "se7",
+        "end_time": "se8",
+        "from": "se9",
+        "id": "REPORT00",
+        "meetings": [],
+        "name": "sec",
+        "next_page_token": "sed",
+        "page_count": 238,
+        "page_size": 239,
+        "participants": [],
+        "participants_count": 241,
+        "question_details": [],
+        "start_time": "sf3",
+        "to": "sf4",
+        "topic": "sf5",
+        "total_minutes": 246,
+        "total_records": 247,
+        "tracking_fields": [],
+        "type": 249,
+        "user_email": "sfa",
+        "user_name": "sfb",
+        "uuid": "sfc",
+        "user_id": "USER01",
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01"
+      },
+      "REPORT01": {
+        "duration": 460,
+        "email": "s1cd",
+        "end_time": "s1ce",
+        "from": "s1cf",
+        "id": "REPORT01",
+        "meetings": [],
+        "name": "s1d2",
+        "next_page_token": "s1d3",
+        "page_count": 468,
+        "page_size": 469,
+        "participants": [],
+        "participants_count": 471,
+        "question_details": [],
+        "start_time": "s1d9",
+        "to": "s1da",
+        "topic": "s1db",
+        "total_minutes": 476,
+        "total_records": 477,
+        "tracking_fields": [],
+        "type": 479,
+        "user_email": "s1e0",
+        "user_name": "s1e1",
+        "uuid": "s1e2",
+        "user_id": "USER01",
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01"
+      },
+      "REPORT02": {
+        "duration": 690,
+        "email": "s2b3",
+        "end_time": "s2b4",
+        "from": "s2b5",
+        "id": "REPORT02",
+        "meetings": [],
+        "name": "s2b8",
+        "next_page_token": "s2b9",
+        "page_count": 698,
+        "page_size": 699,
+        "participants": [],
+        "participants_count": 701,
+        "question_details": [],
+        "start_time": "s2bf",
+        "to": "s2c0",
+        "topic": "s2c1",
+        "total_minutes": 706,
+        "total_records": 707,
+        "tracking_fields": [],
+        "type": 709,
+        "user_email": "s2c6",
+        "user_name": "s2c7",
+        "uuid": "s2c8",
+        "user_id": "USER01",
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01"
+      }
+    }
+  },
+  "new": {
+    "report": {
+      "report_ref01": {
+        "duration": 920,
+        "email": "s399",
+        "end_time": "s39a",
+        "from": "s39b",
+        "meetings": [],
+        "name": "s39e",
+        "next_page_token": "s39f",
+        "page_count": 928,
+        "page_size": 929,
+        "participants": [],
+        "participants_count": 931,
+        "question_details": [],
+        "start_time": "s3a5",
+        "to": "s3a6",
+        "topic": "s3a7",
+        "total_minutes": 936,
+        "total_records": 937,
+        "tracking_fields": [],
+        "type": 939,
+        "user_email": "s3ac",
+        "user_name": "s3ad",
+        "uuid": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "GET /report/users/{userId}/meetings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/telephone": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/meetings/{meetingId}/participants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/webinars/{webinarId}/participants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/cloud_recording": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/daily": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/meetings/{meetingId}/polls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/webinars/{webinarId}/polls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/webinars/{webinarId}/qa": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/meetings/{meetingId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /report/webinars/{webinarId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

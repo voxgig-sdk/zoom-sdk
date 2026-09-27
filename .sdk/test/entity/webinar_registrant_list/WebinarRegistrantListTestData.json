@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "webinar_registrant_list": {
+      "WEBINAR_REGISTRANT_LIST00": {
+        "id": "WEBINAR_REGISTRANT_LIST00"
+      },
+      "WEBINAR_REGISTRANT_LIST01": {
+        "id": "WEBINAR_REGISTRANT_LIST01"
+      },
+      "WEBINAR_REGISTRANT_LIST02": {
+        "id": "WEBINAR_REGISTRANT_LIST02"
+      }
+    }
+  },
+  "new": {
+    "webinar_registrant_list": {
+      "webinar_registrant_list_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /webinars/{webinarId}/registrants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

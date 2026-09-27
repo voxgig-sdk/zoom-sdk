@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "meeting_invitation": {
+      "MEETING_INVITATION00": {
+        "id": "MEETING_INVITATION00",
+        "invitation": "s15"
+      },
+      "MEETING_INVITATION01": {
+        "id": "MEETING_INVITATION01",
+        "invitation": "s29"
+      },
+      "MEETING_INVITATION02": {
+        "id": "MEETING_INVITATION02",
+        "invitation": "s3d"
+      }
+    }
+  },
+  "new": {
+    "meeting_invitation": {
+      "meeting_invitation_ref01": {
+        "invitation": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /meetings/{meetingId}/invitation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

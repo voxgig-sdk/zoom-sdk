@@ -1,0 +1,186 @@
+# Entity: account_plan
+
+main: kit: entity: account_plan: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    plan_audio: {
+      h: "Plan Audio"
+      n: "plan_audio"
+      r: false
+      sh: "Additional Audio Conferencing <a href=\"#plans\">plan type</a>"
+      t: "`$OBJECT`"
+    }
+    plan_base: {
+      h: "Plan Base"
+      n: "plan_base"
+      r: true
+      sh: "Account base plan object"
+      t: "`$OBJECT`"
+    }
+    plan_large_meeting: {
+      h: "Plan Large Meeting"
+      n: "plan_large_meeting"
+      r: false
+      sh: "Additional Large Meeting Plans"
+      t: "`$ARRAY`"
+    }
+    plan_recording: {
+      h: "Plan Recording"
+      n: "plan_recording"
+      r: false
+      sh: "Additional Cloud Recording Plan"
+      t: "`$STRING`"
+    }
+    plan_room_connector: {
+      h: "Plan Room Connector"
+      n: "plan_room_connector"
+      r: false
+      sh: "Account plan object"
+      t: "`$OBJECT`"
+    }
+    plan_webinar: {
+      h: "Plan Webinar"
+      n: "plan_webinar"
+      r: false
+      sh: "Additional Webinar Plans"
+      t: "`$ARRAY`"
+    }
+    plan_zoom_rooms: {
+      h: "Plan Zoom Rooms"
+      n: "plan_zoom_rooms"
+      r: false
+      sh: "Account plan object"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "account_plan"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /accounts/{accountId}/plans"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/accounts/{accountId}/plans"
+          q: {
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "plans"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /accounts/{accountId}/plans"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/accounts/{accountId}/plans"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "plans"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

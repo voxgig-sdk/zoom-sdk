@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "im_chat": {
+      "IM_CHAT00": {
+        "from": "s46",
+        "messages": [],
+        "next_page_token": "s48",
+        "page_size": 73,
+        "session_id": "SESSION01",
+        "sessions": [],
+        "to": "s4c",
+        "id": "IM_CHAT00"
+      },
+      "IM_CHAT01": {
+        "from": "s8c",
+        "messages": [],
+        "next_page_token": "s8e",
+        "page_size": 143,
+        "session_id": "SESSION01",
+        "sessions": [],
+        "to": "s92",
+        "id": "IM_CHAT01"
+      },
+      "IM_CHAT02": {
+        "from": "sd2",
+        "messages": [],
+        "next_page_token": "sd4",
+        "page_size": 213,
+        "session_id": "SESSION01",
+        "sessions": [],
+        "to": "sd8",
+        "id": "IM_CHAT02"
+      }
+    }
+  },
+  "new": {
+    "im_chat": {
+      "im_chat_ref01": {
+        "from": "s118",
+        "messages": [],
+        "next_page_token": "s11a",
+        "page_size": 283,
+        "session_id": "SESSION01",
+        "sessions": [],
+        "to": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /im/chat/sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /im/chat/sessions/{sessionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

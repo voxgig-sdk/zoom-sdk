@@ -20,7 +20,7 @@ import (
 const prompt = "zoom"
 
 // entitiesHelp is the space-separated entity list shown by /help.
-const entitiesHelp = "meeting"
+const entitiesHelp = "account account_plan account_setting billing cloud_recording dashboard device domains_list group group_member_list im_chat im_group im_group_list meeting meeting_instance meeting_invitation meeting_registrant_list pac poll qos recording recording_setting report tracking_field tsp user user_assistants_list user_permission user_schedulers_list user_setting webhook webinar webinar_instance webinar_panelist_list webinar_registrant_list zoom_room_list"
 
 func main() {
 	os.Exit(run(os.Args[1:], os.Stdin, os.Stdout, os.Stderr))

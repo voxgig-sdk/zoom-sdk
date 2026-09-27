@@ -83,10 +83,11 @@ describe("MeetingDirect", function()
     local query = {}
     if not setup.live then
       params["id"] = "direct01"
+      params["poll_id"] = "direct02"
     end
 
     local result, err = client:direct({
-      path = "meetings/{id}",
+      path = "meetings/{id}/polls/{poll_id}",
       method = "GET",
       params = params,
       query = query,

@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "im_group_list": {
+      "IM_GROUP_LIST00": {
+        "groups": [],
+        "page_count": 51,
+        "page_number": 52,
+        "page_size": 53,
+        "total_records": 54
+      },
+      "IM_GROUP_LIST01": {
+        "groups": [],
+        "page_count": 101,
+        "page_number": 102,
+        "page_size": 103,
+        "total_records": 104
+      },
+      "IM_GROUP_LIST02": {
+        "groups": [],
+        "page_count": 151,
+        "page_number": 152,
+        "page_size": 153,
+        "total_records": 154
+      }
+    }
+  },
+  "new": {
+    "im_group_list": {
+      "im_group_list_ref01": {
+        "groups": [],
+        "page_count": 201,
+        "page_number": 202,
+        "page_size": 203,
+        "total_records": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /im/groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

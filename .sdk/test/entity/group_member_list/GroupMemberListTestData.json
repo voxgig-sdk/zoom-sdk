@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "group_member_list": {
+      "GROUP_MEMBER_LIST00": {
+        "id": "GROUP_MEMBER_LIST00",
+        "members": [],
+        "page_count": 62,
+        "page_number": 63,
+        "page_size": 64,
+        "total_records": 65
+      },
+      "GROUP_MEMBER_LIST01": {
+        "id": "GROUP_MEMBER_LIST01",
+        "members": [],
+        "page_count": 122,
+        "page_number": 123,
+        "page_size": 124,
+        "total_records": 125
+      },
+      "GROUP_MEMBER_LIST02": {
+        "id": "GROUP_MEMBER_LIST02",
+        "members": [],
+        "page_count": 182,
+        "page_number": 183,
+        "page_size": 184,
+        "total_records": 185
+      }
+    }
+  },
+  "new": {
+    "group_member_list": {
+      "group_member_list_ref01": {
+        "members": [],
+        "page_count": 242,
+        "page_number": 243,
+        "page_size": 244,
+        "total_records": 245
+      }
+    }
+  },
+  "requests": {
+    "GET /groups/{groupId}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /im/groups/{groupId}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

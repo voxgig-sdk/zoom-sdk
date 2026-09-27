@@ -1,0 +1,32 @@
+# BasicMeetingInvitationFlow
+
+main: kit: flow: BasicMeetingInvitationFlow:
+{
+  entity: "meeting_invitation",
+  kind: "basic",
+  name: "BasicMeetingInvitationFlow",
+  step: [
+    {
+      i: {
+        ref: "meeting_invitation_ref01",
+        srcdatavar: "meeting_invitation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "meeting_invitation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-meeting_invitation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMeetingInvitationFlow"
+}

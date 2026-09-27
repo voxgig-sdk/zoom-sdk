@@ -19,17 +19,18 @@ make build
 export ZOOM_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./zoom-cli list meeting
-./zoom-cli load 1 meeting            # {id:1} shorthand
-./zoom-cli load '{id:1}' meeting       # explicit match map
-./zoom-cli update '{name:"x"}' meeting
+./zoom-cli list account
+./zoom-cli load 1 account            # {id:1} shorthand
+./zoom-cli load '{id:1}' account       # explicit match map
+./zoom-cli update '{name:"x"}' account
+./zoom-cli list account_plan
 
 # 5. Override the API base URL for a single call
-ZOOM_BASE=https://api.example.com ./zoom-cli list meeting
+ZOOM_BASE=https://api.example.com ./zoom-cli list account
 
 # 6. No arguments -> interactive REPL
 ./zoom-cli
-zoom> list meeting
+zoom> list account
 zoom> /quit
 ```
 
@@ -55,7 +56,7 @@ zoom> /quit
    arguments to open the REPL):
 
    ```sh
-   ./dist/*/zoom-cli list meeting
+   ./dist/*/zoom-cli list account
    ```
 
 4. **Go interactive.** Run the binary with no arguments to open the REPL, then
@@ -68,7 +69,7 @@ That is the whole loop: *build → set key → evaluate boru expressions*.
 ### List the records of an entity
 
 ```sh
-./zoom-cli list meeting
+./zoom-cli list account
 ```
 
 `list <entity>` returns the first page of records. `<entity>` is a bareword —
@@ -77,8 +78,8 @@ it is auto-quoted as an boru atom, so no quotes are needed.
 ### Load a single record
 
 ```sh
-./zoom-cli load 1 meeting          # scalar shorthand for {id:1}
-./zoom-cli load '{id:1}' meeting     # explicit match map
+./zoom-cli load 1 account          # scalar shorthand for {id:1}
+./zoom-cli load '{id:1}' account     # explicit match map
 ```
 
 The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
@@ -87,7 +88,7 @@ The query is either a **scalar** (`1`, treated as `{id:1}`) or a **match map**
 ### Update a record
 
 ```sh
-./zoom-cli update '{id:1,name:"new"}' meeting
+./zoom-cli update '{id:1,name:"new"}' account
 ```
 
 The match map carries both the selector and the new field values; the updated
@@ -100,7 +101,7 @@ Configuration is read from the environment — nothing is written to disk:
 ```sh
 export ZOOM_APIKEY=sk_live_xxx            # API key
 export ZOOM_BASE=https://api.example.com  # optional: override the API base URL
-./zoom-cli list meeting
+./zoom-cli list account
 ```
 
 Both are injectable by a secrets vault, so the key never has to be typed inline.
@@ -112,7 +113,7 @@ evaluated as its own boru expression:
 
 ```text
 $ ./zoom-cli
-zoom> list meeting
+zoom> list account
 zoom> /help
 zoom> /quit
 ```
@@ -127,7 +128,7 @@ make build-all   # linux/darwin/windows x amd64/arm64, under dist/<os>-<arch>/
 ### Discover the available entities
 
 `/help` in the REPL prints the full entity list, or see [Entities](#entities)
-below — this SDK exposes 1 entity.
+below — this SDK exposes 36 entities.
 
 ## Reference
 
@@ -141,7 +142,7 @@ The CLI registers these boru words, each bound to the SDK:
 | `load`   | `load <entity>` · `load <query> <entity>`     | A single record                |
 | `update` | `update <query> <entity>`                     | Update a record, return it     |
 
-- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `meeting`).
+- `<entity>` is a bareword, auto-quoted as an boru atom (e.g. `account`).
 - `<query>` is either a **Map** (`{id:1}`) or a **Scalar** (`1`, treated as
   `{id:1}`). A scalar is always wrapped as `{id:<value>}`.
 
@@ -182,9 +183,9 @@ Meta-commands use the `/` prefix (everything else on a line is evaluated as boru
 
 ### Entities
 
-The 1 entity this SDK exposes (any is valid as `<entity>`):
+The 36 entities this SDK exposes (any is valid as `<entity>`):
 
-meeting
+account account_plan account_setting billing cloud_recording dashboard device domains_list group group_member_list im_chat im_group im_group_list meeting meeting_instance meeting_invitation meeting_registrant_list pac poll qos recording recording_setting report tracking_field tsp user user_assistants_list user_permission user_schedulers_list user_setting webhook webinar webinar_instance webinar_panelist_list webinar_registrant_list zoom_room_list
 
 ## Explanation
 

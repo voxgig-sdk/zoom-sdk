@@ -1,0 +1,26 @@
+# BasicUserPermissionFlow
+
+main: kit: flow: BasicUserPermissionFlow:
+{
+  entity: "user_permission",
+  kind: "basic",
+  name: "BasicUserPermissionFlow",
+  step: [
+    {
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserPermissionFlow"
+}

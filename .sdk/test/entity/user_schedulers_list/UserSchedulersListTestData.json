@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "user_schedulers_list": {
+      "USER_SCHEDULERS_LIST00": {
+        "id": "USER_SCHEDULERS_LIST00"
+      },
+      "USER_SCHEDULERS_LIST01": {
+        "id": "USER_SCHEDULERS_LIST01"
+      },
+      "USER_SCHEDULERS_LIST02": {
+        "id": "USER_SCHEDULERS_LIST02"
+      }
+    }
+  },
+  "new": {
+    "user_schedulers_list": {
+      "user_schedulers_list_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/schedulers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+# Entity: meeting_instance
+
+main: kit: entity: meeting_instance: {
+
+  alias: field: {}
+
+  fields: {
+    meetings: {
+      h: "Meetings"
+      n: "meetings"
+      r: false
+      sh: "List of ended meeting instances."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "meeting_instance"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /past_meetings/{meetingId}/instances"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "past_meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/past_meetings/{meetingId}/instances"
+          q: {
+            exist: [
+              "past_meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "past_meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "past_meetings"
+            }
+            {
+              var: "past_meeting_id"
+            }
+            {
+              lit: "instances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

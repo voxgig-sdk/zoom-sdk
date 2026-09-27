@@ -79,6 +79,7 @@ describe("MeetingEntity", function()
     local meeting_ref01_ent = client:Meeting(nil)
     local meeting_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.meeting"), "meeting_ref01"))
+    meeting_ref01_data["meeting_uuid"] = setup.idmap["meeting_uuid01"]
     meeting_ref01_data["user_id"] = setup.idmap["user01"]
 
     local meeting_ref01_data_result, err = meeting_ref01_ent:create(meeting_ref01_data, nil)
@@ -89,7 +90,7 @@ describe("MeetingEntity", function()
 
     -- LIST
     local meeting_ref01_match = {
-      ["user_id"] = setup.idmap["user01"],
+      ["meeting_uuid"] = setup.idmap["meeting_uuid01"],
     }
 
     local meeting_ref01_list_result, err = meeting_ref01_ent:list(meeting_ref01_match, nil)
@@ -136,7 +137,7 @@ describe("MeetingEntity", function()
 
     -- LIST
     local meeting_ref01_match_rt0 = {
-      ["user_id"] = setup.idmap["user01"],
+      ["meeting_uuid"] = setup.idmap["meeting_uuid01"],
     }
 
     local meeting_ref01_list_rt0_result, err = meeting_ref01_ent:list(meeting_ref01_match_rt0, nil)
@@ -171,7 +172,7 @@ function meeting_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "meeting01", "meeting02", "meeting03", "user01", "user02", "user03" },
+    { "meeting01", "meeting02", "meeting03", "poll01", "poll02", "poll03", "user01", "user02", "user03", "meeting_uuid01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

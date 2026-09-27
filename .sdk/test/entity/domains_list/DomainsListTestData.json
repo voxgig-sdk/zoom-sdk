@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "domains_list": {
+      "DOMAINS_LIST00": {
+        "domain": "s14",
+        "status": "s15",
+        "account_id": "ACCOUNT01"
+      },
+      "DOMAINS_LIST01": {
+        "domain": "s28",
+        "status": "s29",
+        "account_id": "ACCOUNT01"
+      },
+      "DOMAINS_LIST02": {
+        "domain": "s3c",
+        "status": "s3d",
+        "account_id": "ACCOUNT01"
+      }
+    }
+  },
+  "new": {
+    "domains_list": {
+      "domains_list_ref01": {
+        "domain": "s50",
+        "status": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /accounts/{accountId}/managed_domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

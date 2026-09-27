@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "group": {
+      "GROUP00": {
+        "id": "GROUP00",
+        "name": "s1f",
+        "total_members": 32,
+        "member_id": "MEMBER01"
+      },
+      "GROUP01": {
+        "id": "GROUP01",
+        "name": "s3d",
+        "total_members": 62,
+        "member_id": "MEMBER01"
+      },
+      "GROUP02": {
+        "id": "GROUP02",
+        "name": "s5b",
+        "total_members": 92,
+        "member_id": "MEMBER01"
+      }
+    }
+  },
+  "new": {
+    "group": {
+      "group_ref01": {
+        "name": "s79",
+        "total_members": 122
+      }
+    }
+  },
+  "requests": {
+    "POST /groups/{groupId}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "POST /groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /groups/{groupId}/members/{memberId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /groups/{groupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

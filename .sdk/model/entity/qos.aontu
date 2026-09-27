@@ -1,0 +1,425 @@
+# Entity: qos
+
+main: kit: entity: qos: {
+
+  alias: field: {}
+
+  fields: {
+    as_input: {
+      h: "As Input"
+      n: "as_input"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+    as_output: {
+      h: "As Output"
+      n: "as_output"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+    audio_input: {
+      h: "Audio Input"
+      n: "audio_input"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+    audio_output: {
+      h: "Audio Output"
+      n: "audio_output"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+    cpu_usage: {
+      h: "Cpu Usage"
+      n: "cpu_usage"
+      r: false
+      t: "`$ANY`"
+    }
+    date_time: {
+      fo: "date-time"
+      h: "Date Time"
+      n: "date_time"
+      r: false
+      sh: "Datetime of QOS"
+      t: "`$STRING`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Next page token is used to paginate through large result sets."
+      t: "`$STRING`"
+    }
+    page_count: {
+      fo: "int64"
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of items per page"
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "Array of user objects"
+      t: "`$ARRAY`"
+    }
+    total_records: {
+      fo: "int64"
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    video_input: {
+      h: "Video Input"
+      n: "video_input"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+    video_output: {
+      h: "Video Output"
+      n: "video_output"
+      r: false
+      sh: "Quality of Service object"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "qos"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /metrics/meetings/{meetingId}/participants/qos"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings/{meetingId}/participants/qos"
+          q: {
+            exist: [
+              "meeting_id"
+              "next_page_token"
+              "page_size"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              lit: "qos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars/{webinarId}/participants/qos"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars/{webinarId}/participants/qos"
+          q: {
+            exist: [
+              "next_page_token"
+              "page_size"
+              "type"
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              lit: "qos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /metrics/meetings/{meetingId}/participants/{participantId}/qos"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "participant_id"
+                or: "participant_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/meetings/{meetingId}/participants/{participantId}/qos"
+          q: {
+            exist: [
+              "meeting_id"
+              "participant_id"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+              participantId: "participant_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              var: "participant_id"
+            }
+            {
+              lit: "qos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user_qos`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars/{webinarId}/participants/{participantId}/qos"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "participant_id"
+                or: "participant_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars/{webinarId}/participants/{participantId}/qos"
+          q: {
+            exist: [
+              "participant_id"
+              "type"
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              participantId: "participant_id"
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "participants"
+            }
+            {
+              var: "participant_id"
+            }
+            {
+              lit: "qos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user_qos`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.webinar")]
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.webinar")]
+  ]
+
+}

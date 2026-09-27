@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "user_assistants_list": {
+      "USER_ASSISTANTS_LIST00": {
+        "id": "USER_ASSISTANTS_LIST00"
+      },
+      "USER_ASSISTANTS_LIST01": {
+        "id": "USER_ASSISTANTS_LIST01"
+      },
+      "USER_ASSISTANTS_LIST02": {
+        "id": "USER_ASSISTANTS_LIST02"
+      }
+    }
+  },
+  "new": {
+    "user_assistants_list": {
+      "user_assistants_list_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /users/{userId}/assistants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

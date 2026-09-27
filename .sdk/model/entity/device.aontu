@@ -1,0 +1,240 @@
+# Entity: device
+
+main: kit: entity: device: {
+
+  alias: field: {}
+
+  fields: {
+    devices: {
+      h: "Devices"
+      n: "devices"
+      r: false
+      sh: "List of H.323/SIP Device objects"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_number: {
+      h: "Page Number"
+      n: "page_number"
+      r: false
+      sh: "The page number of current results"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call"
+      t: "`$INTEGER`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "device"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /h323/devices"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/h323/devices"
+          q: {
+            exist: [
+              "body"
+            ]
+          }
+          s: [
+            {
+              lit: "h323"
+            }
+            {
+              lit: "devices"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /h323/devices"
+            source: "swagger2"
+            version: 2
+          }
+          m: "GET"
+          o: "/h323/devices"
+          s: [
+            {
+              lit: "h323"
+            }
+            {
+              lit: "devices"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /h323/devices/{deviceId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/h323/devices/{deviceId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              deviceId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "h323"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /h323/devices/{deviceId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "device_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/h323/devices/{deviceId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              deviceId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "h323"
+            }
+            {
+              lit: "devices"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

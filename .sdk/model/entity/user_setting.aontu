@@ -1,0 +1,123 @@
+# Entity: user_setting
+
+main: kit: entity: user_setting: {
+
+  alias: field: {}
+
+  fields: {
+    email_notification: {
+      h: "Email Notification"
+      n: "email_notification"
+      r: false
+      t: "`$OBJECT`"
+    }
+    feature: {
+      h: "Feature"
+      n: "feature"
+      r: false
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    in_meeting: {
+      h: "In Meeting"
+      n: "in_meeting"
+      r: false
+      t: "`$OBJECT`"
+    }
+    recording: {
+      h: "Recording"
+      n: "recording"
+      r: false
+      t: "`$OBJECT`"
+    }
+    schedule_meeting: {
+      h: "Schedule Meeting"
+      n: "schedule_meeting"
+      r: false
+      t: "`$OBJECT`"
+    }
+    telephony: {
+      h: "Telephony"
+      n: "telephony"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user_setting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "login_type"
+                or: "login_type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/settings"
+          q: {
+            exist: [
+              "id"
+              "login_type"
+            ]
+          }
+          r: {
+            param: {
+              userId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

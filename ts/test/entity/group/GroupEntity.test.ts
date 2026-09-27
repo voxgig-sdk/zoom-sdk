@@ -1,0 +1,198 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { ZoomSDK, BaseFeature, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('GroupEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when ZOOM_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ZOOM_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = ZoomSDK.test()
+    const ent = testsdk.Group()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.ZOOM_TEST_LIVE
+    for (const op of ['create', 'list', 'update', 'load', 'remove']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'group.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Group ID","t":"`$STRING`","key$":"id","index$":0},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Group name","t":"`$STRING`","key$":"name","index$":1},"total_members":{"a":true,"h":"Total Members","n":"total_members","r":false,"sh":"Total number of members in this group","t":"`$INTEGER`","key$":"total_members","index$":2}},"id":{"field":"id","name":"id"},"name":"group","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /groups/{groupId}/members","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"group_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"POST","o":"/groups/{groupId}/members","q":{"$action":"member","exist":["body","id"]},"r":{"param":{"groupId":"id"}},"s":[{"lit":"groups"},{"var":"id"},{"lit":"members"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"POST /groups","source":"swagger2","version":2},"g":{"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"POST","o":"/groups","q":{"exist":["body"]},"r":{},"s":[{"lit":"groups"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /groups","source":"swagger2","version":2},"g":{},"k":"http","m":"GET","o":"/groups","q":{},"r":{},"s":[{"lit":"groups"}],"t":{"req":"`reqdata`","res":"`body.groups`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /groups/{groupId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"group_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/groups/{groupId}","q":{"exist":["id"]},"r":{"param":{"groupId":"id"}},"s":[{"lit":"groups"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /groups/{groupId}/members/{memberId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"group_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"member_id","or":"member_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"DELETE","o":"/groups/{groupId}/members/{memberId}","q":{"exist":["id","member_id"]},"r":{"param":{"groupId":"id","memberId":"member_id"}},"s":[{"lit":"groups"},{"var":"id"},{"lit":"members"},{"var":"member_id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"DELETE /groups/{groupId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"group_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/groups/{groupId}","q":{"exist":["id"]},"r":{"param":{"groupId":"id"}},"s":[{"lit":"groups"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PATCH /groups/{groupId}","source":"swagger2","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"group_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"k":"query","n":"body","or":"body","r":true,"t":"`$ANY`","index$":0}]},"k":"http","m":"PATCH","o":"/groups/{groupId}","q":{"exist":["body","id"]},"r":{"param":{"groupId":"id"}},"s":[{"lit":"groups"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"group","name__orig":"group","Name":"Group","name_":"group","name-":"group","NAME":"GROUP","index$":8}, {"active":true,"entity":"group","key$":"BasicGroupFlow","kind":"basic","name":"BasicGroupFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"group_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"group_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"group_ref01","srcdatavar":"group_ref01_data","suffix":"_up0","textfield":"name"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-group_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"group_ref01","srcdatavar":"group_ref01_data","suffix":"_dt0"},"m":{"id":"group01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-group_ref01"}}],"index$":3},{"a":true,"d":{},"i":{"ref":"group_ref01","suffix":"_rm0"},"m":{"id":"group01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"group_ref01"}}],"index$":5}]}, 'Group', {"POST /groups/{groupId}/members":{"protocol":"http","parameters":[{"in":"path","name":"groupId","description":"The group ID","type":"string","required":true,"x-ref":"#/parameters/GroupId","index$":0},{"in":"body","name":"body","required":true,"schema":{"properties":{"members":{"type":"array","description":"List of Group members","maximum":30,"items":{"properties":{"id":{"type":"string","description":"User ID"},"email":{"type":"string","description":"User email. If ID given, email is ignored."}}}}}},"index$":1}]},"POST /groups":{"protocol":"http","parameters":[{"in":"body","name":"body","required":true,"schema":{"properties":{"name":{"type":"string","description":"Group name"}}},"index$":0}]},"GET /groups":{"protocol":"http","parameters":[]},"GET /groups/{groupId}":{"protocol":"http","parameters":[{"in":"path","name":"groupId","description":"The group ID","type":"string","required":true,"x-ref":"#/parameters/GroupId","index$":0}]},"DELETE /groups/{groupId}/members/{memberId}":{"protocol":"http","parameters":[{"in":"path","name":"groupId","description":"The group ID","type":"string","required":true,"x-ref":"#/parameters/GroupId","index$":0},{"in":"path","name":"memberId","description":"The member ID","type":"string","required":true,"x-ref":"#/parameters/MemberId","index$":1}]},"DELETE /groups/{groupId}":{"protocol":"http","parameters":[{"in":"path","name":"groupId","description":"The group ID","type":"string","required":true,"x-ref":"#/parameters/GroupId","index$":0}]},"PATCH /groups/{groupId}":{"protocol":"http","parameters":[{"in":"path","name":"groupId","description":"The group ID","type":"string","required":true,"x-ref":"#/parameters/GroupId","index$":0},{"in":"body","name":"body","required":true,"schema":{"properties":{"name":{"type":"string","description":"Group name. Must be unique in one account. Character length is less than 128."}}},"index$":1}]}})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const group_ref01_ent = client.Group()
+    let group_ref01_data = setup.data.new.group['group_ref01']
+
+    group_ref01_data = (await group_ref01_ent.create(group_ref01_data)).data()
+    assert(null != group_ref01_data.id)
+
+
+    // LIST
+    const group_ref01_match: any = {}
+
+    const group_ref01_list = (await group_ref01_ent.list(group_ref01_match)).map((e: any) => e.data())
+
+    assert(!isempty(select(group_ref01_list, { id: group_ref01_data.id })))
+
+
+    // UPDATE
+    const group_ref01_data_up0: any = {}
+    group_ref01_data_up0.id = group_ref01_data.id
+
+    const group_ref01_markdef_up0 = { name: 'name', value: 'Mark01-group_ref01_' + setup.now }
+    ;(group_ref01_data_up0 as any)[group_ref01_markdef_up0.name] = group_ref01_markdef_up0.value
+
+    const group_ref01_resdata_up0 = (await group_ref01_ent.update(group_ref01_data_up0)).data()
+    assert(group_ref01_resdata_up0.id === group_ref01_data_up0.id)
+
+    assert((group_ref01_resdata_up0 as any)[group_ref01_markdef_up0.name] === group_ref01_markdef_up0.value)
+
+
+    // LOAD
+    const group_ref01_match_dt0: any = {}
+    group_ref01_match_dt0.id = group_ref01_data.id
+    const group_ref01_data_dt0 = (await group_ref01_ent.load(group_ref01_match_dt0)).data()
+    assert(group_ref01_data_dt0.id === group_ref01_data.id)
+
+
+    // REMOVE
+    const group_ref01_match_rm0: any = { id: group_ref01_data.id }
+    await group_ref01_ent.remove(group_ref01_match_rm0)
+  
+
+    // LIST
+    const group_ref01_match_rt0: any = {}
+
+    const group_ref01_list_rt0 = (await group_ref01_ent.list(group_ref01_match_rt0)).map((e: any) => e.data())
+
+    assert(isempty(select(group_ref01_list_rt0, { id: group_ref01_data.id })))
+
+
+  })
+})
+
+
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/group/GroupTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = ZoomSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['group01','group02','group03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'ZOOM_TEST_GROUP_ENTID': idmap,
+    'ZOOM_TEST_LIVE': 'FALSE',
+    'ZOOM_TEST_EXPLAIN': 'FALSE',
+    'ZOOM_APIKEY': '',
+  })
+
+  idmap = env['ZOOM_TEST_GROUP_ENTID']
+
+  const live = 'TRUE' === env.ZOOM_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['ZOOM_TEST_GROUP_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new ZoomSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.ZOOM_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.ZOOM_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

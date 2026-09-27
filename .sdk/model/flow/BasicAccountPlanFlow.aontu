@@ -1,0 +1,38 @@
+# BasicAccountPlanFlow
+
+main: kit: flow: BasicAccountPlanFlow:
+{
+  entity: "account_plan",
+  kind: "basic",
+  name: "BasicAccountPlanFlow",
+  step: [
+    {
+      i: {
+        ref: "account_plan_ref01"
+      }
+
+      m: {
+        account_id: "account01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        account_id: "account01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "account_plan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAccountPlanFlow"
+}

@@ -54,13 +54,14 @@ describe('MeetingDirect', async () => {
         throw new Error('Live load blocked: discovery returned no usable entities')
       }
       params.id = listData[0].id
-
+      params.poll_id = setup.idmap['poll01']
     } else {
       params.id = 'direct01'
+      params.poll_id = 'direct02'
     }
 
     const result = await client.direct({
-      path: 'meetings/{id}',
+      path: 'meetings/{id}/polls/{poll_id}',
       method: 'GET',
       params,
     })
@@ -74,6 +75,7 @@ describe('MeetingDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
+      assert(calls[0].url.includes('direct02'))
     }
   })
 

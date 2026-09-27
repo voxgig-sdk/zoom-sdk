@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Report | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a aria-current="page" href="../api/report.html">Report</a><div class="nav-sections"><a class="nav-section" href="#get-reportusersuseridmeetings">GET /report/users/{userId}/meetings</a>
+<a class="nav-section" href="#get-reporttelephone">GET /report/telephone</a>
+<a class="nav-section" href="#get-reportusers">GET /report/users</a>
+<a class="nav-section" href="#get-reportmeetingsmeetingidparticipants">GET /report/meetings/{meetingId}/participants</a>
+<a class="nav-section" href="#get-reportwebinarswebinaridparticipants">GET /report/webinars/{webinarId}/participants</a>
+<a class="nav-section" href="#get-reportcloud_recording">GET /report/cloud_recording</a>
+<a class="nav-section" href="#get-reportdaily">GET /report/daily</a>
+<a class="nav-section" href="#get-reportmeetingsmeetingidpolls">GET /report/meetings/{meetingId}/polls</a>
+<a class="nav-section" href="#get-reportwebinarswebinaridpolls">GET /report/webinars/{webinarId}/polls</a>
+<a class="nav-section" href="#get-reportwebinarswebinaridqa">GET /report/webinars/{webinarId}/qa</a>
+<a class="nav-section" href="#get-reportmeetingsmeetingid">GET /report/meetings/{meetingId}</a>
+<a class="nav-section" href="#get-reportwebinarswebinarid">GET /report/webinars/{webinarId}</a></div>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="report">Report</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportusersuseridmeetings"><code>/report/users/{userId}/meetings</code></a></td>
+<td><code>list</code></td>
+<td>Active/Inactive Hosts Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reporttelephone"><code>/report/telephone</code></a></td>
+<td><code>list</code></td>
+<td>Telephone Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportusers"><code>/report/users</code></a></td>
+<td><code>list</code></td>
+<td>Active/Inactive Hosts Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportmeetingsmeetingidparticipants"><code>/report/meetings/{meetingId}/participants</code></a></td>
+<td><code>list</code></td>
+<td>Meeting Participants Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportwebinarswebinaridparticipants"><code>/report/webinars/{webinarId}/participants</code></a></td>
+<td><code>list</code></td>
+<td>Meeting Participants Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportcloud_recording"><code>/report/cloud_recording</code></a></td>
+<td><code>list</code></td>
+<td>Cloud Recording Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportdaily"><code>/report/daily</code></a></td>
+<td><code>list</code></td>
+<td>Daily Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportmeetingsmeetingidpolls"><code>/report/meetings/{meetingId}/polls</code></a></td>
+<td><code>list</code></td>
+<td>Meeting Polls Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportwebinarswebinaridpolls"><code>/report/webinars/{webinarId}/polls</code></a></td>
+<td><code>list</code></td>
+<td>Webinar Polls Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportwebinarswebinaridqa"><code>/report/webinars/{webinarId}/qa</code></a></td>
+<td><code>list</code></td>
+<td>Webinar Q&amp;A Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportmeetingsmeetingid"><code>/report/meetings/{meetingId}</code></a></td>
+<td><code>load</code></td>
+<td>Meeting detail Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-reportwebinarswebinarid"><code>/report/webinars/{webinarId}</code></a></td>
+<td><code>load</code></td>
+<td>Webinar detail Returned</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">reports, err := client.Report(nil).List(map[string]any{&quot;user_id&quot;: &quot;example&quot;, &quot;from&quot;: &quot;example&quot;, &quot;to&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(reports)
+report, err := client.Report(nil).Load(map[string]any{&quot;meeting_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(report)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const reports = await client.Report().list({ user_id: &quot;example&quot;, from: &quot;example&quot;, to: &quot;example&quot; })
+const report = await client.Report().load({ meeting_id: &quot;example&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local reports, err = client:Report():list({ user_id = &quot;example&quot;, from = &quot;example&quot;, to = &quot;example&quot; })
+local report, err = client:Report():load({ meeting_id = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$reports = $client-&gt;Report()-&gt;list([&quot;user_id&quot; =&gt; &quot;example&quot;, &quot;from&quot; =&gt; &quot;example&quot;, &quot;to&quot; =&gt; &quot;example&quot;]);
+$report = $client-&gt;Report()-&gt;load([&quot;meeting_id&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">reports = client.Report().list({&quot;user_id&quot;: &quot;example&quot;, &quot;from&quot;: &quot;example&quot;, &quot;to&quot;: &quot;example&quot;})
+report = client.Report().load({&quot;meeting_id&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const reports = await client.Report().list({ user_id: &quot;example&quot;, from: &quot;example&quot;, to: &quot;example&quot; })
+const report = await client.Report().load({ meeting_id: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>duration</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Meeting duration</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Participant email</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting end time</td>
+</tr>
+<tr>
+<td><code>from</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Start date for this report</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Meeting ID</td>
+</tr>
+<tr>
+<td><code>meetings</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of meeting objects</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Participant display name</td>
+</tr>
+<tr>
+<td><code>next_page_token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Next page token is used to paginate through large result sets.</td>
+</tr>
+<tr>
+<td><code>page_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of records returned within a single API call.</td>
+</tr>
+<tr>
+<td><code>participants</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of meeting participant objects</td>
+</tr>
+<tr>
+<td><code>participants_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Number of meeting participants</td>
+</tr>
+<tr>
+<td><code>question_details</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of questions from user</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting start time</td>
+</tr>
+<tr>
+<td><code>to</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>End date for this report</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting topic</td>
+</tr>
+<tr>
+<td><code>total_minutes</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Number of meeting minutes</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+<tr>
+<td><code>tracking_fields</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Tracking fields</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Meeting type</td>
+</tr>
+<tr>
+<td><code>user_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User email</td>
+</tr>
+<tr>
+<td><code>user_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User display name</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting UUID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-reportusersuseridmeetings" class="operation" data-method="get"><code>GET</code> /report/users/{userId}/meetings</h3>
+<p>Operation ID: <code>reportMeetings</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>from</code> | <code>query</code> | <code>any</code> | Yes | Start Date |
+| <code>to</code> | <code>query</code> | <code>any</code> | Yes | End Date |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="200-activeinactive-hosts-report-returned" class="status" data-status="2xx">200: Active/Inactive Hosts Report Returned</h5>
+<h5 id="404-user-not-found" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="get-reporttelephone" class="operation" data-method="get"><code>GET</code> /report/telephone</h3>
+<p>Operation ID: <code>reportTelephone</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | Audio type |
+| <code>from</code> | <code>query</code> | <code>any</code> | Yes | Start Date |
+| <code>to</code> | <code>query</code> | <code>any</code> | Yes | End Date |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-telephone-report-returned" class="status" data-status="2xx">200: Telephone Report Returned</h5>
+<h3 id="get-reportusers" class="operation" data-method="get"><code>GET</code> /report/users</h3>
+<p>Operation ID: <code>reportUsers</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | Active hosts or inactive hosts |
+| <code>from</code> | <code>query</code> | <code>any</code> | Yes | Start Date |
+| <code>to</code> | <code>query</code> | <code>any</code> | Yes | End Date |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-activeinactive-hosts-report-returned-1" class="status" data-status="2xx">200: Active/Inactive Hosts Report Returned</h5>
+<h3 id="get-reportmeetingsmeetingidparticipants" class="operation" data-method="get"><code>GET</code> /report/meetings/{meetingId}/participants</h3>
+<p>Operation ID: <code>reportMeetingParticipants</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-meeting-participants-report-returned" class="status" data-status="2xx">200: Meeting Participants Report Returned</h5>
+<h5 id="404-meeting-not-found" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="get-reportwebinarswebinaridparticipants" class="operation" data-method="get"><code>GET</code> /report/webinars/{webinarId}/participants</h3>
+<p>Operation ID: <code>reportWebinarParticipants</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-meeting-participants-report-returned-1" class="status" data-status="2xx">200: Meeting Participants Report Returned</h5>
+<h5 id="404-webinar-not-found" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="get-reportcloud_recording" class="operation" data-method="get"><code>GET</code> /report/cloud_recording</h3>
+<p>Operation ID: <code>reportCloudRecording</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>from</code> | <code>query</code> | <code>any</code> | Yes | Start Date |
+| <code>to</code> | <code>query</code> | <code>any</code> | Yes | End Date |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-cloud-recording-report-returned" class="status" data-status="2xx">200: Cloud Recording Report Returned</h5>
+<h5 id="300-only-provide-report-in-recent-6-months" class="status" data-status="3xx">300: Only provide report in recent 6 months</h5>
+<h3 id="get-reportdaily" class="operation" data-method="get"><code>GET</code> /report/daily</h3>
+<p>Operation ID: <code>reportDaily</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>year</code> | <code>query</code> | <code>any</code> | No | Year for this report |
+| <code>month</code> | <code>query</code> | <code>any</code> | No | Month for this report |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-daily-report-returned" class="status" data-status="2xx">200: Daily Report Returned</h5>
+<h3 id="get-reportmeetingsmeetingidpolls" class="operation" data-method="get"><code>GET</code> /report/meetings/{meetingId}/polls</h3>
+<p>Operation ID: <code>reportMeetingPolls</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-meeting-polls-report-returned" class="status" data-status="2xx">200: Meeting Polls Report Returned</h5>
+<h5 id="404-meeting-not-found-1" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="get-reportwebinarswebinaridpolls" class="operation" data-method="get"><code>GET</code> /report/webinars/{webinarId}/polls</h3>
+<p>Operation ID: <code>reportWebinarPolls</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-webinar-polls-report-returned" class="status" data-status="2xx">200: Webinar Polls Report Returned</h5>
+<h5 id="404-webinar-not-found-1" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="get-reportwebinarswebinaridqa" class="operation" data-method="get"><code>GET</code> /report/webinars/{webinarId}/qa</h3>
+<p>Operation ID: <code>reportWebinarQA</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-webinar-qampa-report-returned" class="status" data-status="2xx">200: Webinar Q&amp;A Report Returned</h5>
+<h5 id="404-webinar-not-found-2" class="status" data-status="4xx">404: Webinar not found</h5>
+<h2 id="load">load</h2>
+<h3 id="get-reportmeetingsmeetingid" class="operation" data-method="get"><code>GET</code> /report/meetings/{meetingId}</h3>
+<p>Operation ID: <code>reportMeetingDetails</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-meeting-detail-returned" class="status" data-status="2xx">200: Meeting detail Returned</h5>
+<h5 id="404-meeting-not-found-2" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="get-reportwebinarswebinarid" class="operation" data-method="get"><code>GET</code> /report/webinars/{webinarId}</h3>
+<p>Operation ID: <code>reportWebinarDetails</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-webinar-detail-returned" class="status" data-status="2xx">200: Webinar detail Returned</h5>
+<h5 id="404-webinar-not-found-3" class="status" data-status="4xx">404: Webinar not found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

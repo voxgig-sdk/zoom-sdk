@@ -1,0 +1,121 @@
+# Entity: recording_setting
+
+main: kit: entity: recording_setting: {
+
+  alias: field: {}
+
+  fields: {
+    approval_type: {
+      h: "Approval Type"
+      n: "approval_type"
+      r: false
+      sh: "Approval type"
+      t: "`$INTEGER`"
+    }
+    on_demand: {
+      h: "On Demand"
+      n: "on_demand"
+      r: false
+      sh: "Registration required"
+      t: "`$BOOLEAN`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: false
+      sh: "Password protect"
+      t: "`$STRING`"
+    }
+    send_email_to_host: {
+      h: "Send Email To Host"
+      n: "send_email_to_host"
+      r: false
+      sh: "Send an email to host when someone registers"
+      t: "`$BOOLEAN`"
+    }
+    share_recording: {
+      h: "Share Recording"
+      n: "share_recording"
+      r: false
+      sh: "Determine if the meeting recording is shared"
+      t: "`$STRING`"
+    }
+    show_social_share_buttons: {
+      h: "Show Social Share Buttons"
+      n: "show_social_share_buttons"
+      r: false
+      sh: "Show social share buttons on registration page"
+      t: "`$BOOLEAN`"
+    }
+    viewer_download: {
+      h: "Viewer Download"
+      n: "viewer_download"
+      r: false
+      sh: "Host video"
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "recording_setting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /meetings/{meetingId}/recordings/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}/recordings/settings"
+          q: {
+            exist: [
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+  ]
+
+}

@@ -1,0 +1,405 @@
+# Entity: cloud_recording
+
+main: kit: entity: cloud_recording: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cloud_recording"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /meetings/{meetingId}/recordings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}/recordings"
+          q: {
+            exist: [
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /meetings/{meetingId}/recordings/settings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/meetings/{meetingId}/recordings/settings"
+          q: {
+            exist: [
+              "body"
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /meetings/{meetingId}/recordings/{recordingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "recording_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "action"
+                or: "action"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/meetings/{meetingId}/recordings/{recordingId}"
+          q: {
+            exist: [
+              "action"
+              "id"
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+              recordingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /meetings/{meetingId}/recordings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "action"
+                or: "action"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/meetings/{meetingId}/recordings"
+          q: {
+            exist: [
+              "action"
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /meetings/{meetingId}/recordings/{recordingId}/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "recording_id"
+                or: "recording_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/meetings/{meetingId}/recordings/{recordingId}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "body"
+              "meeting_id"
+              "recording_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+              recordingId: "recording_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+            {
+              var: "recording_id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /meetings/{meetingId}/recordings/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/meetings/{meetingId}/recordings/status"
+          q: {
+            exist: [
+              "body"
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "recordings"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.meeting") path("$.main.kit.entity.recording")]
+  ]
+
+}

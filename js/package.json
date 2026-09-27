@@ -1,7 +1,7 @@
 {
-  "name": "@voxgig-sdk/zoom-js",
+  "name": "@voxgig-sdk/zoom-sdk-js",
   "version": "0.0.1",
-  "description": "Unofficial generated JavaScript SDK for the Zoom Meetings public API. Not affiliated with or endorsed by the upstream API provider.",
+  "description": "Unofficial generated JavaScript SDK for the Zoom public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
     "voxgig",
     "sdk",
@@ -21,7 +21,8 @@
   "main": "src/ZoomSDK.js",
   "type": "commonjs",
   "files": [
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "test": "node --test 'test/**/*.test.js'",

@@ -1,0 +1,882 @@
+# Entity: report
+
+main: kit: entity: report: {
+
+  alias: field: {}
+
+  fields: {
+    duration: {
+      h: "Duration"
+      n: "duration"
+      r: false
+      sh: "Meeting duration"
+      t: "`$INTEGER`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "Participant email"
+      t: "`$STRING`"
+    }
+    end_time: {
+      fo: "date-time"
+      h: "End Time"
+      n: "end_time"
+      r: false
+      sh: "Meeting end time"
+      t: "`$STRING`"
+    }
+    from: {
+      fo: "date"
+      h: "From"
+      n: "from"
+      r: false
+      sh: "Start date for this report"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Meeting ID"
+      t: "`$INTEGER`"
+    }
+    meetings: {
+      h: "Meetings"
+      n: "meetings"
+      r: false
+      sh: "Array of meeting objects"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Participant display name"
+      t: "`$STRING`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Next page token is used to paginate through large result sets."
+      t: "`$STRING`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call."
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "Array of meeting participant objects"
+      t: "`$ARRAY`"
+    }
+    participants_count: {
+      h: "Participants Count"
+      n: "participants_count"
+      r: false
+      sh: "Number of meeting participants"
+      t: "`$INTEGER`"
+    }
+    question_details: {
+      h: "Question Details"
+      n: "question_details"
+      r: false
+      sh: "Array of questions from user"
+      t: "`$ARRAY`"
+    }
+    start_time: {
+      fo: "date-time"
+      h: "Start Time"
+      n: "start_time"
+      r: false
+      sh: "Meeting start time"
+      t: "`$STRING`"
+    }
+    to: {
+      fo: "date"
+      h: "To"
+      n: "to"
+      r: false
+      sh: "End date for this report"
+      t: "`$STRING`"
+    }
+    topic: {
+      h: "Topic"
+      n: "topic"
+      r: false
+      sh: "Meeting topic"
+      t: "`$STRING`"
+    }
+    total_minutes: {
+      h: "Total Minutes"
+      n: "total_minutes"
+      r: false
+      sh: "Number of meeting minutes"
+      t: "`$INTEGER`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    tracking_fields: {
+      h: "Tracking Fields"
+      n: "tracking_fields"
+      r: false
+      sh: "Tracking fields"
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Meeting type"
+      t: "`$INTEGER`"
+    }
+    user_email: {
+      h: "User Email"
+      n: "user_email"
+      r: false
+      sh: "User email"
+      t: "`$STRING`"
+    }
+    user_name: {
+      h: "User Name"
+      n: "user_name"
+      r: false
+      sh: "User display name"
+      t: "`$STRING`"
+    }
+    uuid: {
+      fo: "uuid"
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Meeting UUID"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "report"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /report/users/{userId}/meetings"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/users/{userId}/meetings"
+          q: {
+            exist: [
+              "from"
+              "next_page_token"
+              "page_size"
+              "to"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "meetings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/telephone"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/telephone"
+          q: {
+            "$action": "telephone"
+            exist: [
+              "from"
+              "page_number"
+              "page_size"
+              "to"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "telephone"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/users"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/users"
+          q: {
+            "$action": "user"
+            exist: [
+              "from"
+              "page_number"
+              "page_size"
+              "to"
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/meetings/{meetingId}/participants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/meetings/{meetingId}/participants"
+          q: {
+            exist: [
+              "meeting_id"
+              "next_page_token"
+              "page_size"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "participants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/webinars/{webinarId}/participants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "next_page_token"
+                or: "next_page_token"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/webinars/{webinarId}/participants"
+          q: {
+            exist: [
+              "next_page_token"
+              "page_size"
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "participants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/cloud_recording"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "from"
+                or: "from"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "to"
+                or: "to"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/cloud_recording"
+          q: {
+            "$action": "cloud_recording"
+            exist: [
+              "from"
+              "to"
+            ]
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "cloud_recording"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/daily"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "month"
+                or: "month"
+                r: false
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "year"
+                or: "year"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/daily"
+          q: {
+            "$action": "daily"
+            exist: [
+              "month"
+              "year"
+            ]
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "daily"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dates`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/meetings/{meetingId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/meetings/{meetingId}/polls"
+          q: {
+            exist: [
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.questions`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/webinars/{webinarId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/webinars/{webinarId}/polls"
+          q: {
+            exist: [
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.questions`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/webinars/{webinarId}/qa"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/webinars/{webinarId}/qa"
+          q: {
+            exist: [
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+            {
+              lit: "qa"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.questions`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /report/meetings/{meetingId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "meeting_id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/meetings/{meetingId}"
+          q: {
+            exist: [
+              "meeting_id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "meeting_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "meetings"
+            }
+            {
+              var: "meeting_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /report/webinars/{webinarId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "webinar_id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/report/webinars/{webinarId}"
+          q: {
+            exist: [
+              "webinar_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "webinar_id"
+            }
+          }
+          s: [
+            {
+              lit: "report"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "webinar_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.meeting")]
+    [path("$.main.kit.entity.user")]
+    [path("$.main.kit.entity.webinar")]
+  ]
+
+}

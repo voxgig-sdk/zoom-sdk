@@ -1,12 +1,47 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript | Zoom Meetings API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>JavaScript | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body><a class="skip" href="#content">Skip to content</a>
-<header class="site-header"><a class="site-title" href="../index.html">Zoom Meetings API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
 <div class="site-notice" role="note"></div>
-<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom Meetings API</a></details>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
 <details><summary>API</summary><a href="../api/index.html">API overview</a>
-<a href="../api/meeting.html">Meeting</a></details>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
 <details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
 <a href="../guides/first-call.html">Make your first API call</a>
 <a href="../guides/errors.html">Handle errors</a>
@@ -19,19 +54,19 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>SDKs</div><h1 id="javascript">JavaScript</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>SDKs</div><h1 id="javascript">JavaScript</h1>
 <p>JavaScript</p>
 <h2 id="install">Install</h2>
 <p>Not published. Build from the js directory.</p>
 <h2 id="package">Package</h2>
-<p><code>@voxgig-sdk/zoom-js</code></p>
+<p><code>@voxgig-sdk/zoom-sdk-js</code></p>
 <h2 id="api-reference">API reference</h2>
 <table>
 <thead>
@@ -42,8 +77,148 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../api/meeting.html">Meeting</a></td>
+<td><a href="../api/account.html">Account</a></td>
 <td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/account_plan.html">AccountPlan</a></td>
+<td><code>create</code>, <code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/account_setting.html">AccountSetting</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/billing.html">Billing</a></td>
+<td><code>create</code>, <code>load</code>, <code>patch</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/cloud_recording.html">CloudRecording</a></td>
+<td><code>load</code>, <code>patch</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/dashboard.html">Dashboard</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/device.html">Device</a></td>
+<td><code>create</code>, <code>list</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/domains_list.html">DomainsList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/group.html">Group</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/group_member_list.html">GroupMemberList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/im_chat.html">ImChat</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/im_group.html">ImGroup</a></td>
+<td><code>create</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/im_group_list.html">ImGroupList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/meeting.html">Meeting</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>patch</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/meeting_instance.html">MeetingInstance</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/meeting_invitation.html">MeetingInvitation</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/pac.html">Pac</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/poll.html">Poll</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/qos.html">Qos</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/recording.html">Recording</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/recording_setting.html">RecordingSetting</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/report.html">Report</a></td>
+<td><code>list</code>, <code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/tracking_field.html">TrackingField</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/tsp.html">Tsp</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/user.html">User</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_assistants_list.html">UserAssistantsList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_permission.html">UserPermission</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_schedulers_list.html">UserSchedulersList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/user_setting.html">UserSetting</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/webhook.html">Webhook</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/webinar.html">Webinar</a></td>
+<td><code>create</code>, <code>list</code>, <code>load</code>, <code>patch</code>, <code>remove</code>, <code>update</code></td>
+</tr>
+<tr>
+<td><a href="../api/webinar_instance.html">WebinarInstance</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/webinar_panelist_list.html">WebinarPanelistList</a></td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td><a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a></td>
+<td><code>load</code></td>
+</tr>
+<tr>
+<td><a href="../api/zoom_room_list.html">ZoomRoomList</a></td>
+<td><code>list</code></td>
 </tr>
 </tbody>
 </table>
@@ -51,18 +226,18 @@
 <p>Set the server URL and credentials for your environment. Enable only the features your application needs.</p>
 <h2 id="features">Features</h2>
 <ul>
-<li><a href="../features/debug.html">Request/response capture ring buffer for debugging</a></li>
-<li><a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a></li>
-<li><a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a></li>
-<li><a href="../features/paging.html">Pagination signals for list operations</a></li>
-<li><a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a></li>
-<li><a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a></li>
-<li><a href="../features/test.html">In-memory mock transport for testing without a live server</a></li>
-<li><a href="../features/timeout.html">Per-request timeout with transport abort</a></li>
+<li><a href="../features/debug.html">Debug capture</a></li>
+<li><a href="../features/idempotency.html">Idempotency</a></li>
+<li><a href="../features/metrics.html">Metrics</a></li>
+<li><a href="../features/paging.html">Paging</a></li>
+<li><a href="../features/ratelimit.html">Rate limiting</a></li>
+<li><a href="../features/retry.html">Retry</a></li>
+<li><a href="../features/test.html">Test transport</a></li>
+<li><a href="../features/timeout.html">Timeout</a></li>
 </ul>
 <h2 id="set-up-the-client">Set up the client</h2>
 <p>This setup fragment reads credentials from the environment. Use the API operation reference to supply input for each call.</p>
-<pre><code class="language-js">const { ZoomSDK } = require('@voxgig-sdk/zoom-js')
+<pre><code class="language-js">const { ZoomSDK } = require('@voxgig-sdk/zoom-sdk-js')
 
 const client = new ZoomSDK({ apikey: process.env.ZOOM_APIKEY })
 </code></pre>
@@ -70,13 +245,48 @@ const client = new ZoomSDK({ apikey: process.env.ZOOM_APIKEY })
 <pre><code class="language-json">{
   &quot;base&quot;: &quot;https://api.zoom.us/v2&quot;,
   &quot;auth&quot;: {
-    &quot;prefix&quot;: &quot;Bearer&quot;
+    &quot;prefix&quot;: &quot;&quot;
   },
   &quot;headers&quot;: {
     &quot;content-type&quot;: &quot;application/json&quot;
   },
   &quot;entity&quot;: {
-    &quot;meeting&quot;: {}
+    &quot;account&quot;: {},
+    &quot;account_plan&quot;: {},
+    &quot;account_setting&quot;: {},
+    &quot;billing&quot;: {},
+    &quot;cloud_recording&quot;: {},
+    &quot;dashboard&quot;: {},
+    &quot;device&quot;: {},
+    &quot;domains_list&quot;: {},
+    &quot;group&quot;: {},
+    &quot;group_member_list&quot;: {},
+    &quot;im_chat&quot;: {},
+    &quot;im_group&quot;: {},
+    &quot;im_group_list&quot;: {},
+    &quot;meeting&quot;: {},
+    &quot;meeting_instance&quot;: {},
+    &quot;meeting_invitation&quot;: {},
+    &quot;meeting_registrant_list&quot;: {},
+    &quot;pac&quot;: {},
+    &quot;poll&quot;: {},
+    &quot;qos&quot;: {},
+    &quot;recording&quot;: {},
+    &quot;recording_setting&quot;: {},
+    &quot;report&quot;: {},
+    &quot;tracking_field&quot;: {},
+    &quot;tsp&quot;: {},
+    &quot;user&quot;: {},
+    &quot;user_assistants_list&quot;: {},
+    &quot;user_permission&quot;: {},
+    &quot;user_schedulers_list&quot;: {},
+    &quot;user_setting&quot;: {},
+    &quot;webhook&quot;: {},
+    &quot;webinar&quot;: {},
+    &quot;webinar_instance&quot;: {},
+    &quot;webinar_panelist_list&quot;: {},
+    &quot;webinar_registrant_list&quot;: {},
+    &quot;zoom_room_list&quot;: {}
   }
 }
 </code></pre>

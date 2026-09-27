@@ -1,16 +1,63 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Meeting | Zoom Meetings API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Meeting | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
 <body><a class="skip" href="#content">Skip to content</a>
-<header class="site-header"><a class="site-title" href="../index.html">Zoom Meetings API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
 <div class="site-notice" role="note"></div>
-<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom Meetings API</a></details>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
 <details open><summary>API</summary><a href="../api/index.html">API overview</a>
-<a aria-current="page" href="../api/meeting.html">Meeting</a><div class="nav-sections"><a class="nav-section" href="#post-usersuseridmeetings">POST /users/{userId}/meetings</a>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a aria-current="page" href="../api/meeting.html">Meeting</a><div class="nav-sections"><a class="nav-section" href="#post-meetingsmeetingidregistrants">POST /meetings/{meetingId}/registrants</a>
+<a class="nav-section" href="#post-meetingsmeetingidpolls">POST /meetings/{meetingId}/polls</a>
+<a class="nav-section" href="#post-usersuseridmeetings">POST /users/{userId}/meetings</a>
 <a class="nav-section" href="#get-usersuseridmeetings">GET /users/{userId}/meetings</a>
+<a class="nav-section" href="#get-past_meetingsmeetinguuidparticipants">GET /past_meetings/{meetingUUID}/participants</a>
+<a class="nav-section" href="#get-meetingsmeetingidpollspollid">GET /meetings/{meetingId}/polls/{pollId}</a>
+<a class="nav-section" href="#get-metricsmeetingsmeetingid">GET /metrics/meetings/{meetingId}</a>
 <a class="nav-section" href="#get-meetingsmeetingid">GET /meetings/{meetingId}</a>
+<a class="nav-section" href="#get-past_meetingsmeetinguuid">GET /past_meetings/{meetingUUID}</a>
+<a class="nav-section" href="#patch-meetingsmeetingid">PATCH /meetings/{meetingId}</a>
+<a class="nav-section" href="#patch-meetingsmeetingidlivestream">PATCH /meetings/{meetingId}/livestream</a>
+<a class="nav-section" href="#patch-meetingsmeetingidlivestreamstatus">PATCH /meetings/{meetingId}/livestream/status</a>
 <a class="nav-section" href="#delete-meetingsmeetingid">DELETE /meetings/{meetingId}</a>
-<a class="nav-section" href="#patch-meetingsmeetingid">PATCH /meetings/{meetingId}</a></div></details>
+<a class="nav-section" href="#delete-meetingsmeetingidpollspollid">DELETE /meetings/{meetingId}/polls/{pollId}</a>
+<a class="nav-section" href="#put-meetingsmeetingidregistrantsstatus">PUT /meetings/{meetingId}/registrants/status</a>
+<a class="nav-section" href="#put-meetingsmeetingidpollspollid">PUT /meetings/{meetingId}/polls/{pollId}</a>
+<a class="nav-section" href="#put-meetingsmeetingidstatus">PUT /meetings/{meetingId}/status</a></div>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
 <details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
 <a href="../guides/first-call.html">Make your first API call</a>
 <a href="../guides/errors.html">Handle errors</a>
@@ -23,14 +70,14 @@
 <a href="../sdks/ts.html">TypeScript</a></details>
 <details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
 <a href="../tools/go-mcp.html">Go MCP server</a></details>
-<details><summary>Features</summary><a href="../features/debug.html">Request/response capture ring buffer for debugging</a>
-<a href="../features/idempotency.html">Idempotency keys for safe retries of mutating operations</a>
-<a href="../features/metrics.html">Statistics capture: per-operation counters and latency</a>
-<a href="../features/paging.html">Pagination signals for list operations</a>
-<a href="../features/ratelimit.html">Client-side rate limiting via a token bucket</a>
-<a href="../features/retry.html">Automatic retry of transient failures with exponential backoff</a>
-<a href="../features/test.html">In-memory mock transport for testing without a live server</a>
-<a href="../features/timeout.html">Per-request timeout with transport abort</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="meeting">Meeting</h1>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="meeting">Meeting</h1>
 <h2 id="operations">Operations</h2>
 <p>Every route this entity exposes. Each route links to its own reference on this page.</p>
 <table>
@@ -45,36 +92,178 @@
 <tbody>
 <tr>
 <td><code>POST</code></td>
+<td><a href="#post-meetingsmeetingidregistrants"><code>/meetings/{meetingId}/registrants</code></a></td>
+<td><code>create</code></td>
+<td>Registration created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-meetingsmeetingidpolls"><code>/meetings/{meetingId}/polls</code></a></td>
+<td><code>create</code></td>
+<td>Meeting Poll Created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
 <td><a href="#post-usersuseridmeetings"><code>/users/{userId}/meetings</code></a></td>
 <td><code>create</code></td>
-<td>The created meeting</td>
+<td>Meeting Created</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-usersuseridmeetings"><code>/users/{userId}/meetings</code></a></td>
 <td><code>list</code></td>
-<td>A page of meetings</td>
+<td>List of Meeting objects returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-past_meetingsmeetinguuidparticipants"><code>/past_meetings/{meetingUUID}/participants</code></a></td>
+<td><code>list</code></td>
+<td>Meeting Participants Report Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-meetingsmeetingidpollspollid"><code>/meetings/{meetingId}/polls/{pollId}</code></a></td>
+<td><code>load</code></td>
+<td>Meeting Poll object returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricsmeetingsmeetingid"><code>/metrics/meetings/{meetingId}</code></a></td>
+<td><code>load</code></td>
+<td>Meeting Returned</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-meetingsmeetingid"><code>/meetings/{meetingId}</code></a></td>
 <td><code>load</code></td>
-<td>The requested meeting</td>
+<td>Meeting object returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-past_meetingsmeetinguuid"><code>/past_meetings/{meetingUUID}</code></a></td>
+<td><code>load</code></td>
+<td>Meeting detail Returned</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-meetingsmeetingid"><code>/meetings/{meetingId}</code></a></td>
+<td><code>patch</code></td>
+<td>Meeting Updated</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-meetingsmeetingidlivestream"><code>/meetings/{meetingId}/livestream</code></a></td>
+<td><code>patch</code></td>
+<td>Meeting live stream Updated</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-meetingsmeetingidlivestreamstatus"><code>/meetings/{meetingId}/livestream/status</code></a></td>
+<td><code>patch</code></td>
+<td>Meeting live stream Updated</td>
 </tr>
 <tr>
 <td><code>DELETE</code></td>
 <td><a href="#delete-meetingsmeetingid"><code>/meetings/{meetingId}</code></a></td>
 <td><code>remove</code></td>
-<td>Deleted</td>
+<td>Meeting deleted</td>
 </tr>
 <tr>
-<td><code>PATCH</code></td>
-<td><a href="#patch-meetingsmeetingid"><code>/meetings/{meetingId}</code></a></td>
+<td><code>DELETE</code></td>
+<td><a href="#delete-meetingsmeetingidpollspollid"><code>/meetings/{meetingId}/polls/{pollId}</code></a></td>
+<td><code>remove</code></td>
+<td>Meeting Poll deleted</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-meetingsmeetingidregistrantsstatus"><code>/meetings/{meetingId}/registrants/status</code></a></td>
 <td><code>update</code></td>
-<td>Updated</td>
+<td>Registrant status updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-meetingsmeetingidpollspollid"><code>/meetings/{meetingId}/polls/{pollId}</code></a></td>
+<td><code>update</code></td>
+<td>Meeting Poll Updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-meetingsmeetingidstatus"><code>/meetings/{meetingId}/status</code></a></td>
+<td><code>update</code></td>
+<td>Meeting updated</td>
 </tr>
 </tbody>
 </table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">meetings, err := client.Meeting(nil).List(map[string]any{&quot;user_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(meetings)
+meeting, err := client.Meeting(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(meeting)
+created, err := client.Meeting(nil).Create(map[string]any{&quot;user_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Meeting(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;poll_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Meeting(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const meetings = await client.Meeting().list({ user_id: &quot;example&quot; })
+const meeting = await client.Meeting().load({ id: &quot;example_id&quot; })
+const created = await client.Meeting().create({ user_id: &quot;example&quot;, body: &quot;example&quot; })
+const updated = await client.Meeting().update({ id: &quot;example_id&quot;, poll_id: &quot;example&quot;, body: &quot;example&quot; })
+await client.Meeting().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local meetings, err = client:Meeting():list({ user_id = &quot;example&quot; })
+local meeting, err = client:Meeting():load({ id = &quot;example_id&quot; })
+local created, err = client:Meeting():create({ user_id = &quot;example&quot;, body = &quot;example&quot; })
+local updated, err = client:Meeting():update({ id = &quot;example_id&quot;, poll_id = &quot;example&quot;, body = &quot;example&quot; })
+local removed, err = client:Meeting():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$meetings = $client-&gt;Meeting()-&gt;list([&quot;user_id&quot; =&gt; &quot;example&quot;]);
+$meeting = $client-&gt;Meeting()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Meeting()-&gt;create([&quot;user_id&quot; =&gt; &quot;example&quot;, &quot;body&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Meeting()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;poll_id&quot; =&gt; &quot;example&quot;, &quot;body&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Meeting()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">meetings = client.Meeting().list({&quot;user_id&quot;: &quot;example&quot;})
+meeting = client.Meeting().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Meeting().create({ &quot;user_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot; })
+updated = client.Meeting().update({&quot;id&quot;: &quot;example_id&quot;, &quot;poll_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot;})
+client.Meeting().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const meetings = await client.Meeting().list({ user_id: &quot;example&quot; })
+const meeting = await client.Meeting().load({ id: &quot;example_id&quot; })
+const created = await client.Meeting().create({ user_id: &quot;example&quot;, body: &quot;example&quot; })
+const updated = await client.Meeting().update({ id: &quot;example_id&quot;, poll_id: &quot;example&quot;, body: &quot;example&quot; })
+await client.Meeting().remove({ id: &quot;example_id&quot; })
+</code></pre>
 <h2 id="fields">Fields</h2>
 <table>
 <thead>
@@ -90,747 +279,451 @@
 <td><code>agenda</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Agenda</td>
 </tr>
 <tr>
 <td><code>created_at</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Create time</td>
 </tr>
 <tr>
 <td><code>duration</code></td>
-<td><code>integer</code></td>
+<td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Meeting duration</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User email</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting end time</td>
+</tr>
+<tr>
+<td><code>h323_password</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>H.323/SIP room system password</td>
+</tr>
+<tr>
+<td><code>has_3rd_party_audio</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has 3rd Party Audio</td>
+</tr>
+<tr>
+<td><code>has_pstn</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Pstn</td>
+</tr>
+<tr>
+<td><code>has_recording</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Recording</td>
+</tr>
+<tr>
+<td><code>has_screen_share</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Screen Share</td>
+</tr>
+<tr>
+<td><code>has_sip</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Sip</td>
+</tr>
+<tr>
+<td><code>has_video</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Video</td>
+</tr>
+<tr>
+<td><code>has_voip</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Voip</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User display name</td>
 </tr>
 <tr>
 <td><code>host_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
+<td>ID of the user set as host of meeting</td>
 </tr>
 <tr>
 <td><code>id</code></td>
-<td><code>integer</code></td>
+<td><code>string</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
+<td>Meeting Poll ID</td>
 </tr>
 <tr>
 <td><code>join_url</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Join url</td>
 </tr>
-<tr>
-<td><code>mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>start_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>timezone</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>topic</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>uuid</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="create">create</h2>
-<h3 id="post-usersuseridmeetings" class="operation" data-method="post"><code>POST</code> /users/{userId}/meetings</h3>
-<p>Operation ID: <code>createMeeting</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>userId</code> | <code>path</code> | <code>string</code> | Yes |  |</p>
-<h4 id="request-body">Request body</h4>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agenda</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>duration</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>password</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>start_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>timezone</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>topic</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses">Responses</h4>
-<h5 id="201-the-created-meeting" class="status" data-status="2xx">201: The created meeting</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agenda</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>created_at</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>duration</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>host_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>join_url</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>start_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>timezone</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>topic</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>uuid</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="list">list</h2>
-<h3 id="get-usersuseridmeetings" class="operation" data-method="get"><code>GET</code> /users/{userId}/meetings</h3>
-<p>Operation ID: <code>listMeetings</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-1">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>userId</code> | <code>path</code> | <code>string</code> | Yes |  |
-| <code>type</code> | <code>query</code> | <code>string</code> | No |  |
-| <code>page_size</code> | <code>query</code> | <code>integer</code> | No |  |
-| <code>next_page_token</code> | <code>query</code> | <code>string</code> | No |  |</p>
-<h4 id="responses-1">Responses</h4>
-<h5 id="200-a-page-of-meetings" class="status" data-status="2xx">200: A page of meetings</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td><code>meetings</code></td>
-<td><code>array of object</code></td>
+<td><code>array</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].agenda</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].created_at</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].duration</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].host_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].join_url</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings.host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings.join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings.mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings.participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].settings.waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].start_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].timezone</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].topic</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].type</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>meetings[].uuid</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
+<td>List of Meeting objects</td>
 </tr>
 <tr>
 <td><code>next_page_token</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Next page token is used to paginate through large result sets.</td>
+</tr>
+<tr>
+<td><code>occurrences</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of occurrence objects</td>
 </tr>
 <tr>
 <td><code>page_count</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_number</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The page number of current results</td>
 </tr>
 <tr>
 <td><code>page_size</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>The number of records returned within a single API call</td>
 </tr>
 <tr>
-<td><code>total_records</code></td>
+<td><code>participants</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="load">load</h2>
-<h3 id="get-meetingsmeetingid" class="operation" data-method="get"><code>GET</code> /meetings/{meetingId}</h3>
-<p>Operation ID: <code>getMeeting</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-2">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>meetingId</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-the-requested-meeting" class="status" data-status="2xx">200: The requested meeting</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agenda</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
+<td>Meeting participant count</td>
 </tr>
 <tr>
-<td><code>created_at</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>duration</code></td>
+<td><code>participants_count</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>host_id</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>join_url</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>start_time</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>timezone</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>topic</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>type</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>uuid</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="remove">remove</h2>
-<h3 id="delete-meetingsmeetingid" class="operation" data-method="delete"><code>DELETE</code> /meetings/{meetingId}</h3>
-<p>Operation ID: <code>deleteMeeting</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>meetingId</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
-<h4 id="responses-3">Responses</h4>
-<h5 id="204-deleted" class="status" data-status="2xx">204: Deleted</h5>
-<h2 id="update">update</h2>
-<h3 id="patch-meetingsmeetingid" class="operation" data-method="patch"><code>PATCH</code> /meetings/{meetingId}</h3>
-<p>Operation ID: <code>updateMeeting</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-4">Parameters</h4>
-<p>| Parameter | In | Type | Required | Description |
-| --- | --- | --- | --- |
-| <code>meetingId</code> | <code>path</code> | <code>integer</code> | Yes |  |</p>
-<h4 id="request-body-1">Request body</h4>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agenda</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>duration</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
+<td>Number of meeting participants</td>
 </tr>
 <tr>
 <td><code>password</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Meeting password</td>
+</tr>
+<tr>
+<td><code>questions</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of Polls</td>
 </tr>
 <tr>
 <td><code>settings</code></td>
 <td><code>object</code></td>
 <td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.host_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.join_before_host</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.mute_upon_entry</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.participant_video</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>settings.waiting_room</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td></td>
+<td>Meeting Settings</td>
 </tr>
 <tr>
 <td><code>start_time</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Meeting start time</td>
+</tr>
+<tr>
+<td><code>start_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Start url</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Status of the Meeting Poll</td>
 </tr>
 <tr>
 <td><code>timezone</code></td>
 <td><code>string</code></td>
 <td>No</td>
-<td></td>
+<td>Timezone to format <code>start_time</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Poll Title</td>
 </tr>
 <tr>
 <td><code>topic</code></td>
 <td><code>string</code></td>
-<td>Yes</td>
-<td></td>
+<td>No</td>
+<td>Meeting topic</td>
+</tr>
+<tr>
+<td><code>total_minutes</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Number of meeting minutes</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+<tr>
+<td><code>tracking_fields</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Tracking fields</td>
 </tr>
 <tr>
 <td><code>type</code></td>
 <td><code>integer</code></td>
 <td>No</td>
-<td></td>
+<td>Meeting Type</td>
+</tr>
+<tr>
+<td><code>user_email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User email</td>
+</tr>
+<tr>
+<td><code>user_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User display name</td>
+</tr>
+<tr>
+<td><code>user_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User type</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting UUID</td>
 </tr>
 </tbody>
 </table>
+<h2 id="create">create</h2>
+<h3 id="post-meetingsmeetingidregistrants" class="operation" data-method="post"><code>POST</code> /meetings/{meetingId}/registrants</h3>
+<p>Operation ID: <code>meetingRegistrantCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>occurrence_ids</code> | <code>query</code> | <code>any</code> | No | Occurrence IDs. You can find these with the meeting get API. Multiple values separated by comma. |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-registration-created" class="status" data-status="2xx">201: Registration created</h5>
+<h5 id="404-meeting-not-found" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="post-meetingsmeetingidpolls" class="operation" data-method="post"><code>POST</code> /meetings/{meetingId}/polls</h3>
+<p>Operation ID: <code>meetingPollCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Meeting poll object |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-meeting-poll-created" class="status" data-status="2xx">201: Meeting Poll Created</h5>
+<h5 id="404-meeting-not-found-1" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="post-usersuseridmeetings" class="operation" data-method="post"><code>POST</code> /users/{userId}/meetings</h3>
+<p>Operation ID: <code>meetingCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object and object</code> | Yes | Meeting object |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-meeting-created" class="status" data-status="2xx">201: Meeting Created</h5>
+<h5 id="404-user-not-found" class="status" data-status="4xx">404: User not found</h5>
+<h2 id="list">list</h2>
+<h3 id="get-usersuseridmeetings" class="operation" data-method="get"><code>GET</code> /users/{userId}/meetings</h3>
+<p>Operation ID: <code>meetings</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The meeting type |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-list-of-meeting-objects-returned" class="status" data-status="2xx">200: List of Meeting objects returned</h5>
+<h5 id="404-user-not-found-1" class="status" data-status="4xx">404: User not found</h5>
+<h3 id="get-past_meetingsmeetinguuidparticipants" class="operation" data-method="get"><code>GET</code> /past_meetings/{meetingUUID}/participants</h3>
+<p>Operation ID: <code>pastMeetingParticipants</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingUUID</code> | <code>path</code> | <code>any</code> | Yes | The meeting UUID. |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>next_page_token</code> | <code>query</code> | <code>any</code> | No | Next page token is used to paginate through large result sets. A next page token will be returned whenever the set of available results exceed the current page size. The expiration period for this token is 15 minutes. |</p>
 <h4 id="responses-4">Responses</h4>
-<h5 id="204-updated" class="status" data-status="2xx">204: Updated</h5>
+<h5 id="200-meeting-participants-report-returned" class="status" data-status="2xx">200: Meeting Participants Report Returned</h5>
+<h5 id="404-meeting-not-found-2" class="status" data-status="4xx">404: Meeting not found</h5>
+<h2 id="load">load</h2>
+<h3 id="get-meetingsmeetingidpollspollid" class="operation" data-method="get"><code>GET</code> /meetings/{meetingId}/polls/{pollId}</h3>
+<p>Operation ID: <code>meetingPollGet</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-meeting-poll-object-returned" class="status" data-status="2xx">200: Meeting Poll object returned</h5>
+<h5 id="404-meeting-poll-not-found" class="status" data-status="4xx">404: Meeting Poll not found</h5>
+<h3 id="get-metricsmeetingsmeetingid" class="operation" data-method="get"><code>GET</code> /metrics/meetings/{meetingId}</h3>
+<p>Operation ID: <code>dashboardMeetingDetail</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID or meeting UUID. If given meeting ID, will take the last meeting instance. |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The meeting type |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-meeting-returned" class="status" data-status="2xx">200: Meeting Returned</h5>
+<h3 id="get-meetingsmeetingid" class="operation" data-method="get"><code>GET</code> /meetings/{meetingId}</h3>
+<p>Operation ID: <code>meeting</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-meeting-object-returned" class="status" data-status="2xx">200: Meeting object returned</h5>
+<h5 id="404-meeting-not-found-3" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="get-past_meetingsmeetinguuid" class="operation" data-method="get"><code>GET</code> /past_meetings/{meetingUUID}</h3>
+<p>Operation ID: <code>pastMeetingDetails</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingUUID</code> | <code>path</code> | <code>any</code> | Yes | The meeting UUID. |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-meeting-detail-returned" class="status" data-status="2xx">200: Meeting detail Returned</h5>
+<h5 id="404-meeting-not-found-4" class="status" data-status="4xx">404: Meeting not found</h5>
+<h2 id="patch">patch</h2>
+<h3 id="patch-meetingsmeetingid" class="operation" data-method="patch"><code>PATCH</code> /meetings/{meetingId}</h3>
+<p>Operation ID: <code>meetingUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>body</code> | <code>body</code> | <code>object and object</code> | Yes | Meeting |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="204-meeting-updated" class="status" data-status="2xx">204: Meeting Updated</h5>
+<h5 id="404-meeting-not-found-5" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="patch-meetingsmeetingidlivestream" class="operation" data-method="patch"><code>PATCH</code> /meetings/{meetingId}/livestream</h3>
+<p>Operation ID: <code>meetingLiveStreamUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Meeting |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="204-meeting-live-stream-updated" class="status" data-status="2xx">204: Meeting live stream Updated</h5>
+<h5 id="404-meeting-not-found-6" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="patch-meetingsmeetingidlivestreamstatus" class="operation" data-method="patch"><code>PATCH</code> /meetings/{meetingId}/livestream/status</h3>
+<p>Operation ID: <code>meetingLiveStreamStatusUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Meeting |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="204-meeting-live-stream-updated-1" class="status" data-status="2xx">204: Meeting live stream Updated</h5>
+<h5 id="404-meeting-not-found-7" class="status" data-status="4xx">404: Meeting not found</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-meetingsmeetingid" class="operation" data-method="delete"><code>DELETE</code> /meetings/{meetingId}</h3>
+<p>Operation ID: <code>meetingDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>occurrence_id</code> | <code>query</code> | <code>any</code> | No | The meeting occurrence ID |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="204-meeting-deleted" class="status" data-status="2xx">204: Meeting deleted</h5>
+<h5 id="404-meeting-not-found-8" class="status" data-status="4xx">404: Meeting not found</h5>
+<h3 id="delete-meetingsmeetingidpollspollid" class="operation" data-method="delete"><code>DELETE</code> /meetings/{meetingId}/polls/{pollId}</h3>
+<p>Operation ID: <code>meetingPollDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="204-meeting-poll-deleted" class="status" data-status="2xx">204: Meeting Poll deleted</h5>
+<h5 id="404-meeting-poll-not-found-1" class="status" data-status="4xx">404: Meeting Poll not found</h5>
+<h2 id="update">update</h2>
+<h3 id="put-meetingsmeetingidregistrantsstatus" class="operation" data-method="put"><code>PUT</code> /meetings/{meetingId}/registrants/status</h3>
+<p>Operation ID: <code>meetingRegistrantStatus</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>occurrence_id</code> | <code>query</code> | <code>any</code> | No | The meeting occurrence ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="204-registrant-status-updated" class="status" data-status="2xx">204: Registrant status updated</h5>
+<h5 id="404-meeting-or-registrant-not-found" class="status" data-status="4xx">404: Meeting or Registrant not found</h5>
+<h3 id="put-meetingsmeetingidpollspollid" class="operation" data-method="put"><code>PUT</code> /meetings/{meetingId}/polls/{pollId}</h3>
+<p>Operation ID: <code>meetingPollUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Meeting Poll |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="204-meeting-poll-updated" class="status" data-status="2xx">204: Meeting Poll Updated</h5>
+<h5 id="404-meeting-poll-not-found-2" class="status" data-status="4xx">404: Meeting Poll not found</h5>
+<h3 id="put-meetingsmeetingidstatus" class="operation" data-method="put"><code>PUT</code> /meetings/{meetingId}/status</h3>
+<p>Operation ID: <code>meetingStatus</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>meetingId</code> | <code>path</code> | <code>any</code> | Yes | The meeting ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-16">Responses</h4>
+<h5 id="204-meeting-updated-1" class="status" data-status="2xx">204: Meeting updated</h5>
+<h5 id="404-meeting-not-found-9" class="status" data-status="4xx">404: Meeting not found</h5>
 </main></div>
 <script src="../assets/search.js" defer></script></body></html>

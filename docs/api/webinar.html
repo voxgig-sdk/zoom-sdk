@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Webinar | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account.html">Account</a>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a aria-current="page" href="../api/webinar.html">Webinar</a><div class="nav-sections"><a class="nav-section" href="#post-webinarswebinaridregistrants">POST /webinars/{webinarId}/registrants</a>
+<a class="nav-section" href="#post-webinarswebinaridpanelists">POST /webinars/{webinarId}/panelists</a>
+<a class="nav-section" href="#post-webinarswebinaridpolls">POST /webinars/{webinarId}/polls</a>
+<a class="nav-section" href="#post-usersuseridwebinars">POST /users/{userId}/webinars</a>
+<a class="nav-section" href="#get-usersuseridwebinars">GET /users/{userId}/webinars</a>
+<a class="nav-section" href="#get-webinarswebinaridpollspollid">GET /webinars/{webinarId}/polls/{pollId}</a>
+<a class="nav-section" href="#get-metricswebinarswebinarid">GET /metrics/webinars/{webinarId}</a>
+<a class="nav-section" href="#get-webinarswebinarid">GET /webinars/{webinarId}</a>
+<a class="nav-section" href="#patch-webinarswebinarid">PATCH /webinars/{webinarId}</a>
+<a class="nav-section" href="#delete-webinarswebinarid">DELETE /webinars/{webinarId}</a>
+<a class="nav-section" href="#delete-webinarswebinaridpanelistspanelistid">DELETE /webinars/{webinarId}/panelists/{panelistId}</a>
+<a class="nav-section" href="#delete-webinarswebinaridpollspollid">DELETE /webinars/{webinarId}/polls/{pollId}</a>
+<a class="nav-section" href="#delete-webinarswebinaridpanelists">DELETE /webinars/{webinarId}/panelists</a>
+<a class="nav-section" href="#put-webinarswebinaridregistrantsstatus">PUT /webinars/{webinarId}/registrants/status</a>
+<a class="nav-section" href="#put-webinarswebinaridpollspollid">PUT /webinars/{webinarId}/polls/{pollId}</a>
+<a class="nav-section" href="#put-webinarswebinaridstatus">PUT /webinars/{webinarId}/status</a></div>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="webinar">Webinar</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-webinarswebinaridregistrants"><code>/webinars/{webinarId}/registrants</code></a></td>
+<td><code>create</code></td>
+<td>Registration created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-webinarswebinaridpanelists"><code>/webinars/{webinarId}/panelists</code></a></td>
+<td><code>create</code></td>
+<td>Panelist created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-webinarswebinaridpolls"><code>/webinars/{webinarId}/polls</code></a></td>
+<td><code>create</code></td>
+<td>Webinar Poll Created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-usersuseridwebinars"><code>/users/{userId}/webinars</code></a></td>
+<td><code>create</code></td>
+<td>Webinar Created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-usersuseridwebinars"><code>/users/{userId}/webinars</code></a></td>
+<td><code>list</code></td>
+<td>List of Webinar objects returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-webinarswebinaridpollspollid"><code>/webinars/{webinarId}/polls/{pollId}</code></a></td>
+<td><code>load</code></td>
+<td>Webinar Poll object returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-metricswebinarswebinarid"><code>/metrics/webinars/{webinarId}</code></a></td>
+<td><code>load</code></td>
+<td>Webinar Returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-webinarswebinarid"><code>/webinars/{webinarId}</code></a></td>
+<td><code>load</code></td>
+<td>Webinar object returned</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-webinarswebinarid"><code>/webinars/{webinarId}</code></a></td>
+<td><code>patch</code></td>
+<td>Webinar Updated</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-webinarswebinarid"><code>/webinars/{webinarId}</code></a></td>
+<td><code>remove</code></td>
+<td>Webinar deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-webinarswebinaridpanelistspanelistid"><code>/webinars/{webinarId}/panelists/{panelistId}</code></a></td>
+<td><code>remove</code></td>
+<td>Panelists removed</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-webinarswebinaridpollspollid"><code>/webinars/{webinarId}/polls/{pollId}</code></a></td>
+<td><code>remove</code></td>
+<td>Webinar Poll deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-webinarswebinaridpanelists"><code>/webinars/{webinarId}/panelists</code></a></td>
+<td><code>remove</code></td>
+<td>Panelists removed</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-webinarswebinaridregistrantsstatus"><code>/webinars/{webinarId}/registrants/status</code></a></td>
+<td><code>update</code></td>
+<td>Registrant status updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-webinarswebinaridpollspollid"><code>/webinars/{webinarId}/polls/{pollId}</code></a></td>
+<td><code>update</code></td>
+<td>Webinar Poll Updated</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-webinarswebinaridstatus"><code>/webinars/{webinarId}/status</code></a></td>
+<td><code>update</code></td>
+<td>Webinar updated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">webinars, err := client.Webinar(nil).List(map[string]any{&quot;user_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(webinars)
+webinar, err := client.Webinar(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(webinar)
+created, err := client.Webinar(nil).Create(map[string]any{&quot;user_id&quot;: &quot;example&quot;, &quot;body&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Webinar(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;poll_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Webinar(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const webinars = await client.Webinar().list({ user_id: &quot;example&quot; })
+const webinar = await client.Webinar().load({ id: &quot;example_id&quot; })
+const created = await client.Webinar().create({ user_id: &quot;example&quot;, body: {} })
+const updated = await client.Webinar().update({ id: &quot;example_id&quot;, poll_id: &quot;example&quot;, body: &quot;example&quot; })
+await client.Webinar().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local webinars, err = client:Webinar():list({ user_id = &quot;example&quot; })
+local webinar, err = client:Webinar():load({ id = &quot;example_id&quot; })
+local created, err = client:Webinar():create({ user_id = &quot;example&quot;, body = {} })
+local updated, err = client:Webinar():update({ id = &quot;example_id&quot;, poll_id = &quot;example&quot;, body = &quot;example&quot; })
+local removed, err = client:Webinar():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$webinars = $client-&gt;Webinar()-&gt;list([&quot;user_id&quot; =&gt; &quot;example&quot;]);
+$webinar = $client-&gt;Webinar()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Webinar()-&gt;create([&quot;user_id&quot; =&gt; &quot;example&quot;, &quot;body&quot; =&gt; []]);
+$updated = $client-&gt;Webinar()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;poll_id&quot; =&gt; &quot;example&quot;, &quot;body&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Webinar()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">webinars = client.Webinar().list({&quot;user_id&quot;: &quot;example&quot;})
+webinar = client.Webinar().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Webinar().create({ &quot;user_id&quot;: &quot;example&quot;, &quot;body&quot;: {} })
+updated = client.Webinar().update({&quot;id&quot;: &quot;example_id&quot;, &quot;poll_id&quot;: &quot;example&quot;, &quot;body&quot;: &quot;example&quot;})
+client.Webinar().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const webinars = await client.Webinar().list({ user_id: &quot;example&quot; })
+const webinar = await client.Webinar().load({ id: &quot;example_id&quot; })
+const created = await client.Webinar().create({ user_id: &quot;example&quot;, body: {} })
+const updated = await client.Webinar().update({ id: &quot;example_id&quot;, poll_id: &quot;example&quot;, body: &quot;example&quot; })
+await client.Webinar().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agenda</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar agenda</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Create time</td>
+</tr>
+<tr>
+<td><code>duration</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar duration</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User email</td>
+</tr>
+<tr>
+<td><code>end_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar end time</td>
+</tr>
+<tr>
+<td><code>has_3rd_party_audio</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has 3rd Party Audio</td>
+</tr>
+<tr>
+<td><code>has_pstn</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Pstn</td>
+</tr>
+<tr>
+<td><code>has_recording</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Recording</td>
+</tr>
+<tr>
+<td><code>has_screen_share</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Screen Share</td>
+</tr>
+<tr>
+<td><code>has_sip</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Sip</td>
+</tr>
+<tr>
+<td><code>has_video</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Video</td>
+</tr>
+<tr>
+<td><code>has_voip</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Voip</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User display name</td>
+</tr>
+<tr>
+<td><code>host_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the user set as host of webinar</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar Poll ID</td>
+</tr>
+<tr>
+<td><code>join_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Join url</td>
+</tr>
+<tr>
+<td><code>occurrences</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of occurrence objects</td>
+</tr>
+<tr>
+<td><code>page_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_number</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The page number of current results</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of records returned within a single API call</td>
+</tr>
+<tr>
+<td><code>participants</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Webinar participant count</td>
+</tr>
+<tr>
+<td><code>questions</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of Polls</td>
+</tr>
+<tr>
+<td><code>settings</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Webinar Settings</td>
+</tr>
+<tr>
+<td><code>start_time</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar start time</td>
+</tr>
+<tr>
+<td><code>start_url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Start url</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Status of the Webinar Poll</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timezone to format <code>start_time</code></td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Poll Title</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar topic</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+<tr>
+<td><code>tracking_fields</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Tracking fields</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Webinar Type</td>
+</tr>
+<tr>
+<td><code>user_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User type</td>
+</tr>
+<tr>
+<td><code>uuid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Webinar UUID</td>
+</tr>
+<tr>
+<td><code>webinars</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of Webinar objects</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-webinarswebinaridregistrants" class="operation" data-method="post"><code>POST</code> /webinars/{webinarId}/registrants</h3>
+<p>Operation ID: <code>webinarRegistrantCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>occurrence_ids</code> | <code>query</code> | <code>any</code> | No | Occurrence IDs, could get this value from Webinar Get API. Multiple value separated by comma. |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-registration-created" class="status" data-status="2xx">201: Registration created</h5>
+<h5 id="404-webinar-not-found" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="post-webinarswebinaridpanelists" class="operation" data-method="post"><code>POST</code> /webinars/{webinarId}/panelists</h3>
+<p>Operation ID: <code>webinarPanelistCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-panelist-created" class="status" data-status="2xx">201: Panelist created</h5>
+<h5 id="404-webinar-not-found-1" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="post-webinarswebinaridpolls" class="operation" data-method="post"><code>POST</code> /webinars/{webinarId}/polls</h3>
+<p>Operation ID: <code>webinarPollCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Webinar poll object |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-webinar-poll-created" class="status" data-status="2xx">201: Webinar Poll Created</h5>
+<h5 id="404-webinar-not-found-2" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="post-usersuseridwebinars" class="operation" data-method="post"><code>POST</code> /users/{userId}/webinars</h3>
+<p>Operation ID: <code>webinarCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | User |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="201-webinar-created" class="status" data-status="2xx">201: Webinar Created</h5>
+<h5 id="404-user-not-found" class="status" data-status="4xx">404: User not found</h5>
+<h2 id="list">list</h2>
+<h3 id="get-usersuseridwebinars" class="operation" data-method="get"><code>GET</code> /users/{userId}/webinars</h3>
+<p>Operation ID: <code>webinars</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>userId</code> | <code>path</code> | <code>any</code> | Yes | The user ID or email address |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-list-of-webinar-objects-returned" class="status" data-status="2xx">200: List of Webinar objects returned</h5>
+<h5 id="404-user-not-found-1" class="status" data-status="4xx">404: User not found</h5>
+<h2 id="load">load</h2>
+<h3 id="get-webinarswebinaridpollspollid" class="operation" data-method="get"><code>GET</code> /webinars/{webinarId}/polls/{pollId}</h3>
+<p>Operation ID: <code>webinarPollGet</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-webinar-poll-object-returned" class="status" data-status="2xx">200: Webinar Poll object returned</h5>
+<h5 id="404-webinar-poll-not-found" class="status" data-status="4xx">404: Webinar Poll not found</h5>
+<h3 id="get-metricswebinarswebinarid" class="operation" data-method="get"><code>GET</code> /metrics/webinars/{webinarId}</h3>
+<p>Operation ID: <code>dashboardWebinarDetail</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID or webinar UUID. If given webinar ID, will take the last webinar instance. |
+| <code>type</code> | <code>query</code> | <code>any</code> | No | The webinar type |</p>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-webinar-returned" class="status" data-status="2xx">200: Webinar Returned</h5>
+<h3 id="get-webinarswebinarid" class="operation" data-method="get"><code>GET</code> /webinars/{webinarId}</h3>
+<p>Operation ID: <code>webinar</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |</p>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-webinar-object-returned" class="status" data-status="2xx">200: Webinar object returned</h5>
+<h5 id="404-webinar-not-found-3" class="status" data-status="4xx">404: Webinar not found</h5>
+<h2 id="patch">patch</h2>
+<h3 id="patch-webinarswebinarid" class="operation" data-method="patch"><code>PATCH</code> /webinars/{webinarId}</h3>
+<p>Operation ID: <code>webinarUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Webinar |</p>
+<h4 id="responses-8">Responses</h4>
+<h5 id="204-webinar-updated" class="status" data-status="2xx">204: Webinar Updated</h5>
+<h5 id="404-webinar-not-found-4" class="status" data-status="4xx">404: Webinar not found</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-webinarswebinarid" class="operation" data-method="delete"><code>DELETE</code> /webinars/{webinarId}</h3>
+<p>Operation ID: <code>webinarDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>occurrence_id</code> | <code>query</code> | <code>any</code> | No | The meeting occurrence ID |</p>
+<h4 id="responses-9">Responses</h4>
+<h5 id="204-webinar-deleted" class="status" data-status="2xx">204: Webinar deleted</h5>
+<h5 id="404-webinar-not-found-5" class="status" data-status="4xx">404: Webinar not found</h5>
+<h3 id="delete-webinarswebinaridpanelistspanelistid" class="operation" data-method="delete"><code>DELETE</code> /webinars/{webinarId}/panelists/{panelistId}</h3>
+<p>Operation ID: <code>webinarPanelistDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>panelistId</code> | <code>path</code> | <code>any</code> | Yes | The panelist ID |</p>
+<h4 id="responses-10">Responses</h4>
+<h5 id="204-panelists-removed" class="status" data-status="2xx">204: Panelists removed</h5>
+<h5 id="404-webinar-or-panelist-not-found" class="status" data-status="4xx">404: Webinar or Panelist not found</h5>
+<h3 id="delete-webinarswebinaridpollspollid" class="operation" data-method="delete"><code>DELETE</code> /webinars/{webinarId}/polls/{pollId}</h3>
+<p>Operation ID: <code>webinarPollDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |</p>
+<h4 id="responses-11">Responses</h4>
+<h5 id="204-webinar-poll-deleted" class="status" data-status="2xx">204: Webinar Poll deleted</h5>
+<h5 id="404-webinar-poll-not-found-1" class="status" data-status="4xx">404: Webinar Poll not found</h5>
+<h3 id="delete-webinarswebinaridpanelists" class="operation" data-method="delete"><code>DELETE</code> /webinars/{webinarId}/panelists</h3>
+<p>Operation ID: <code>webinarPanelistsDelete</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |</p>
+<h4 id="responses-12">Responses</h4>
+<h5 id="204-panelists-removed-1" class="status" data-status="2xx">204: Panelists removed</h5>
+<h5 id="404-webinar-not-found-6" class="status" data-status="4xx">404: Webinar not found</h5>
+<h2 id="update">update</h2>
+<h3 id="put-webinarswebinaridregistrantsstatus" class="operation" data-method="put"><code>PUT</code> /webinars/{webinarId}/registrants/status</h3>
+<p>Operation ID: <code>webinarRegistrantStatus</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>occurrence_id</code> | <code>query</code> | <code>any</code> | No | The meeting occurrence ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-13">Responses</h4>
+<h5 id="204-registrant-status-updated" class="status" data-status="2xx">204: Registrant status updated</h5>
+<h5 id="404-webinar-or-registrant-not-found" class="status" data-status="4xx">404: Webinar or Registrant not found</h5>
+<h3 id="put-webinarswebinaridpollspollid" class="operation" data-method="put"><code>PUT</code> /webinars/{webinarId}/polls/{pollId}</h3>
+<p>Operation ID: <code>webinarPollUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>pollId</code> | <code>path</code> | <code>any</code> | Yes | The poll ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Webinar Poll |</p>
+<h4 id="responses-14">Responses</h4>
+<h5 id="204-webinar-poll-updated" class="status" data-status="2xx">204: Webinar Poll Updated</h5>
+<h5 id="404-webinar-poll-not-found-2" class="status" data-status="4xx">404: Webinar Poll not found</h5>
+<h3 id="put-webinarswebinaridstatus" class="operation" data-method="put"><code>PUT</code> /webinars/{webinarId}/status</h3>
+<p>Operation ID: <code>webinarStatus</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>webinarId</code> | <code>path</code> | <code>any</code> | Yes | The webinar ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-15">Responses</h4>
+<h5 id="204-webinar-updated-1" class="status" data-status="2xx">204: Webinar updated</h5>
+<h5 id="404-webinar-not-found-7" class="status" data-status="4xx">404: Webinar not found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

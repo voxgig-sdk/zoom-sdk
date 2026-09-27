@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "tracking_field": {
+      "TRACKING_FIELD00": {
+        "field": "s46",
+        "id": "TRACKING_FIELD00",
+        "recommended_values": [],
+        "required": false,
+        "total_records": 74,
+        "tracking_fields": [],
+        "visible": true
+      },
+      "TRACKING_FIELD01": {
+        "field": "s8c",
+        "id": "TRACKING_FIELD01",
+        "recommended_values": [],
+        "required": false,
+        "total_records": 144,
+        "tracking_fields": [],
+        "visible": true
+      },
+      "TRACKING_FIELD02": {
+        "field": "sd2",
+        "id": "TRACKING_FIELD02",
+        "recommended_values": [],
+        "required": false,
+        "total_records": 214,
+        "tracking_fields": [],
+        "visible": true
+      }
+    }
+  },
+  "new": {
+    "tracking_field": {
+      "tracking_field_ref01": {
+        "field": "s118",
+        "recommended_values": [],
+        "required": false,
+        "total_records": 284,
+        "tracking_fields": [],
+        "visible": true
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/tracking_fields": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /v2/tracking_fields": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /v2/tracking_fields/{fieldId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /v2/tracking_fields/{fieldId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /v2/tracking_fields/{fieldId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

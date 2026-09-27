@@ -1,0 +1,83 @@
+# Entity: domains_list
+
+main: kit: entity: domains_list: {
+
+  alias: field: {}
+
+  fields: {
+    domain: {
+      h: "Domain"
+      n: "domain"
+      r: false
+      sh: "Domain Name"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Domain Status"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "domains_list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /accounts/{accountId}/managed_domains"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "account_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/accounts/{accountId}/managed_domains"
+          q: {
+            exist: [
+              "account_id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "account_id"
+            }
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+            {
+              lit: "managed_domains"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domains`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.account")]
+  ]
+
+}

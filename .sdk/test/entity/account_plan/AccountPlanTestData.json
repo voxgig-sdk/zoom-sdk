@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "account_plan": {
+      "ACCOUNT_PLAN00": {
+        "id": "ACCOUNT_PLAN00",
+        "plan_audio": {},
+        "plan_base": {},
+        "plan_large_meeting": [],
+        "plan_recording": "s54",
+        "plan_room_connector": {},
+        "plan_webinar": [],
+        "plan_zoom_rooms": {}
+      },
+      "ACCOUNT_PLAN01": {
+        "id": "ACCOUNT_PLAN01",
+        "plan_audio": {},
+        "plan_base": {},
+        "plan_large_meeting": [],
+        "plan_recording": "sa4",
+        "plan_room_connector": {},
+        "plan_webinar": [],
+        "plan_zoom_rooms": {}
+      },
+      "ACCOUNT_PLAN02": {
+        "id": "ACCOUNT_PLAN02",
+        "plan_audio": {},
+        "plan_base": {},
+        "plan_large_meeting": [],
+        "plan_recording": "sf4",
+        "plan_room_connector": {},
+        "plan_webinar": [],
+        "plan_zoom_rooms": {}
+      }
+    }
+  },
+  "new": {
+    "account_plan": {
+      "account_plan_ref01": {
+        "plan_audio": {},
+        "plan_base": {},
+        "plan_large_meeting": [],
+        "plan_recording": "s144",
+        "plan_room_connector": {},
+        "plan_webinar": [],
+        "plan_zoom_rooms": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /accounts/{accountId}/plans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /accounts/{accountId}/plans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

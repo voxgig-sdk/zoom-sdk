@@ -102,6 +102,7 @@ func TestMeetingEntity(t *testing.T) {
 		meetingRef01Ent := client.Meeting(nil)
 		meetingRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "meeting"}), "meeting_ref01"))
+		meetingRef01Data["meeting_uuid"] = setup.idmap["meeting_uuid01"]
 		meetingRef01Data["user_id"] = setup.idmap["user01"]
 
 		meetingRef01DataResult, err := meetingRef01Ent.Create(meetingRef01Data, nil)
@@ -118,7 +119,7 @@ func TestMeetingEntity(t *testing.T) {
 
 		// LIST
 		meetingRef01Match := map[string]any{
-			"user_id": setup.idmap["user01"],
+			"meeting_uuid": setup.idmap["meeting_uuid01"],
 		}
 
 		meetingRef01ListResult, err := meetingRef01Ent.List(meetingRef01Match, nil)
@@ -186,7 +187,7 @@ func TestMeetingEntity(t *testing.T) {
 
 		// LIST
 		meetingRef01MatchRt0 := map[string]any{
-			"user_id": setup.idmap["user01"],
+			"meeting_uuid": setup.idmap["meeting_uuid01"],
 		}
 
 		meetingRef01ListRt0Result, err := meetingRef01Ent.List(meetingRef01MatchRt0, nil)
@@ -231,7 +232,7 @@ func meetingBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"meeting01", "meeting02", "meeting03", "user01", "user02", "user03"},
+		[]any{"meeting01", "meeting02", "meeting03", "poll01", "poll02", "poll03", "user01", "user02", "user03", "meeting_uuid01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

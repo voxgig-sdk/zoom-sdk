@@ -1,0 +1,84 @@
+# Entity: meeting_invitation
+
+main: kit: entity: meeting_invitation: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    invitation: {
+      h: "Invitation"
+      n: "invitation"
+      r: false
+      sh: "Meeting invitation"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "meeting_invitation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /meetings/{meetingId}/invitation"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "meeting_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/meetings/{meetingId}/invitation"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              meetingId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "meetings"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "invitation"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,26 @@
+# BasicUserAssistantsListFlow
+
+main: kit: flow: BasicUserAssistantsListFlow:
+{
+  entity: "user_assistants_list",
+  kind: "basic",
+  name: "BasicUserAssistantsListFlow",
+  step: [
+    {
+      m: {
+        user_id: "user01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "user_assistants_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUserAssistantsListFlow"
+}

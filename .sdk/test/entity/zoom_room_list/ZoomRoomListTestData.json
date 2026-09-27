@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "zoom_room_list": {
+      "ZOOM_ROOM_LIST00": {
+        "page_count": 50,
+        "page_number": 51,
+        "page_size": 52,
+        "total_records": 53,
+        "zoom_rooms": []
+      },
+      "ZOOM_ROOM_LIST01": {
+        "page_count": 100,
+        "page_number": 101,
+        "page_size": 102,
+        "total_records": 103,
+        "zoom_rooms": []
+      },
+      "ZOOM_ROOM_LIST02": {
+        "page_count": 150,
+        "page_number": 151,
+        "page_size": 152,
+        "total_records": 153,
+        "zoom_rooms": []
+      }
+    }
+  },
+  "new": {
+    "zoom_room_list": {
+      "zoom_room_list_ref01": {
+        "page_count": 200,
+        "page_number": 201,
+        "page_size": 202,
+        "total_records": 203,
+        "zoom_rooms": []
+      }
+    }
+  },
+  "requests": {
+    "GET /metrics/zoomrooms": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

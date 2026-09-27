@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "cloud_recording": {
+      "CLOUD_RECORDING00": {
+        "id": "CLOUD_RECORDING00",
+        "meeting_id": "MEETING01",
+        "recording_id": "RECORDING01"
+      },
+      "CLOUD_RECORDING01": {
+        "id": "CLOUD_RECORDING01",
+        "meeting_id": "MEETING01",
+        "recording_id": "RECORDING01"
+      },
+      "CLOUD_RECORDING02": {
+        "id": "CLOUD_RECORDING02",
+        "meeting_id": "MEETING01",
+        "recording_id": "RECORDING01"
+      }
+    }
+  },
+  "new": {
+    "cloud_recording": {
+      "cloud_recording_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /meetings/{meetingId}/recordings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /meetings/{meetingId}/recordings/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /meetings/{meetingId}/recordings/{recordingId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /meetings/{meetingId}/recordings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /meetings/{meetingId}/recordings/{recordingId}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PUT /meetings/{meetingId}/recordings/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

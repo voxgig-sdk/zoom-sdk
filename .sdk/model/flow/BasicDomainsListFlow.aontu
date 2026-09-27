@@ -1,0 +1,26 @@
+# BasicDomainsListFlow
+
+main: kit: flow: BasicDomainsListFlow:
+{
+  entity: "domains_list",
+  kind: "basic",
+  name: "BasicDomainsListFlow",
+  step: [
+    {
+      m: {
+        account_id: "account01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "domains_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDomainsListFlow"
+}

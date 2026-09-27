@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "webinar_instance": {
+      "WEBINAR_INSTANCE00": {
+        "webinars": [],
+        "past_webinar_id": "PAST_WEBINAR01"
+      },
+      "WEBINAR_INSTANCE01": {
+        "webinars": [],
+        "past_webinar_id": "PAST_WEBINAR01"
+      },
+      "WEBINAR_INSTANCE02": {
+        "webinars": [],
+        "past_webinar_id": "PAST_WEBINAR01"
+      }
+    }
+  },
+  "new": {
+    "webinar_instance": {
+      "webinar_instance_ref01": {
+        "webinars": []
+      }
+    }
+  },
+  "requests": {
+    "GET /past_webinars/{webinarId}/instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

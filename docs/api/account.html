@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Account | Zoom API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Zoom API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/zoom-sdk">voxgig-sdk/zoom-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Zoom API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a aria-current="page" href="../api/account.html">Account</a><div class="nav-sections"><a class="nav-section" href="#post-accounts">POST /accounts</a>
+<a class="nav-section" href="#get-accounts">GET /accounts</a>
+<a class="nav-section" href="#get-accountsaccountid">GET /accounts/{accountId}</a>
+<a class="nav-section" href="#delete-accountsaccountid">DELETE /accounts/{accountId}</a>
+<a class="nav-section" href="#patch-accountsaccountidoptions">PATCH /accounts/{accountId}/options</a>
+<a class="nav-section" href="#patch-accountsaccountidsettings">PATCH /accounts/{accountId}/settings</a></div>
+<a href="../api/account_plan.html">AccountPlan</a>
+<a href="../api/account_setting.html">AccountSetting</a>
+<a href="../api/billing.html">Billing</a>
+<a href="../api/cloud_recording.html">CloudRecording</a>
+<a href="../api/dashboard.html">Dashboard</a>
+<a href="../api/device.html">Device</a>
+<a href="../api/domains_list.html">DomainsList</a>
+<a href="../api/group.html">Group</a>
+<a href="../api/group_member_list.html">GroupMemberList</a>
+<a href="../api/im_chat.html">ImChat</a>
+<a href="../api/im_group.html">ImGroup</a>
+<a href="../api/im_group_list.html">ImGroupList</a>
+<a href="../api/meeting.html">Meeting</a>
+<a href="../api/meeting_instance.html">MeetingInstance</a>
+<a href="../api/meeting_invitation.html">MeetingInvitation</a>
+<a href="../api/meeting_registrant_list.html">MeetingRegistrantList</a>
+<a href="../api/pac.html">Pac</a>
+<a href="../api/poll.html">Poll</a>
+<a href="../api/qos.html">Qos</a>
+<a href="../api/recording.html">Recording</a>
+<a href="../api/recording_setting.html">RecordingSetting</a>
+<a href="../api/report.html">Report</a>
+<a href="../api/tracking_field.html">TrackingField</a>
+<a href="../api/tsp.html">Tsp</a>
+<a href="../api/user.html">User</a>
+<a href="../api/user_assistants_list.html">UserAssistantsList</a>
+<a href="../api/user_permission.html">UserPermission</a>
+<a href="../api/user_schedulers_list.html">UserSchedulersList</a>
+<a href="../api/user_setting.html">UserSetting</a>
+<a href="../api/webhook.html">Webhook</a>
+<a href="../api/webinar.html">Webinar</a>
+<a href="../api/webinar_instance.html">WebinarInstance</a>
+<a href="../api/webinar_panelist_list.html">WebinarPanelistList</a>
+<a href="../api/webinar_registrant_list.html">WebinarRegistrantList</a>
+<a href="../api/zoom_room_list.html">ZoomRoomList</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/js.html">JavaScript</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a>
+<a href="../tools/go-mcp.html">Go MCP server</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="account">Account</h1>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-accounts"><code>/accounts</code></a></td>
+<td><code>create</code></td>
+<td>Account Created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-accounts"><code>/accounts</code></a></td>
+<td><code>list</code></td>
+<td>Account list returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-accountsaccountid"><code>/accounts/{accountId}</code></a></td>
+<td><code>load</code></td>
+<td>Account object returned</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-accountsaccountid"><code>/accounts/{accountId}</code></a></td>
+<td><code>remove</code></td>
+<td>Account deleted</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-accountsaccountidoptions"><code>/accounts/{accountId}/options</code></a></td>
+<td><code>update</code></td>
+<td>Account options updated</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-accountsaccountidsettings"><code>/accounts/{accountId}/settings</code></a></td>
+<td><code>update</code></td>
+<td>Account settings updated</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">accounts, err := client.Account(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(accounts)
+account, err := client.Account(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(account)
+created, err := client.Account(nil).Create(map[string]any{&quot;body&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Account(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;body&quot;: map[string]any{}, &quot;accounts&quot;: []any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Account(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="javascript">JavaScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/js.html#set-up-the-client">JavaScript setup</a>, then call the operations:</p>
+<pre><code class="language-js">const accounts = await client.Account().list()
+const account = await client.Account().load({ id: &quot;example_id&quot; })
+const created = await client.Account().create({ body: {} })
+const updated = await client.Account().update({ id: &quot;example_id&quot;, body: {}, accounts: [] })
+await client.Account().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local accounts, err = client:Account():list()
+local account, err = client:Account():load({ id = &quot;example_id&quot; })
+local created, err = client:Account():create({ body = {} })
+local updated, err = client:Account():update({ id = &quot;example_id&quot;, body = {}, accounts = {} })
+local removed, err = client:Account():remove({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$accounts = $client-&gt;Account()-&gt;list();
+$account = $client-&gt;Account()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Account()-&gt;create([&quot;body&quot; =&gt; []]);
+$updated = $client-&gt;Account()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;body&quot; =&gt; [], &quot;accounts&quot; =&gt; []]);
+$client-&gt;Account()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">accounts = client.Account().list()
+account = client.Account().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.Account().create({ &quot;body&quot;: {} })
+updated = client.Account().update({&quot;id&quot;: &quot;example_id&quot;, &quot;body&quot;: {}, &quot;accounts&quot;: []})
+client.Account().remove({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const accounts = await client.Account().list()
+const account = await client.Account().load({ id: &quot;example_id&quot; })
+const created = await client.Account().create({ body: {} })
+const updated = await client.Account().update({ id: &quot;example_id&quot;, body: {}, accounts: [] })
+await client.Account().remove({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accounts</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of Account objects</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>meeting_connectors</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Meeting Connector, multiple values separated by comma</td>
+</tr>
+<tr>
+<td><code>page_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of items returned on this page</td>
+</tr>
+<tr>
+<td><code>page_number</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The page number of current results</td>
+</tr>
+<tr>
+<td><code>page_size</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of records returned within a single API call</td>
+</tr>
+<tr>
+<td><code>pay_mode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Payee</td>
+</tr>
+<tr>
+<td><code>room_connectors</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Virtual Room Connector, multiple value separated by comma</td>
+</tr>
+<tr>
+<td><code>share_mc</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enable Share Meeting Connector</td>
+</tr>
+<tr>
+<td><code>share_rc</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Enable Share Virtual Room Connector</td>
+</tr>
+<tr>
+<td><code>total_records</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The number of all records available across pages</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-accounts" class="operation" data-method="post"><code>POST</code> /accounts</h3>
+<p>Operation ID: <code>accountCreate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes | Account |</p>
+<h4 id="responses">Responses</h4>
+<h5 id="201-account-created" class="status" data-status="2xx">201: Account Created</h5>
+<h5 id="409-account-with-that-email-already-exists" class="status" data-status="4xx">409: Account with that email already exists</h5>
+<h2 id="list">list</h2>
+<h3 id="get-accounts" class="operation" data-method="get"><code>GET</code> /accounts</h3>
+<p>Operation ID: <code>accounts</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>page_size</code> | <code>query</code> | <code>any</code> | No | The number of records returned within a single API call |
+| <code>page_number</code> | <code>query</code> | <code>any</code> | No | Current page number of returned records |</p>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-account-list-returned" class="status" data-status="2xx">200: Account list returned</h5>
+<h2 id="load">load</h2>
+<h3 id="get-accountsaccountid" class="operation" data-method="get"><code>GET</code> /accounts/{accountId}</h3>
+<p>Operation ID: <code>account</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>accountId</code> | <code>path</code> | <code>any</code> | Yes | The account ID |</p>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-account-object-returned" class="status" data-status="2xx">200: Account object returned</h5>
+<h5 id="404-user-not-found" class="status" data-status="4xx">404: User not found</h5>
+<h2 id="remove">remove</h2>
+<h3 id="delete-accountsaccountid" class="operation" data-method="delete"><code>DELETE</code> /accounts/{accountId}</h3>
+<p>Operation ID: <code>accountDisassociate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>accountId</code> | <code>path</code> | <code>any</code> | Yes | The account ID |</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="204-account-deleted" class="status" data-status="2xx">204: Account deleted</h5>
+<h5 id="404-account-not-found" class="status" data-status="4xx">404: Account not found</h5>
+<h2 id="update">update</h2>
+<h3 id="patch-accountsaccountidoptions" class="operation" data-method="patch"><code>PATCH</code> /accounts/{accountId}/options</h3>
+<p>Operation ID: <code>accountOptionsUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>accountId</code> | <code>path</code> | <code>any</code> | Yes | The account ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-4">Responses</h4>
+<h5 id="204-account-options-updated" class="status" data-status="2xx">204: Account options updated</h5>
+<h5 id="404-account-not-found-1" class="status" data-status="4xx">404: Account not found</h5>
+<h3 id="patch-accountsaccountidsettings" class="operation" data-method="patch"><code>PATCH</code> /accounts/{accountId}/settings</h3>
+<p>Operation ID: <code>accountSettingsUpdate</code>.</p>
+<p>Authentication: API key in the query (<code>global</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<p>| Parameter | In | Type | Required | Description |
+| --- | --- | --- | --- |
+| <code>accountId</code> | <code>path</code> | <code>any</code> | Yes | The account ID |
+| <code>body</code> | <code>body</code> | <code>object</code> | Yes |  |</p>
+<h4 id="responses-5">Responses</h4>
+<h5 id="204-account-settings-updated" class="status" data-status="2xx">204: Account settings updated</h5>
+<h5 id="404-account-not-found-2" class="status" data-status="4xx">404: Account not found</h5>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

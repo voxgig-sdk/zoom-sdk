@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "meeting_registrant_list": {
+      "MEETING_REGISTRANT_LIST00": {
+        "id": "MEETING_REGISTRANT_LIST00"
+      },
+      "MEETING_REGISTRANT_LIST01": {
+        "id": "MEETING_REGISTRANT_LIST01"
+      },
+      "MEETING_REGISTRANT_LIST02": {
+        "id": "MEETING_REGISTRANT_LIST02"
+      }
+    }
+  },
+  "new": {
+    "meeting_registrant_list": {
+      "meeting_registrant_list_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /meetings/{meetingId}/registrants": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

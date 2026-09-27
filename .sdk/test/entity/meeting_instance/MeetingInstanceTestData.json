@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "meeting_instance": {
+      "MEETING_INSTANCE00": {
+        "meetings": [],
+        "past_meeting_id": "PAST_MEETING01"
+      },
+      "MEETING_INSTANCE01": {
+        "meetings": [],
+        "past_meeting_id": "PAST_MEETING01"
+      },
+      "MEETING_INSTANCE02": {
+        "meetings": [],
+        "past_meeting_id": "PAST_MEETING01"
+      }
+    }
+  },
+  "new": {
+    "meeting_instance": {
+      "meeting_instance_ref01": {
+        "meetings": []
+      }
+    }
+  },
+  "requests": {
+    "GET /past_meetings/{meetingId}/instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
-  "name": "@voxgig-sdk/zoom",
+  "name": "@voxgig-sdk/zoom-sdk",
   "version": "0.0.1",
-  "description": "Unofficial generated TypeScript SDK for the Zoom Meetings public API. Not affiliated with or endorsed by the upstream API provider.",
+  "description": "Unofficial generated TypeScript SDK for the Zoom public API. Not affiliated with or endorsed by the upstream API provider.",
   "keywords": [
     "voxgig",
     "sdk",
@@ -23,7 +23,8 @@
   "types": "dist/ZoomSDK.d.ts",
   "files": [
     "dist",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "pretest": "npm run build",

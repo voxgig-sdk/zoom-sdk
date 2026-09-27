@@ -3,9 +3,9 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "voxgig-sdk-zoom"
+name = "voxgig-sdk-zoom-sdk"
 version = "0.0.1"
-description = "Unofficial generated Python SDK for the Zoom Meetings public API. Not affiliated with or endorsed by the upstream API provider."
+description = "Unofficial generated Python SDK for the Zoom public API. Not affiliated with or endorsed by the upstream API provider."
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.8"

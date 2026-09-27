@@ -1,0 +1,1199 @@
+# Entity: webinar
+
+main: kit: entity: webinar: {
+
+  alias: field: {}
+
+  fields: {
+    agenda: {
+      h: "Agenda"
+      n: "agenda"
+      r: false
+      sh: "Webinar agenda"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Create time"
+      t: "`$STRING`"
+    }
+    duration: {
+      h: "Duration"
+      n: "duration"
+      r: false
+      sh: "Webinar duration"
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "User email"
+      t: "`$STRING`"
+    }
+    end_time: {
+      fo: "date-time"
+      h: "End Time"
+      n: "end_time"
+      r: false
+      sh: "Webinar end time"
+      t: "`$STRING`"
+    }
+    has_3rd_party_audio: {
+      h: "Has 3rd Party Audio"
+      n: "has_3rd_party_audio"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_pstn: {
+      h: "Has Pstn"
+      n: "has_pstn"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_recording: {
+      h: "Has Recording"
+      n: "has_recording"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_screen_share: {
+      h: "Has Screen Share"
+      n: "has_screen_share"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_sip: {
+      h: "Has Sip"
+      n: "has_sip"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_video: {
+      h: "Has Video"
+      n: "has_video"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    has_voip: {
+      h: "Has Voip"
+      n: "has_voip"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: false
+      sh: "User display name"
+      t: "`$STRING`"
+    }
+    host_id: {
+      h: "Host Id"
+      n: "host_id"
+      r: false
+      sh: "ID of the user set as host of webinar"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Webinar Poll ID"
+      t: "`$STRING`"
+    }
+    join_url: {
+      h: "Join Url"
+      n: "join_url"
+      r: false
+      sh: "Join url"
+      t: "`$STRING`"
+    }
+    occurrences: {
+      h: "Occurrences"
+      n: "occurrences"
+      r: false
+      sh: "Array of occurrence objects"
+      t: "`$ARRAY`"
+    }
+    page_count: {
+      h: "Page Count"
+      n: "page_count"
+      r: false
+      sh: "The number of items returned on this page"
+      t: "`$INTEGER`"
+    }
+    page_number: {
+      h: "Page Number"
+      n: "page_number"
+      r: false
+      sh: "The page number of current results"
+      t: "`$INTEGER`"
+    }
+    page_size: {
+      h: "Page Size"
+      n: "page_size"
+      r: false
+      sh: "The number of records returned within a single API call"
+      t: "`$INTEGER`"
+    }
+    participants: {
+      h: "Participants"
+      n: "participants"
+      r: false
+      sh: "Webinar participant count"
+      t: "`$INTEGER`"
+    }
+    questions: {
+      h: "Questions"
+      n: "questions"
+      r: false
+      sh: "Array of Polls"
+      t: "`$ARRAY`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: false
+      sh: "Webinar Settings"
+      t: "`$OBJECT`"
+    }
+    start_time: {
+      fo: "date-time"
+      h: "Start Time"
+      n: "start_time"
+      r: false
+      sh: "Webinar start time"
+      t: "`$STRING`"
+    }
+    start_url: {
+      h: "Start Url"
+      n: "start_url"
+      r: false
+      sh: "Start url"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Status of the Webinar Poll"
+      t: "`$STRING`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: false
+      sh: "Timezone to format start_time"
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Poll Title"
+      t: "`$STRING`"
+    }
+    topic: {
+      h: "Topic"
+      n: "topic"
+      r: false
+      sh: "Webinar topic"
+      t: "`$STRING`"
+    }
+    total_records: {
+      h: "Total Records"
+      n: "total_records"
+      r: false
+      sh: "The number of all records available across pages"
+      t: "`$INTEGER`"
+    }
+    tracking_fields: {
+      h: "Tracking Fields"
+      n: "tracking_fields"
+      r: false
+      sh: "Tracking fields"
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Webinar Type"
+      t: "`$INTEGER`"
+    }
+    user_type: {
+      h: "User Type"
+      n: "user_type"
+      r: false
+      sh: "User type"
+      t: "`$STRING`"
+    }
+    uuid: {
+      fo: "uuid"
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Webinar UUID"
+      t: "`$STRING`"
+    }
+    webinars: {
+      h: "Webinars"
+      n: "webinars"
+      r: false
+      sh: "List of Webinar objects"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "webinar"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /webinars/{webinarId}/registrants"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/webinars/{webinarId}/registrants"
+          q: {
+            "$action": "registrant"
+            exist: [
+              "body"
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registrants"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /webinars/{webinarId}/panelists"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/webinars/{webinarId}/panelists"
+          q: {
+            "$action": "panelist"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "panelists"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /webinars/{webinarId}/polls"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/webinars/{webinarId}/polls"
+          q: {
+            "$action": "poll"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /users/{userId}/webinars"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/users/{userId}/webinars"
+          q: {
+            exist: [
+              "body"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "webinars"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /users/{userId}/webinars"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "page_number"
+                or: "page_number"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/users/{userId}/webinars"
+          q: {
+            exist: [
+              "page_number"
+              "page_size"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "webinars"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /webinars/{webinarId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/webinars/{webinarId}/polls/{pollId}"
+          q: {
+            exist: [
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              pollId: "poll_id"
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /metrics/webinars/{webinarId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/metrics/webinars/{webinarId}"
+          q: {
+            exist: [
+              "id"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /webinars/{webinarId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/webinars/{webinarId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /webinars/{webinarId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$OBJECT`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/webinars/{webinarId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /webinars/{webinarId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/webinars/{webinarId}"
+          q: {
+            exist: [
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /webinars/{webinarId}/panelists/{panelistId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "panelist_id"
+                or: "panelist_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/webinars/{webinarId}/panelists/{panelistId}"
+          q: {
+            exist: [
+              "id"
+              "panelist_id"
+            ]
+          }
+          r: {
+            param: {
+              panelistId: "panelist_id"
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "panelists"
+            }
+            {
+              var: "panelist_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /webinars/{webinarId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/webinars/{webinarId}/polls/{pollId}"
+          q: {
+            exist: [
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              pollId: "poll_id"
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /webinars/{webinarId}/panelists"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/webinars/{webinarId}/panelists"
+          q: {
+            "$action": "panelist"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "panelists"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /webinars/{webinarId}/registrants/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+              {
+                k: "query"
+                n: "occurrence_id"
+                or: "occurrence_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/webinars/{webinarId}/registrants/status"
+          q: {
+            "$action": "registrant_status"
+            exist: [
+              "body"
+              "id"
+              "occurrence_id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "registrants"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /webinars/{webinarId}/polls/{pollId}"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "poll_id"
+                or: "poll_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/webinars/{webinarId}/polls/{pollId}"
+          q: {
+            exist: [
+              "body"
+              "id"
+              "poll_id"
+            ]
+          }
+          r: {
+            param: {
+              pollId: "poll_id"
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "polls"
+            }
+            {
+              var: "poll_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /webinars/{webinarId}/status"
+            source: "swagger2"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "webinar_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                k: "query"
+                n: "body"
+                or: "body"
+                r: true
+                t: "`$ANY`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/webinars/{webinarId}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "body"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              webinarId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "webinars"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+    [path("$.main.kit.entity.poll")]
+  ]
+
+}

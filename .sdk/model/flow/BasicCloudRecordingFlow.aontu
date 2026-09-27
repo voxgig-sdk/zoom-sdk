@@ -1,0 +1,50 @@
+# BasicCloudRecordingFlow
+
+main: kit: flow: BasicCloudRecordingFlow:
+{
+  entity: "cloud_recording",
+  kind: "basic",
+  name: "BasicCloudRecordingFlow",
+  step: [
+    {
+      i: {
+        ref: "cloud_recording_ref01",
+        srcdatavar: "cloud_recording_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cloud_recording_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cloud_recording_ref01",
+        srcdatavar: "cloud_recording_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "cloud_recording01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cloud_recording_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCloudRecordingFlow"
+}

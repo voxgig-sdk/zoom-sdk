@@ -1,0 +1,104 @@
+{
+  "existing": {
+    "qos": {
+      "QOS00": {
+        "as_input": {},
+        "as_output": {},
+        "audio_input": {},
+        "audio_output": {},
+        "cpu_usage": "s86",
+        "date_time": "s87",
+        "next_page_token": "s88",
+        "page_count": 137,
+        "page_size": 138,
+        "participants": [],
+        "total_records": 140,
+        "video_input": {},
+        "video_output": {},
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "participant_id": "PARTICIPANT01",
+        "id": "QOS00"
+      },
+      "QOS01": {
+        "as_input": {},
+        "as_output": {},
+        "audio_input": {},
+        "audio_output": {},
+        "cpu_usage": "s108",
+        "date_time": "s109",
+        "next_page_token": "s10a",
+        "page_count": 267,
+        "page_size": 268,
+        "participants": [],
+        "total_records": 270,
+        "video_input": {},
+        "video_output": {},
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "participant_id": "PARTICIPANT01",
+        "id": "QOS01"
+      },
+      "QOS02": {
+        "as_input": {},
+        "as_output": {},
+        "audio_input": {},
+        "audio_output": {},
+        "cpu_usage": "s18a",
+        "date_time": "s18b",
+        "next_page_token": "s18c",
+        "page_count": 397,
+        "page_size": 398,
+        "participants": [],
+        "total_records": 400,
+        "video_input": {},
+        "video_output": {},
+        "meeting_id": "MEETING01",
+        "webinar_id": "WEBINAR01",
+        "participant_id": "PARTICIPANT01",
+        "id": "QOS02"
+      }
+    }
+  },
+  "new": {
+    "qos": {
+      "qos_ref01": {
+        "as_input": {},
+        "as_output": {},
+        "audio_input": {},
+        "audio_output": {},
+        "cpu_usage": "s20c",
+        "date_time": "s20d",
+        "next_page_token": "s20e",
+        "page_count": 527,
+        "page_size": 528,
+        "participants": [],
+        "total_records": 530,
+        "video_input": {},
+        "video_output": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /metrics/meetings/{meetingId}/participants/qos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars/{webinarId}/participants/qos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/meetings/{meetingId}/participants/{participantId}/qos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /metrics/webinars/{webinarId}/participants/{participantId}/qos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}

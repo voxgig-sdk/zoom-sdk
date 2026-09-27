@@ -1,0 +1,36 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "developer@zoom.us"
+        name: "Zoom Developers"
+        url: "https://developer.zoom.us/"
+      }
+      description: "API Description"
+      license: {
+        name: "MIT"
+        url: "https://opensource.org/licenses/MIT"
+      }
+      security: {
+        in: "query"
+        name: "access_token"
+        prefix: ""
+        scheme: "global"
+        type: "apiKey"
+      }
+      servers: [
+        {
+          url: "https://api.zoom.us/v2"
+        }
+      ]
+      summary: "API Description"
+      title: "Zoom API"
+      version: "2.0.0"
+      website: "https://zoom.github.io/api"
+    }
+  }
+}
+

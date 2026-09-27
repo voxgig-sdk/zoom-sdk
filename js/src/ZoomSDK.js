@@ -1,6 +1,41 @@
 // Zoom Js SDK
 
+const { AccountEntity } = require('./entity/AccountEntity')
+const { AccountPlanEntity } = require('./entity/AccountPlanEntity')
+const { AccountSettingEntity } = require('./entity/AccountSettingEntity')
+const { BillingEntity } = require('./entity/BillingEntity')
+const { CloudRecordingEntity } = require('./entity/CloudRecordingEntity')
+const { DashboardEntity } = require('./entity/DashboardEntity')
+const { DeviceEntity } = require('./entity/DeviceEntity')
+const { DomainsListEntity } = require('./entity/DomainsListEntity')
+const { GroupEntity } = require('./entity/GroupEntity')
+const { GroupMemberListEntity } = require('./entity/GroupMemberListEntity')
+const { ImChatEntity } = require('./entity/ImChatEntity')
+const { ImGroupEntity } = require('./entity/ImGroupEntity')
+const { ImGroupListEntity } = require('./entity/ImGroupListEntity')
 const { MeetingEntity } = require('./entity/MeetingEntity')
+const { MeetingInstanceEntity } = require('./entity/MeetingInstanceEntity')
+const { MeetingInvitationEntity } = require('./entity/MeetingInvitationEntity')
+const { MeetingRegistrantListEntity } = require('./entity/MeetingRegistrantListEntity')
+const { PacEntity } = require('./entity/PacEntity')
+const { PollEntity } = require('./entity/PollEntity')
+const { QosEntity } = require('./entity/QosEntity')
+const { RecordingEntity } = require('./entity/RecordingEntity')
+const { RecordingSettingEntity } = require('./entity/RecordingSettingEntity')
+const { ReportEntity } = require('./entity/ReportEntity')
+const { TrackingFieldEntity } = require('./entity/TrackingFieldEntity')
+const { TspEntity } = require('./entity/TspEntity')
+const { UserEntity } = require('./entity/UserEntity')
+const { UserAssistantsListEntity } = require('./entity/UserAssistantsListEntity')
+const { UserPermissionEntity } = require('./entity/UserPermissionEntity')
+const { UserSchedulersListEntity } = require('./entity/UserSchedulersListEntity')
+const { UserSettingEntity } = require('./entity/UserSettingEntity')
+const { WebhookEntity } = require('./entity/WebhookEntity')
+const { WebinarEntity } = require('./entity/WebinarEntity')
+const { WebinarInstanceEntity } = require('./entity/WebinarInstanceEntity')
+const { WebinarPanelistListEntity } = require('./entity/WebinarPanelistListEntity')
+const { WebinarRegistrantListEntity } = require('./entity/WebinarRegistrantListEntity')
+const { ZoomRoomListEntity } = require('./entity/ZoomRoomListEntity')
 
 
 const { inspect } = require('node:util')
@@ -293,12 +328,327 @@ class ZoomSDK {
 
 
 
+  // Entity access: `client.Account().list()` / `client.Account().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Account(entopts) {
+    const self = this
+    return new AccountEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.AccountPlan().list()` / `client.AccountPlan().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AccountPlan(entopts) {
+    const self = this
+    return new AccountPlanEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.AccountSetting().list()` / `client.AccountSetting().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AccountSetting(entopts) {
+    const self = this
+    return new AccountSettingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Billing().list()` / `client.Billing().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Billing(entopts) {
+    const self = this
+    return new BillingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.CloudRecording().list()` / `client.CloudRecording().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  CloudRecording(entopts) {
+    const self = this
+    return new CloudRecordingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Dashboard().list()` / `client.Dashboard().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Dashboard(entopts) {
+    const self = this
+    return new DashboardEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Device().list()` / `client.Device().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Device(entopts) {
+    const self = this
+    return new DeviceEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.DomainsList().list()` / `client.DomainsList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  DomainsList(entopts) {
+    const self = this
+    return new DomainsListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Group().list()` / `client.Group().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Group(entopts) {
+    const self = this
+    return new GroupEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.GroupMemberList().list()` / `client.GroupMemberList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  GroupMemberList(entopts) {
+    const self = this
+    return new GroupMemberListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ImChat().list()` / `client.ImChat().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ImChat(entopts) {
+    const self = this
+    return new ImChatEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ImGroup().list()` / `client.ImGroup().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ImGroup(entopts) {
+    const self = this
+    return new ImGroupEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ImGroupList().list()` / `client.ImGroupList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ImGroupList(entopts) {
+    const self = this
+    return new ImGroupListEntity(self, entopts)
+  }
+
+
   // Entity access: `client.Meeting().list()` / `client.Meeting().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
   Meeting(entopts) {
     const self = this
     return new MeetingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.MeetingInstance().list()` / `client.MeetingInstance().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MeetingInstance(entopts) {
+    const self = this
+    return new MeetingInstanceEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.MeetingInvitation().list()` / `client.MeetingInvitation().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MeetingInvitation(entopts) {
+    const self = this
+    return new MeetingInvitationEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.MeetingRegistrantList().list()` / `client.MeetingRegistrantList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MeetingRegistrantList(entopts) {
+    const self = this
+    return new MeetingRegistrantListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Pac().list()` / `client.Pac().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Pac(entopts) {
+    const self = this
+    return new PacEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Poll().list()` / `client.Poll().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Poll(entopts) {
+    const self = this
+    return new PollEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Qos().list()` / `client.Qos().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Qos(entopts) {
+    const self = this
+    return new QosEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Recording().list()` / `client.Recording().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Recording(entopts) {
+    const self = this
+    return new RecordingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.RecordingSetting().list()` / `client.RecordingSetting().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  RecordingSetting(entopts) {
+    const self = this
+    return new RecordingSettingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Report().list()` / `client.Report().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Report(entopts) {
+    const self = this
+    return new ReportEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.TrackingField().list()` / `client.TrackingField().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  TrackingField(entopts) {
+    const self = this
+    return new TrackingFieldEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Tsp().list()` / `client.Tsp().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Tsp(entopts) {
+    const self = this
+    return new TspEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.User().list()` / `client.User().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  User(entopts) {
+    const self = this
+    return new UserEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserAssistantsList().list()` / `client.UserAssistantsList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserAssistantsList(entopts) {
+    const self = this
+    return new UserAssistantsListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserPermission().list()` / `client.UserPermission().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserPermission(entopts) {
+    const self = this
+    return new UserPermissionEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserSchedulersList().list()` / `client.UserSchedulersList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserSchedulersList(entopts) {
+    const self = this
+    return new UserSchedulersListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.UserSetting().list()` / `client.UserSetting().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  UserSetting(entopts) {
+    const self = this
+    return new UserSettingEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Webhook().list()` / `client.Webhook().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Webhook(entopts) {
+    const self = this
+    return new WebhookEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.Webinar().list()` / `client.Webinar().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  Webinar(entopts) {
+    const self = this
+    return new WebinarEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.WebinarInstance().list()` / `client.WebinarInstance().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  WebinarInstance(entopts) {
+    const self = this
+    return new WebinarInstanceEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.WebinarPanelistList().list()` / `client.WebinarPanelistList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  WebinarPanelistList(entopts) {
+    const self = this
+    return new WebinarPanelistListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.WebinarRegistrantList().list()` / `client.WebinarRegistrantList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  WebinarRegistrantList(entopts) {
+    const self = this
+    return new WebinarRegistrantListEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.ZoomRoomList().list()` / `client.ZoomRoomList().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  ZoomRoomList(entopts) {
+    const self = this
+    return new ZoomRoomListEntity(self, entopts)
   }
 
 

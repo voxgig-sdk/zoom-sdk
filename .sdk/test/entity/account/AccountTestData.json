@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "account": {
+      "ACCOUNT00": {
+        "accounts": [],
+        "id": "ACCOUNT00",
+        "meeting_connectors": "s70",
+        "page_count": 113,
+        "page_number": 114,
+        "page_size": 115,
+        "pay_mode": "s74",
+        "room_connectors": "s75",
+        "share_mc": true,
+        "share_rc": false,
+        "total_records": 120
+      },
+      "ACCOUNT01": {
+        "accounts": [],
+        "id": "ACCOUNT01",
+        "meeting_connectors": "sde",
+        "page_count": 223,
+        "page_number": 224,
+        "page_size": 225,
+        "pay_mode": "se2",
+        "room_connectors": "se3",
+        "share_mc": true,
+        "share_rc": false,
+        "total_records": 230
+      },
+      "ACCOUNT02": {
+        "accounts": [],
+        "id": "ACCOUNT02",
+        "meeting_connectors": "s14c",
+        "page_count": 333,
+        "page_number": 334,
+        "page_size": 335,
+        "pay_mode": "s150",
+        "room_connectors": "s151",
+        "share_mc": true,
+        "share_rc": false,
+        "total_records": 340
+      }
+    }
+  },
+  "new": {
+    "account": {
+      "account_ref01": {
+        "accounts": [],
+        "meeting_connectors": "s1ba",
+        "page_count": 443,
+        "page_number": 444,
+        "page_size": 445,
+        "pay_mode": "s1be",
+        "room_connectors": "s1bf",
+        "share_mc": true,
+        "share_rc": false,
+        "total_records": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "GET /accounts/{accountId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "DELETE /accounts/{accountId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /accounts/{accountId}/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    },
+    "PATCH /accounts/{accountId}/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "swagger2"
+    }
+  }
+}
